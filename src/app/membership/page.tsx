@@ -44,7 +44,7 @@ export default function MembershipPage() {
             </p>
             <div className="text-center">
               <Button asChild size="lg">
-                <Link href="#membership-form"> {/* Placeholder link */}
+                <Link href="https://forms.gle/J47RgFwMQ5VXUmKY7" target="_blank" rel="noopener noreferrer">
                   Fill Membership Form
                 </Link>
               </Button>
