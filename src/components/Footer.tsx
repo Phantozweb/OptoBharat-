@@ -30,9 +30,6 @@ export function Footer() {
         <p className="text-xs mt-2">
           India&apos;s Largest Optometry Student Community.
         </p>
-        <p className="text-xs mt-2">
-          Made with SimDif. {/* As requested in the content */}
-        </p>
       </div>
     </footer>
   );
