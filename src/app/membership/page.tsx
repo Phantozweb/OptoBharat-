@@ -22,7 +22,7 @@ export default function MembershipPage() {
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center">BENEFITS OF OPTOBHARAT MEMBERSHIP</CardTitle>
           </CardHeader>
-          <CardContent className="text-base space-y-4 text-muted-foreground">
+          <CardContent className="text-base space-y-4 text-muted-foreground px-4 md:px-6">
             <p>
               By joining OPTOBHARAT, you gain access to an exclusive community of optometry students across India, dedicated to learning, collaboration, and professional growth. Enjoy access to educational resources, networking opportunities, career guidance, and mentorship from experienced professionals. Connect with peers, mentors, and industry leaders to strengthen your academic foundation and prepare for a successful career in eye care. As a member, you’ll also get early access to exclusive webinars, workshops, and career-enhancing opportunities designed to empower the next generation of optometrists.
             </p>
@@ -35,7 +35,7 @@ export default function MembershipPage() {
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center text-primary">How to Join</CardTitle>
           </CardHeader>
-          <CardContent className="text-base space-y-6 text-muted-foreground">
+          <CardContent className="text-base space-y-6 text-muted-foreground px-4 md:px-6">
             <p className="text-center">
               Ready to be part of India’s first and largest optometry student community?
             </p>
@@ -45,7 +45,7 @@ export default function MembershipPage() {
             <div className="text-center">
               <Button asChild size="lg">
                 <Link href="#membership-form"> {/* Placeholder link */}
-                  MEMBERSHIP FORM: Click here and fill up the membership form.
+                  Fill Membership Form
                 </Link>
               </Button>
             </div>
@@ -62,7 +62,7 @@ export default function MembershipPage() {
             <ShieldCheck className="h-8 w-8 text-primary" />
             <CardTitle className="text-3xl font-headline text-center">Privacy & Policy</CardTitle>
           </CardHeader>
-          <CardContent className="text-base text-muted-foreground text-center">
+          <CardContent className="text-base text-muted-foreground text-center px-4 md:px-6">
             <p>
               At OPTOBHARAT, we prioritize your privacy. We are committed to safeguarding your personal information and ensuring a secure experience within our community. We do not send spam, nor do we sell or share user data with third parties. Your trust is our responsibility.
             </p>
