@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CalendarDays, Rss, Award, BookOpen, CheckCircle, Users, Video, FileText, TrendingUp, UsersRound } from 'lucide-react';
+import { CalendarDays, Rss, Award, BookOpen, CheckCircle, Users, Video, FileText, TrendingUp, UsersRound, NewspaperIcon } from 'lucide-react';
 
 export default function BlogsEventsPage() {
   return (
