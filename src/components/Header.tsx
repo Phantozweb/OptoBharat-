@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -6,12 +7,16 @@ import { Logo } from './Logo';
 import { SearchInput } from './SearchInput';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Newspaper, BotMessageSquare, HomeIcon } from 'lucide-react';
-import { categories } from '@/lib/data'; // Import categories for nav
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: HomeIcon },
-  { href: '/summarizer', label: 'AI Summarizer', icon: BotMessageSquare },
+  { href: '/governing-body', label: 'Governing Body', icon: Users },
+  { href: '/membership', label: 'Membership', icon: UserPlus },
+  { href: '/forum', label: 'Optobharat Forum', icon: MessageSquare },
+  { href: '/blogs-events', label: 'Blogs & Events', icon: NewspaperIcon },
+  { href: '/about', label: 'About', icon: Info },
+  { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
 export function Header() {
@@ -20,20 +25,16 @@ export function Header() {
   const NavContent = () => (
     <>
       {navLinks.map((link) => (
-        <Button key={link.label} variant="ghost" asChild className="text-foreground hover:text-primary transition-colors w-full md:w-auto justify-start md:justify-center">
-          <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
-            <link.icon className="mr-2 h-5 w-5" />
+        <Button 
+          key={link.label} 
+          variant="ghost" 
+          asChild 
+          className="text-foreground hover:text-primary transition-colors w-full md:w-auto justify-start md:justify-center text-sm lg:text-base"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <Link href={link.href}>
+            {link.icon && <link.icon className="mr-2 h-5 w-5" />}
             {link.label}
-          </Link>
-        </Button>
-      ))}
-      <div className="md:hidden border-t border-border my-2"></div>
-      <h3 className="md:hidden text-sm font-semibold text-muted-foreground px-4 mt-2 mb-1">Categories</h3>
-      {categories.map((category) => (
-         <Button key={category.slug} variant="ghost" asChild className="text-foreground hover:text-primary transition-colors w-full md:w-auto justify-start md:justify-center">
-          <Link href={`/category/${category.slug}`} onClick={() => setIsMobileMenuOpen(false)}>
-            {category.icon && <category.icon className="mr-2 h-5 w-5" />}
-            {category.name}
           </Link>
         </Button>
       ))}
@@ -44,11 +45,11 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Logo />
-        <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
+        <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
           <NavContent />
         </nav>
         <div className="flex items-center space-x-2">
-          <SearchInput className="hidden sm:block w-48 lg:w-64" />
+          {/* <SearchInput className="hidden sm:block w-40 lg:w-56" /> */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -58,8 +59,8 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[340px] p-6 pt-10 bg-background">
-                <nav className="flex flex-col space-y-3">
-                  <SearchInput className="sm:hidden mb-4" />
+                <nav className="flex flex-col space-y-2">
+                  {/* <SearchInput className="sm:hidden mb-4" /> */}
                   <NavContent />
                 </nav>
               </SheetContent>

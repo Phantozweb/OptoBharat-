@@ -1,21 +1,31 @@
+
 import type { LucideIcon } from 'lucide-react';
 
-export interface Category {
-  slug: string;
-  name: string;
-  description?: string;
-  icon?: LucideIcon; // Or specific icon name if using a fixed set
-}
+// The Category and Article types were specific to the previous 'BharatPulse' app structure.
+// They are removed as the new 'OPTOBHARAT' content and structure do not use them in the same way.
+// If you introduce new data structures for articles, events, members, etc., for OPTOBHARAT,
+// define their types here.
 
-export interface Article {
+// Example of new types you might need:
+/*
+export interface OptoEvent {
   id: string;
   title: string;
-  excerpt: string;
-  content: string; // Full content for summarizer
-  imageUrl: string;
-  imageHint?: string; // For data-ai-hint
-  categorySlug: string;
-  originalUrl: string;
-  datePublished: string; // ISO date string
-  author?: string;
+  date: string; // ISO date string
+  description: string;
+  location?: string; // For physical events
+  url?: string; // For online events or more info
+  icon?: LucideIcon;
 }
+
+export interface ForumPost {
+  id: string;
+  title: string;
+  author: string;
+  timestamp: string; // ISO date string
+  replies: number;
+}
+*/
+
+// You can keep LucideIcon if you plan to use icons elsewhere.
+// export type { LucideIcon };

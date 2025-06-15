@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/Header';
@@ -5,8 +6,8 @@ import { Footer } from '@/components/Footer';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'BharatPulse - Your Finger on India\'s Beat',
-  description: 'Curated insights, news, and AI-powered summaries from across the nation.',
+  title: 'OPTOBHARAT - India\'s Optometry Student Community',
+  description: 'Connecting and empowering optometry students across India and worldwide. Join OPTOBHARAT for collaboration, knowledge-sharing, and professional growth.',
 };
 
 export default function RootLayout({
