@@ -10,14 +10,8 @@ import { CheckCircle, ExternalLink, Facebook, Instagram, Linkedin, Send, Twitter
 // const logoUrl = 'https://placehold.co/200x100.png'; 
 
 export default function OptobharatHomePage() {
-  const socialLinks = [
-    { name: 'X', href: '#', icon: Twitter },
-    { name: 'LinkedIn', href: '#', icon: Linkedin },
-    { name: 'Facebook', href: '#', icon: Facebook },
-    { name: 'Instagram', href: '#', icon: Instagram },
-    { name: 'YouTube', href: '#', icon: Youtube },
-    { name: 'Telegram', href: '#', icon: Send },
-  ];
+  // Social links are now primarily in the Footer.
+  // The 'Join Our Platforms' section has been removed from here to avoid redundancy.
 
   return (
     <div className="space-y-12">
@@ -28,11 +22,11 @@ export default function OptobharatHomePage() {
         <h1 className="text-5xl md:text-6xl font-bold font-headline mb-6">
           OPTO<span className="text-primary">BHARAT</span>
         </h1>
-        <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+        <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto px-4">
           India&apos;s largest optometry student community, dedicated to uniting future optometrists across the nation and worldwide.
         </p>
         <Button asChild size="lg">
-          <Link href="#join-community">
+          <Link href="/membership#how-to-join"> {/* Updated to point to membership page section */}
             Join the Community <CheckCircle className="ml-2 h-5 w-5" />
           </Link>
         </Button>
@@ -45,7 +39,7 @@ export default function OptobharatHomePage() {
             <CardTitle className="text-3xl font-headline text-center">INTRODUCTION</CardTitle>
             <CardDescription className="text-center text-lg">THE OPTOBHARAT COMMUNITY</CardDescription>
           </CardHeader>
-          <CardContent className="text-base space-y-4 text-muted-foreground">
+          <CardContent className="text-base space-y-4 text-muted-foreground px-4 md:px-6">
             <p>
               Welcome to OPTOBHARAT, India’s largest optometry student community, dedicated to uniting future optometrists across the nation and worldwide. We are committed to fostering collaboration, knowledge-sharing, and professional growth, empowering aspiring eye care professionals to shape the future of vision health in India and beyond.
             </p>
@@ -70,11 +64,18 @@ export default function OptobharatHomePage() {
             <CardTitle className="text-3xl font-headline text-center">GOVERNING BODY</CardTitle>
             <CardDescription className="text-center text-lg">OPTOBHARAT Governing Body</CardDescription>
           </CardHeader>
-          <CardContent className="text-base space-y-4 text-muted-foreground">
+          <CardContent className="text-base space-y-4 text-muted-foreground px-4 md:px-6">
             <p>
               The Governing Body of OPTOBHARAT consists of dedicated leaders committed to fostering a strong and collaborative optometry student community across India. With a vision to empower future optometrists, our team works towards knowledge-sharing, professional development, and strengthening the field of eye care. Together, we shape the future of optometry in India and beyond.
             </p>
-            <p className="text-center italic text-primary">Read more ...</p> {/* Placeholder for potential link */}
+            {/* Consider linking this to a dedicated Governing Body page if one exists or is planned */}
+            <div className="text-center">
+              <Button variant="link" asChild>
+                 <Link href="/governing-body"> {/* Placeholder, update if you have a specific page */}
+                    Read more ...
+                 </Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </section>
@@ -85,14 +86,18 @@ export default function OptobharatHomePage() {
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center">OPTOBHARAT Vision & Mission</CardTitle>
           </CardHeader>
-          <CardContent className="text-base space-y-6 text-muted-foreground">
+          <CardContent className="text-base space-y-6 text-muted-foreground px-4 md:px-6">
             <div>
-              <h3 className="text-xl font-semibold font-headline text-primary mb-2">🌟 Vision Statement:</h3>
-              <p className="pl-4 italic">&quot;To be India’s leading optometry student community, fostering innovation, inclusivity, and continuous learning by connecting students with national and global experts to shape the future of eye care.&quot;</p>
+              <h3 className="text-xl font-semibold font-headline text-primary mb-2 flex items-center">
+                <Trophy className="mr-2 h-6 w-6" /> Vision Statement:
+              </h3>
+              <p className="pl-8 italic">&quot;To be India’s leading optometry student community, fostering innovation, inclusivity, and continuous learning by connecting students with national and global experts to shape the future of eye care.&quot;</p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold font-headline text-primary mb-2">🎯 Mission Statement:</h3>
-              <p className="pl-4 italic">&quot;Empowering optometry students across India to connect, learn, and collaborate in advancing eye care excellence, while building bridges with national and global experts.&quot;</p>
+              <h3 className="text-xl font-semibold font-headline text-primary mb-2 flex items-center">
+                <FlaskConical className="mr-2 h-6 w-6" /> Mission Statement:
+              </h3>
+              <p className="pl-8 italic">&quot;Empowering optometry students across India to connect, learn, and collaborate in advancing eye care excellence, while building bridges with national and global experts.&quot;</p>
             </div>
           </CardContent>
         </Card>
@@ -104,7 +109,7 @@ export default function OptobharatHomePage() {
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center">What We Do – OPTOBHARAT</CardTitle>
           </CardHeader>
-          <CardContent className="text-base space-y-4 text-muted-foreground">
+          <CardContent className="text-base space-y-4 text-muted-foreground px-4 md:px-6">
             <p className="font-semibold text-lg text-center text-foreground">
               Vision means opportunity, empowerment, and dignity – especially for students, women, and underserved communities.
             </p>
@@ -122,13 +127,13 @@ export default function OptobharatHomePage() {
         </Card>
       </section>
 
-      {/* JOIN THE COMMUNITY Section */}
+      {/* JOIN THE COMMUNITY Section (Simplified as social links are in footer) */}
       <section id="join-community">
         <Card className="shadow-lg bg-primary/5">
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center text-primary">JOIN THE COMMUNITY</CardTitle>
           </CardHeader>
-          <CardContent className="text-base space-y-6">
+          <CardContent className="text-base space-y-6 px-4 md:px-6">
             <div>
               <h3 className="text-xl font-semibold font-headline text-foreground mb-3">Why Join OPTOBHARAT?</h3>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground pl-4">
@@ -140,18 +145,16 @@ export default function OptobharatHomePage() {
                 <li>Network with top professionals, Entrepreneurs and mentors in the field.</li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold font-headline text-foreground mb-4 text-center">Join Our Platforms:</h3>
-              <div className="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
-                {socialLinks.map((social) => (
-                  <Button key={social.name} variant="outline" size="lg" asChild>
-                    <Link href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`OPTOBHARAT on ${social.name}`}>
-                      <social.icon className="mr-2 h-5 w-5" /> {social.name}
+            <div className="text-center mt-6">
+                <Button asChild size="lg">
+                    <Link href="/membership#how-to-join">
+                        Become a Member <Users className="ml-2 h-5 w-5" />
                     </Link>
-                  </Button>
-                ))}
-              </div>
+                </Button>
             </div>
+             <p className="text-center text-muted-foreground mt-4">
+              Follow us on our social platforms to stay connected! (Links in footer)
+            </p>
           </CardContent>
         </Card>
       </section>
