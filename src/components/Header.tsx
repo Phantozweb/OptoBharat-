@@ -4,7 +4,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Logo } from './Logo';
-import { SearchInput } from './SearchInput';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail } from 'lucide-react';
@@ -42,14 +41,13 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="w-full border-b border-border/40 bg-background/95">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Logo />
         <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
           <NavContent />
         </nav>
         <div className="flex items-center space-x-2">
-          {/* <SearchInput className="hidden sm:block w-40 lg:w-56" /> */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -60,7 +58,6 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[340px] p-6 pt-10 bg-background">
                 <nav className="flex flex-col space-y-2">
-                  {/* <SearchInput className="sm:hidden mb-4" /> */}
                   <NavContent />
                 </nav>
               </SheetContent>
