@@ -25,8 +25,8 @@ const contentSubLinks = [
 ];
 
 const supportSubLinks = [
-    { href: '/about/partners', label: 'Partnership', icon: Handshake },
-    { href: '/about/partners', label: 'Collaboration', icon: Users2 },
+    { href: '/about/partnership', label: 'Partnership', icon: Handshake },
+    { href: '/about/collaboration', label: 'Collaboration', icon: Users2 },
     { href: '/about/sponsors', label: 'Sponsorship', icon: Gem },
 ];
 
