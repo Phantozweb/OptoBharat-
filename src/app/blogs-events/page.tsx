@@ -92,29 +92,6 @@ export default function BlogsEventsPage() {
          </Card>
       </section>
 
-      <section id="collaboration">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-2xl font-headline text-center flex items-center justify-center">
-                <Award className="mr-3 h-7 w-7 text-primary" /> Collaboration Opportunities
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="px-4 md:px-6">
-            <div className="flex items-start text-muted-foreground">
-              <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0 mt-1" />
-              <p>Partner with OPTOBHARAT for educational & professional events.</p>
-            </div>
-            <div className="text-center mt-6">
-                <Button asChild>
-                    <Link href="/contact">
-                        Contact Us to Collaborate
-                    </Link>
-                </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
       <section id="resources-blog-links">
         <Card className="shadow-lg bg-primary/5 rounded-lg overflow-hidden">
           <CardHeader>

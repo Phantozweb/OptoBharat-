@@ -51,28 +51,6 @@ export default function OptobharatHomePage() {
         </Card>
       </section>
 
-      {/* GOVERNING BODY Section */}
-      <section id="governing-body">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl font-headline text-center">GOVERNING BODY</CardTitle>
-            <CardDescription className="text-center text-lg">OPTOBHARAT Governing Body</CardDescription>
-          </CardHeader>
-          <CardContent className="text-base space-y-4 text-muted-foreground px-4 md:px-6">
-            <p>
-              The Governing Body of OPTOBHARAT consists of dedicated leaders committed to fostering a strong and collaborative optometry student community across India. With a vision to empower future optometrists, our team works towards knowledge-sharing, professional development, and strengthening the field of eye care. Together, we shape the future of optometry in India and beyond.
-            </p>
-            <div className="text-center">
-              <Button variant="link" asChild>
-                 <Link href="/governing-body">
-                    Read more ...
-                 </Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
       {/* Vision & Mission Section */}
       <section id="vision-mission">
         <Card className="shadow-lg">
