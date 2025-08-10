@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Eye, CheckCircle, AlertTriangle, ShieldCheck, GraduationCap, Stethoscope, Microscope, BookCopy, Users, Award } from 'lucide-react';
+import { Eye, CheckCircle, AlertTriangle, ShieldCheck, GraduationCap, Stethoscope, Microscope, BookCopy, Users, Award, PilcrowRight, Glasses } from 'lucide-react';
 
 export default function CommunityGuidelinesPage() {
   return (
@@ -55,7 +55,7 @@ export default function CommunityGuidelinesPage() {
               </ul>
             </div>
              <div>
-              <h3 className="font-semibold text-lg text-foreground mb-2 flex items-center"><i className="inline-block w-5 h-5 mr-2" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'lucide lucide-glasses\'%3E%3Cpath d=\'M6 15h12\'/%3E%3Cpath d=\'M12 15v-2.5\'/%3E%3Cpath d=\'M9.3 5.5a3.5 3.5 0 0 0 5.4 0\'/%3E%3Cpath d=\'M2 13.2a3 3 0 0 0-1.5 2.8c0 1.7 1.3 3 3 3h3.5\'/%3E%3Cpath d=\'M22 13.2a3 3 0 0 1 1.5 2.8c0 1.7-1.3 3-3 3h-3.5\'/%3E%3C/svg%3E')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></i>Optical Management & Functional Care</h3>
+              <h3 className="font-semibold text-lg text-foreground mb-2 flex items-center"><Glasses className="mr-2 h-5 w-5"/>Optical Management & Functional Care</h3>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground pl-4">
                   <li>Prescription of spectacles, contact lenses, prisms, and low vision aids.</li>
                   <li>Binocular vision therapy and rehabilitation.</li>
@@ -63,7 +63,7 @@ export default function CommunityGuidelinesPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-lg text-foreground mb-2 flex items-center"><i className="inline-block w-5 h-5 mr-2" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'lucide lucide-pilcrow-right\'%3E%3Cpath d=\'M10 10v10\'/%3E%3Cpath d=\'M10 10H6\'/%3E%3Cpath d=\'M14 4.5a4.5 4.5 0 0 0-8.72 1.14\'/%3E%3Cpath d=\'M18 4.5a4.5 4.5 0 0 1-8.72 1.14\'/%3E%3Cpath d=\'m16 10 3-3-3-3\'/%3E%3C/svg%3E')", backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></i>Medical Management</h3>
+              <h3 className="font-semibold text-lg text-foreground mb-2 flex items-center"><PilcrowRight className="mr-2 h-5 w-5"/>Medical Management</h3>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground pl-4">
                   <li>Prescription of diagnostic and therapeutic agents including antibiotics, antihistamines, NSAIDs, vitamins, miotics, and lubricants.</li>
                   <li>Medical management of conditions like conjunctivitis, dry eye, and certain eyelid problems.</li>
@@ -95,13 +95,13 @@ export default function CommunityGuidelinesPage() {
             <CardTitle className="text-2xl font-headline text-destructive flex items-center"><AlertTriangle className="mr-3 h-7 w-7" />Public & Community Awareness</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-            <p className="text-destructive-foreground/90">To uphold the integrity of our profession, community members must distinguish between qualified professionals and those with inadequate training. This community advocates for:</p>
-            <ul className="list-disc list-inside space-y-2 text-destructive-foreground/80 pl-4">
-                <li><strong className="text-destructive-foreground">Consulting University-Qualified Professionals:</strong> Patients should only consult practitioners holding a full-time Bachelor of Optometry (B.Optom) degree.</li>
-                <li><strong className="text-destructive-foreground">Avoiding Misrepresentation:</strong> Be aware of individuals with short-term technical diplomas who may falsely represent themselves as optometrists.</li>
-                <li><strong className="text-destructive-foreground">Ethical Practice:</strong> Optical shops should not provide medical or diagnostic services without a registered optometrist on-site.</li>
+            <p className="text-destructive/90">To uphold the integrity of our profession, community members must distinguish between qualified professionals and those with inadequate training. This community advocates for:</p>
+            <ul className="list-disc list-inside space-y-2 text-destructive/80 pl-4">
+                <li><strong className="text-destructive">Consulting University-Qualified Professionals:</strong> Patients should only consult practitioners holding a full-time Bachelor of Optometry (B.Optom) degree.</li>
+                <li><strong className="text-destructive">Avoiding Misrepresentation:</strong> Be aware of individuals with short-term technical diplomas who may falsely represent themselves as optometrists.</li>
+                <li><strong className="text-destructive">Ethical Practice:</strong> Optical shops should not provide medical or diagnostic services without a registered optometrist on-site.</li>
             </ul>
-             <p className="font-semibold text-destructive-foreground mt-4">Optometrists are not assistants; they are primary independent medical eye care professionals—extensively trained, nationally recognized, and clinically accountable. This community is built on that standard.</p>
+             <p className="font-semibold text-destructive mt-4">Optometrists are not assistants; they are primary independent medical eye care professionals—extensively trained, nationally recognized, and clinically accountable. This community is built on that standard.</p>
         </CardContent>
       </Card>
     </div>
