@@ -9,7 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown, BarChart2 } from 'lucide-react';
+import { UserPlus, ShieldCheck, Search, Users, Award, Crown, SortAsc, BarChart2 } from 'lucide-react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip, CartesianGrid } from "recharts";
 import { winners as optopreneurWinners } from '@/lib/events-data';
 import { winners as quizWinners } from '@/lib/quiz-event-data';
@@ -22,6 +22,7 @@ interface Member {
   role?: string;
   award?: string;
   zone?: string;
+  originalIndex: number;
 }
 
 const originalMembers: { name: string; state: string }[] = [
@@ -401,19 +402,7 @@ const originalMembers: { name: string; state: string }[] = [
     { name: 'Khushi', state: 'Uttar Pradesh' },
     { name: 'mariya', state: 'Delhi' },
     { name: 'Shaheen parveen', state: 'Delhi' },
-    { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
     { name: 'Priya Verma', state: 'Delhi' },
-    { name: 'Rohan Mehta', state: 'Gujarat' },
-    { name: 'Sneha Patil', state: 'Maharashtra' },
-    { name: 'Amit Singh', state: 'Haryana' },
-    { name: 'Pooja Reddy', state: 'Telangana' },
-    { name: 'Vikram Kumar', state: 'Bihar' },
-    { name: 'Neha Gupta', state: 'Madhya Pradesh' },
-    { name: 'Suresh Iyer', state: 'Kerala' },
-    { name: 'Kavita Nair', state: 'Karnataka' },
-    { name: 'Manoj Das', state: 'Odisha' },
-    { name: 'Rani Devi', state: 'Jharkhand' },
-    { name: 'Sandeep Chowdhury', state: 'West Bengal' },
     { name: 'Anik Dingal', state: 'West Bengal' },
     { name: 'Mamta Bishnoi', state: 'Rajasthan' },
     { name: 'Sunny Hant', state: 'India' },
@@ -431,7 +420,20 @@ const originalMembers: { name: string; state: string }[] = [
     { name: 'Suresh Kumar', state: 'Punjab' },
     { name: 'Deepika Rao', state: 'Karnataka' },
     { name: 'Arjun Mehta', state: 'Madhya Pradesh' },
-  ];
+    { name: 'Rohan Mehta', state: 'Gujarat' },
+    { name: 'Sneha Patil', state: 'Maharashtra' },
+    { name: 'Amit Singh', state: 'Haryana' },
+    { name: 'Pooja Reddy', state: 'Telangana' },
+    { name: 'Vikram Kumar', state: 'Bihar' },
+    { name: 'Neha Gupta', state: 'Madhya Pradesh' },
+    { name: 'Suresh Iyer', state: 'Kerala' },
+    { name: 'Kavita Nair', state: 'Karnataka' },
+    { name: 'Manoj Das', state: 'Odisha' },
+    { name: 'Rani Devi', state: 'Jharkhand' },
+    { name: 'Sandeep Chowdhury', state: 'West Bengal' },
+    { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
+];
+
 const contestWinners: Record<string, string> = {
   ...optopreneurWinners,
   ...quizWinners
@@ -463,11 +465,10 @@ const governingBody: Record<string, string> = {
 const stateToZone: Record<string, string> = {
   'Tamil Nadu': 'Southern Zone',
   'Uttar Pradesh': 'Northern Zone',
+  'Lakhimpur Kheri': 'Northern Zone',
   'Assam': 'North-Eastern Zone',
   'Odisha': 'Eastern Zone',
   'Jharkhand': 'Eastern Zone',
-  'Pakistan': 'International',
-  'Lakhimpur Kheri': 'Northern Zone',
   'Delhi': 'Northern Zone',
   'Punjab': 'Northern Zone',
   'West Bengal': 'Eastern Zone',
@@ -483,15 +484,16 @@ const stateToZone: Record<string, string> = {
   'Tripura': 'North-Eastern Zone',
   'Chandigarh': 'Northern Zone',
   'Himachal Pradesh': 'Northern Zone',
-  'Kenya': 'International',
   'Madhya Pradesh': 'Central Zone',
   'Gujarat': 'Western Zone',
   'Haryana': 'Northern Zone',
   'Maharashtra': 'Western Zone',
   'Jammu and Kashmir': 'Northern Zone',
+  'Sikkim': 'North-Eastern Zone',
+  'Pakistan': 'International',
+  'Kenya': 'International',
   'Nigeria': 'International',
   'USA': 'International',
-  'Sikkim': 'North-Eastern Zone',
 };
 
 const normalizeState = (state: string): string => {
@@ -512,7 +514,7 @@ const normalizeState = (state: string): string => {
       'bihar': 'Bihar',
       'kerala': 'Kerala',
       'jammu and kashmir': 'Jammu and Kashmir',
-      'lakhimpur kheri': 'Lakhimpur Kheri'
+      'lakhimpur kheri': 'Lakhimpur Kheri',
   };
   return stateMap[normalized] || state.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 };
@@ -522,42 +524,22 @@ const normalizeName = (name: string) => {
 };
 
 const stateToAbbreviation: Record<string, string> = {
-    'Andhra Pradesh': 'AP',
-    'Arunachal Pradesh': 'AR',
-    'Assam': 'AS',
-    'Bihar': 'BR',
-    'Chhattisgarh': 'CG',
-    'Goa': 'GA',
-    'Gujarat': 'GJ',
-    'Haryana': 'HR',
-    'Himachal Pradesh': 'HP',
-    'Jharkhand': 'JH',
-    'Karnataka': 'KA',
-    'Kerala': 'KL',
-    'Madhya Pradesh': 'MP',
-    'Maharashtra': 'MH',
-    'Manipur': 'MN',
-    'Meghalaya': 'ML',
-    'Mizoram': 'MZ',
-    'Nagaland': 'NL',
-    'Odisha': 'OD',
-    'Punjab': 'PB',
-    'Rajasthan': 'RJ',
-    'Sikkim': 'SK',
-    'Tamil Nadu': 'TN',
-    'Telangana': 'TS',
-    'Tripura': 'TR',
-    'Uttar Pradesh': 'UP',
-    'Uttarakhand': 'UK',
-    'West Bengal': 'WB',
-    'Delhi': 'DL',
-    'Chandigarh': 'CH',
-    'Jammu and Kashmir': 'JK',
+    'Andhra Pradesh': 'AP', 'Arunachal Pradesh': 'AR', 'Assam': 'AS', 'Bihar': 'BR',
+    'Chhattisgarh': 'CG', 'Goa': 'GA', 'Gujarat': 'GJ', 'Haryana': 'HR',
+    'Himachal Pradesh': 'HP', 'Jharkhand': 'JH', 'Karnataka': 'KA', 'Kerala': 'KL',
+    'Madhya Pradesh': 'MP', 'Maharashtra': 'MH', 'Manipur': 'MN', 'Meghalaya': 'ML',
+    'Mizoram': 'MZ', 'Nagaland': 'NL', 'Odisha': 'OD', 'Punjab': 'PB',
+    'Rajasthan': 'RJ', 'Sikkim': 'SK', 'Tamil Nadu': 'TN', 'Telangana': 'TS',
+    'Tripura': 'TR', 'Uttar Pradesh': 'UP', 'Uttarakhand': 'UK', 'West Bengal': 'WB',
+    'Delhi': 'DL', 'Chandigarh': 'CH', 'Jammu and Kashmir': 'JK', 'Lakhimpur Kheri': 'UP',
 };
 
+const countryToAbbreviation: Record<string, string> = {
+    'India': 'IND', 'Pakistan': 'PK', 'Kenya': 'KE', 'Nigeria': 'NG', 'USA': 'US',
+};
 
 const generateRegNo = (state: string, index: number): string => {
-  const stateCode = stateToAbbreviation[state] || 'XX';
+  const stateCode = stateToAbbreviation[state] || countryToAbbreviation[state] || 'XX';
   const paddedIndex = (index + 1).toString().padStart(4, '0');
   return `OB-${stateCode}-${paddedIndex}`;
 };
@@ -565,7 +547,7 @@ const generateRegNo = (state: string, index: number): string => {
 export default function MembershipPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedState, setSelectedState] = useState('all');
-  const [sortConfig, setSortConfig] = useState<{ key: keyof Member; direction: 'ascending' | 'descending' } | null>(null);
+  const [sortOption, setSortOption] = useState('latest');
 
   const allMembers: Member[] = useMemo(() => {
     return originalMembers.map((member, index) => {
@@ -579,6 +561,7 @@ export default function MembershipPage() {
         zone: stateToZone[normalizedState] || 'Unknown',
         role: governingBody[normalizedName],
         award: contestWinners[normalizedName],
+        originalIndex: index,
       };
       
       return memberData;
@@ -586,50 +569,47 @@ export default function MembershipPage() {
   }, []);
 
   const filteredMembers = useMemo(() => {
-    return allMembers.filter(member => {
-      const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            member.regNo.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesState = selectedState === 'all' || member.state === selectedState;
-      return matchesSearch && matchesState;
-    });
+    let members = [...allMembers];
+    
+    if (searchTerm) {
+        members = members.filter(member => 
+            member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            member.regNo.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
+    
+    if (selectedState !== 'all') {
+        members = members.filter(member => member.state === selectedState);
+    }
+
+    return members;
   }, [allMembers, searchTerm, selectedState]);
 
   const sortedMembers = useMemo(() => {
     let sortableMembers = [...filteredMembers];
-    if (sortConfig !== null) {
-      sortableMembers.sort((a, b) => {
-        if (a[sortConfig.key]! < b[sortConfig.key]!) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
-        }
-        if (a[sortConfig.key]! > b[sortConfig.key]!) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
-      });
+    switch (sortOption) {
+        case 'name-az':
+            sortableMembers.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'state-az':
+            sortableMembers.sort((a, b) => a.state.localeCompare(b.state) || a.name.localeCompare(b.name));
+            break;
+        case 'oldest':
+            sortableMembers.sort((a, b) => a.originalIndex - b.originalIndex);
+            break;
+        case 'latest':
+        default:
+            sortableMembers.sort((a, b) => b.originalIndex - a.originalIndex);
+            break;
     }
     return sortableMembers;
-  }, [filteredMembers, sortConfig]);
+  }, [filteredMembers, sortOption]);
 
   const uniqueStates = useMemo(() => {
     const states = new Set(allMembers.map(m => m.state));
     return Array.from(states).sort();
   }, [allMembers]);
-
-  const requestSort = (key: keyof Member) => {
-    let direction: 'ascending' | 'descending' = 'ascending';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
   
-  const getSortIcon = (key: keyof Member) => {
-    if (!sortConfig || sortConfig.key !== key) {
-      return <ArrowUpDown className="h-4 w-4 ml-2 opacity-30" />;
-    }
-    return sortConfig.direction === 'ascending' ? '▲' : '▼';
-  };
-
   const memberStatsByState = useMemo(() => {
     const counts = allMembers.reduce((acc, member) => {
         acc[member.state] = (acc[member.state] || 0) + 1;
@@ -715,7 +695,7 @@ export default function MembershipPage() {
                     className="pl-10"
                   />
                 </div>
-                <Select value={selectedState} onValueChange={setSelectedState}>
+                 <Select value={selectedState} onValueChange={setSelectedState}>
                   <SelectTrigger className="w-full sm:w-[200px]">
                     <SelectValue placeholder="Filter by State" />
                   </SelectTrigger>
@@ -726,24 +706,32 @@ export default function MembershipPage() {
                     ))}
                   </SelectContent>
                 </Select>
+                 <Select value={sortOption} onValueChange={setSortOption}>
+                  <SelectTrigger className="w-full sm:w-[200px]">
+                    <div className="flex items-center gap-2">
+                        <SortAsc className="h-4 w-4" />
+                        <SelectValue placeholder="Sort by" />
+                    </div>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="latest">Latest Members</SelectItem>
+                    <SelectItem value="oldest">Oldest Members</SelectItem>
+                    <SelectItem value="name-az">Name (A-Z)</SelectItem>
+                    <SelectItem value="state-az">State (A-Z)</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
-                  Showing {filteredMembers.length} of {allMembers.length} members.
+                  Showing {sortedMembers.length} of {allMembers.length} members.
               </p>
 
               <div className="border rounded-md">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="cursor-pointer" onClick={() => requestSort('regNo')}>
-                          <div className="flex items-center">Reg No. {getSortIcon('regNo')}</div>
-                        </TableHead>
-                        <TableHead className="cursor-pointer" onClick={() => requestSort('name')}>
-                          <div className="flex items-center">Name {getSortIcon('name')}</div>
-                        </TableHead>
-                        <TableHead className="cursor-pointer" onClick={() => requestSort('state')}>
-                          <div className="flex items-center">State {getSortIcon('state')}</div>
-                        </TableHead>
+                        <TableHead>Reg No.</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>State</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
