@@ -133,7 +133,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
     } else if (member.name === 'JANARTHAN VEERAMANI') {
         objectPosition = '50% 35%';
     } else if (member.name === 'NIZAM UDDIN SK') {
-        objectPosition = '50% 60%';
+        objectPosition = '50% 70%';
         transform = 'scale(1.15)';
     }
 
@@ -176,7 +176,7 @@ const MemberListItem = ({ member }: { member: Member }) => {
                     style={{ objectPosition }}
                  />
                 <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
-                     <User className="h-8 w-8" />
+                    <User className="h-8 w-8" />
                 </AvatarFallback>
             </Avatar>
             <div>
