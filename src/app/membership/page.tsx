@@ -9,7 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown, BarChart2 } from 'lucide-react';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip, CartesianGrid } from "recharts";
 
 
 interface Member {
@@ -411,7 +411,6 @@ const governingBody = {
   'MOHD ADNAN': 'MANAGING DIRECTOR OF NORTHERN ZONE',
   'PRITAM KARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
   'ANSHI JHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
-  'M. Mega Dharshini': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
   'M.MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
   'MUZAHID KAMAL': 'Managing Director of Western Zone',
   'MEHETAB HUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
@@ -445,7 +444,7 @@ const contestWinners = {
 const normalizeState = (state: string) => {
     const s = state.toLowerCase().replace(/\./g, '').trim();
     if (s.startsWith('tamil')) return 'Tamil Nadu';
-    if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p' || s === 'utar prdesh' || s === 'sageer alam' || s === 'uttar pardesh') return 'Uttar Pradesh';
+    if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p' || s === 'utar prdesh' || s === 'uttar pardesh') return 'Uttar Pradesh';
     if (s.startsWith('west')) return 'West Bengal';
     if (s === 'lakhimpur kheri') return 'Uttar Pradesh'; // Map specific location to state
     if (s === 'guja') return 'Gujarat';
@@ -763,22 +762,16 @@ export default function MembershipPage() {
             </div>
             <CardDescription>A visual breakdown of our community members.</CardDescription>
           </CardHeader>
-          <CardContent className="grid md:grid-cols-2 gap-8">
+          <CardContent className="grid grid-cols-1 gap-12">
             <TooltipProvider>
               <div>
                 <h3 className="text-xl font-semibold text-center mb-4">Members by State</h3>
                 <div className="w-full h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={memberStats.stateData} layout="vertical" margin={{ left: 20, right: 20 }}>
-                      <XAxis type="number" hide />
-                      <YAxis 
-                        dataKey="name" 
-                        type="category" 
-                        width={100} 
-                        tickLine={false} 
-                        axisLine={false} 
-                        fontSize={12}
-                      />
+                    <BarChart data={memberStats.stateData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" fontSize={12} interval={0} angle={-45} textAnchor="end" height={80} />
+                      <YAxis allowDecimals={false} />
                       <RechartsTooltip
                         cursor={{ fill: 'hsl(var(--muted))' }}
                         content={({ active, payload }) => {
@@ -792,7 +785,7 @@ export default function MembershipPage() {
                           return null
                         }}
                       />
-                      <Bar dataKey="total" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                      <Bar dataKey="total" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -801,16 +794,10 @@ export default function MembershipPage() {
                 <h3 className="text-xl font-semibold text-center mb-4">Members by Zone</h3>
                 <div className="w-full h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={memberStats.zoneData} layout="vertical" margin={{ left: 20, right: 20 }}>
-                      <XAxis type="number" hide />
-                      <YAxis 
-                        dataKey="name" 
-                        type="category" 
-                        width={100} 
-                        tickLine={false} 
-                        axisLine={false} 
-                        fontSize={12}
-                      />
+                    <BarChart data={memberStats.zoneData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" fontSize={12} />
+                      <YAxis allowDecimals={false} />
                       <RechartsTooltip
                         cursor={{ fill: 'hsl(var(--muted))' }}
                         content={({ active, payload }) => {
@@ -824,7 +811,7 @@ export default function MembershipPage() {
                           return null
                         }}
                       />
-                      <Bar dataKey="total" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
+                      <Bar dataKey="total" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
