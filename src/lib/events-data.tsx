@@ -19,12 +19,14 @@ const WinnerCard = ({
     projectTitle,
     description,
     badgeColor,
+    institution,
   }: {
     place: string;
     name: string;
     projectTitle: string;
     description?: string;
     badgeColor: string;
+    institution: string;
   }) => (
     <Card className="flex flex-col text-center h-full hover:shadow-xl transition-shadow duration-300 bg-primary/5">
         <CardHeader>
@@ -33,6 +35,7 @@ const WinnerCard = ({
             </div>
             <CardTitle className={`text-xl font-headline text-white rounded-md py-1 px-3 ${badgeColor} self-center shadow-md`}>{place}</CardTitle>
             <CardDescription className="text-xl font-semibold text-foreground pt-4">{name}</CardDescription>
+            <p className="text-xs text-muted-foreground pt-1">{institution}</p>
         </CardHeader>
         <CardContent className="flex-grow flex flex-col justify-center">
             <p className="font-semibold text-base text-muted-foreground">&quot;{projectTitle}&quot;</p>
@@ -99,6 +102,7 @@ export const events: OptoEvent[] = [
                     <WinnerCard
                         place="1st Place"
                         name="Sreesandhiya G"
+                        institution="LOTUS INSTITUTE OF HEALTH SCIENCES AND MANAGEMENT Coimbatore, Tamil Nadu"
                         projectTitle="Intelligent Contact Lens Dispensing System with Mobile-Integrated AI"
                         description="🧠 A groundbreaking idea that redefines smart vision solutions using AI technology."
                         badgeColor="bg-yellow-500"
@@ -106,6 +110,7 @@ export const events: OptoEvent[] = [
                     <WinnerCard
                         place="2nd Place"
                         name="Anik Dingal"
+                        institution="Vidyasagar college of optometry and vision science, Kolkata, West Bengal"
                         projectTitle="A Smart, Portable IOP Device with Built-In Corneal Biomechanics Compensation"
                         description="🔬 A step forward in accessible glaucoma care through portable diagnostic innovation."
                         badgeColor="bg-slate-500"
@@ -113,6 +118,7 @@ export const events: OptoEvent[] = [
                     <WinnerCard
                         place="3rd Place"
                         name="Mohd Khalid"
+                        institution="Uttar Pradesh University of medical science saifai Etawah UP"
                         projectTitle="Emerging Ideas in Optometry and Clinical Advancements"
                         badgeColor="bg-yellow-700"
                     />
