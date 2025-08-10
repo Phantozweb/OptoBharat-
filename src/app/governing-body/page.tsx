@@ -31,6 +31,12 @@ const governingBodyMembers: Member[] = [
   },
   {
     name: 'MOHD ASAD',
+    role: 'HEAD OF ACADEMIC, OPTOBHARAT',
+    avatarFallback: 'MA',
+    dataAiHint: 'person portrait',
+  },
+  {
+    name: 'MOHD ASAD',
     role: 'Director of Alliances & Partnerships - OPTOBHARAT',
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
