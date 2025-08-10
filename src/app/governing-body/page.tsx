@@ -31,7 +31,7 @@ interface StudentAmbassador {
 const leadershipMembers: Member[] = [
   {
     name: 'NIZAM UDDIN SK',
-    role: 'Founder and Director',
+    role: 'Founder & Director',
     imageUrl: 'https://iili.io/FL4tAgI.png',
     avatarFallback: 'NS',
     dataAiHint: 'person portrait',
@@ -45,7 +45,7 @@ const leadershipMembers: Member[] = [
   },
   {
     name: 'MOHD ASAD',
-    role: 'HEAD OF ACADEMIC',
+    role: 'Head of Academic',
     imageUrl: 'https://iili.io/FL4keWu.png',
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
@@ -66,7 +66,7 @@ const zonalDirectors: Member[] = [
     avatarFallback: 'PK',
     dataAiHint: 'person portrait',
   },
-   {
+  {
     name: 'ANSHI JHA',
     role: 'MANAGING DIRECTOR OF CENTRAL ZONE',
     imageUrl: 'https://iili.io/FL4gFu2.jpg',
@@ -130,6 +130,8 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
         objectPosition = '50% 20%';
     } else if (member.name === 'JANARTHAN VEERAMANI') {
         objectPosition = '50% 35%';
+    } else if (member.name === 'NIZAM UDDIN SK') {
+        objectPosition = '50% 40%';
     }
 
     return (
