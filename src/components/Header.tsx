@@ -16,9 +16,12 @@ const mainNavLinks = [
   { href: '/governing-body', label: 'Governing Body', icon: Users },
   { href: '/membership', label: 'Membership', icon: UserPlus },
   { href: '/forum', label: 'Optobharat Forum', icon: MessageSquare },
-  { href: '/blogs-events', label: 'Blogs', icon: Book },
-  { href: '/blogs-events', label: 'Events', icon: CalendarDays },
-  { href: '/resources', label: 'Resources', icon: BookOpen },
+];
+
+const contentSubLinks = [
+    { href: '/blogs-events', label: 'Blogs', icon: Book },
+    { href: '/blogs-events', label: 'Events', icon: CalendarDays },
+    { href: '/resources', label: 'Resources', icon: BookOpen },
 ];
 
 const supportSubLinks = [
@@ -35,6 +38,7 @@ const moreNavLinks = [
 
 const allMobileNavLinks = [
     ...mainNavLinks,
+    ...contentSubLinks,
     ...supportSubLinks,
     ...moreNavLinks
 ];
@@ -69,6 +73,25 @@ export function Header() {
           {mainNavLinks.map((link) => (
             <NavLink key={link.label} href={link.href} label={link.label} />
           ))}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
+                    Content & Info
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                {contentSubLinks.map((link) => (
+                    <DropdownMenuItem key={link.label} asChild>
+                        <Link href={link.href} className="flex items-center gap-2">
+                            {link.icon && <link.icon className="h-4 w-4" />}
+                            {link.label}
+                        </Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
