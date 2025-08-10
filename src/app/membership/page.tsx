@@ -525,10 +525,10 @@ export default function MembershipPage() {
 
     if (sortConfig !== null) {
       members.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
+        if (a[sortConfig.key]! < b[sortConfig.key]!) {
           return sortConfig.direction === 'ascending' ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
+        if (a[sortConfig.key]! > b[sortConfig.key]!) {
           return sortConfig.direction === 'ascending' ? 1 : -1;
         }
         return 0;
@@ -682,7 +682,8 @@ export default function MembershipPage() {
                           <TableCell>{member.regNo}</TableCell>
                           <TableCell className="font-medium">
                             <div className="flex items-center gap-2">
-                              {(member.role || member.award) ? (
+                              <span>{member.name}</span>
+                              {(member.role || member.award) && (
                                   <Tooltip>
                                       <TooltipTrigger>
                                           {member.role ? <Crown className="h-4 w-4 text-yellow-600" /> : <Award className="h-4 w-4 text-blue-600" />}
@@ -691,8 +692,7 @@ export default function MembershipPage() {
                                           <p>{member.role || member.award}</p>
                                       </TooltipContent>
                                   </Tooltip>
-                              ) : null}
-                              <span>{member.name}</span>
+                              )}
                             </div>
                           </TableCell>
                           <TableCell>{member.state}</TableCell>
