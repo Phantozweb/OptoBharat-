@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, Gavel, FileText, ChevronDown, BookOpen, ShieldCheck } from 'lucide-react';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, Gavel, FileText, ChevronDown, BookOpen, ShieldCheck, Handshake, Gem } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, DropdownMenuPortal } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
@@ -19,15 +19,23 @@ const mainNavLinks = [
   { href: '/blogs-events', label: 'Blogs & Events', icon: NewspaperIcon },
 ];
 
+const aboutSubLinks = [
+    { href: '/about', label: 'About OPTOBHARAT', icon: Info },
+    { href: '/about/partners', label: 'Our Partners & Collaboration', icon: Handshake },
+    { href: '/about/sponsors', label: 'Our Sponsors', icon: Gem },
+];
+
 const moreNavLinks = [
-  { href: '/about', label: 'About', icon: Info },
   { href: '/resources', label: 'Resources', icon: BookOpen },
   { href: '/community-guidelines', label: 'Community Guidelines', icon: ShieldCheck },
   { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
-const allNavLinks = [...mainNavLinks, ...moreNavLinks];
-
+const allMobileNavLinks = [
+    ...mainNavLinks,
+    ...aboutSubLinks,
+    ...moreNavLinks
+];
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -62,6 +70,25 @@ export function Header() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
+                    About
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                {aboutSubLinks.map((link) => (
+                    <DropdownMenuItem key={link.href} asChild>
+                        <Link href={link.href} className="flex items-center gap-2">
+                            {link.icon && <link.icon className="h-4 w-4" />}
+                            {link.label}
+                        </Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
                 More
                 <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
@@ -92,7 +119,7 @@ export function Header() {
               <SheetContent side="right" className="w-[300px] sm:w-[340px] p-0 pt-10 bg-background">
                 <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                 <nav className="flex flex-col space-y-2 p-6 pt-0">
-                  {allNavLinks.map((link) => (
+                  {allMobileNavLinks.map((link) => (
                       <Button 
                         key={link.href} 
                         variant="ghost" 
