@@ -129,6 +129,7 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Moh Asad', state: 'Chandigarh' },
   { name: 'Kulprit kaur', state: 'Karnataka' },
   { name: 'Salal Khan', state: 'Uttar Pradesh' },
+  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
   { name: 'S.Sivakavitha', state: 'Tamil Nadu' },
   { name: 'Akshaya', state: 'Tamil Nadu' },
   { name: 'Keerthana', state: 'Tamil Nadu' },
@@ -171,6 +172,7 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Suresh Kumar Shahil', state: 'Uttar Pradesh' },
   { name: 'Raju Kumhar', state: 'Rajasthan' },
   { name: 'Meghraj Arya', state: 'Uttar Pradesh' },
+  { name: 'Anik Dingal', state: 'West Bengal' },
   { name: 'Gandhi khushboo paraskumar', state: 'Gujarat' },
   { name: 'Rohan P', state: 'Kerala' },
   { name: 'Ram kesh', state: 'Uttar Pradesh' },
@@ -244,6 +246,7 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'M.Ansiya Parveen', state: 'Tamil Nadu' },
   { name: 'G.Miruthula', state: 'Tamil Nadu' },
   { name: 'M. Fazila Fathima', state: 'Tamil Nadu' },
+  { name: 'Sunny Hant', state: 'India' },
   { name: 'Gayathri', state: 'Tamil Nadu' },
   { name: 'Swasthika Bharani', state: 'Tamil Nadu' },
   { name: 'A.Mubassara', state: 'Tamil Nadu' },
@@ -403,12 +406,9 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Raghav Manchanda', state: 'Delhi' },
   { name: 'Sajida Akhtar', state: 'Delhi' },
   { name: 'Khushi', state: 'Uttar Pradesh' },
+  { name: 'Naveen M', state: 'India' },
   { name: 'mariya', state: 'Delhi' },
   { name: 'Shaheen parveen', state: 'Delhi' },
-  { name: 'Sunny Hant', state: 'India' },
-  { name: 'Anik Dingal', state: 'West Bengal' },
-  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
-  { name: 'Naveen M', state: 'India' },
   { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
 ];
 
@@ -597,8 +597,8 @@ export default function MembershipPage() {
     return Object.entries(counts)
         .map(([name, value]) => ({ name, value }))
         .sort((a, b) => {
-            if (a.name === 'International' || a.name === 'Unknown') return 1;
-            if (b.name === 'International' || b.name === 'Unknown') return -1;
+            if (a.name === 'International' || a.name === 'Unknown' || a.name === 'National') return 1;
+            if (b.name === 'International' || b.name === 'Unknown' || b.name === 'National') return -1;
             return b.value - a.value;
         });
   }, [allMembers]);

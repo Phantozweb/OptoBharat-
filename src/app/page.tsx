@@ -12,11 +12,10 @@ import { CheckCircle, Users, Award, FlaskConical, Trophy, TrendingUp } from 'luc
 
 const growthData = [
     { date: 'Mar 17, 2025', members: 1 },
-    { date: 'Apr 1, 2025', members: 50 },
-    { date: 'May 1, 2025', members: 150 },
-    { date: 'Jun 1, 2025', members: 250 },
-    { date: 'Jul 1, 2025', members: 320 },
-    { date: 'Aug 8, 2025', members: 384 },
+    { date: 'Apr 11, 2025', members: 100 },
+    { date: 'Apr 29, 2025', members: 200 },
+    { date: 'May 6, 2025', members: 300 },
+    { date: 'Aug 10, 2025', members: 384 },
 ];
 
 export default function OptobharatHomePage() {
@@ -96,7 +95,7 @@ export default function OptobharatHomePage() {
                 <Area type="monotone" dataKey="members" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.2} />
               </AreaChart>
             </ResponsiveContainer>
-             <p className="text-center text-xs text-muted-foreground pt-4">Community growth from March 17, 2025 to August 8, 2025.</p>
+             <p className="text-center text-xs text-muted-foreground pt-4">Community growth from March 17, 2025 to August 10, 2025.</p>
           </CardContent>
         </Card>
       </section>
