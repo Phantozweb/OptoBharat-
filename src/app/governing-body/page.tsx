@@ -2,7 +2,9 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, UserCircle, Landmark, MapPin, School, Star, Crown, Shield, BookUser, Building, User, Users2 } from 'lucide-react';
+import { Users, UserCircle, Landmark, MapPin, School, Star, Crown, Shield, BookUser, Building, User, Users2, UserCheck } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+
 
 interface Member {
   name: string;
@@ -15,6 +17,7 @@ interface Member {
 interface StateHead {
   name: string;
   state: string;
+  zone: string;
 }
 
 interface StudentAmbassador {
@@ -82,27 +85,19 @@ const zonalDirectors: Member[] = [
   },
 ];
 
-const stateHeads = {
-  "Central Zone": [
-    { name: "Rabjot Singh Gulati", state: "Uttar Pradesh" },
-  ],
-  "Southern Zone": [
-    { name: "Gopika V.", state: "Kerala" },
-    { name: "P.Kayal Vizhi", state: "Tamil Nadu" },
-    { name: "Shobana Priya S.", state: "Andhra Pradesh" },
-    { name: "Irbaz", state: "Karnataka" },
-    { name: "Mugunthan", state: "Telangana" },
-    { name: "Hariharn", state: "Pondicherry" },
-  ],
-  "North-Eastern Zone": [
-    { name: "Haziel Rynjah", state: "Meghalaya" },
-    { name: "Abhisek Buragohain", state: "Assam" },
-    { name: "Be An H. Phom", state: "Nagaland" },
-  ],
-  "Western Zone": [],
-  "Eastern Zone": [],
-  "Northern Zone": [],
-};
+const stateHeads: StateHead[] = [
+    { name: "Rabjot Singh Gulati", state: "Uttar Pradesh", zone: "Central Zone" },
+    { name: "Gopika V.", state: "Kerala", zone: "Southern Zone" },
+    { name: "P.Kayal Vizhi", state: "Tamil Nadu", zone: "Southern Zone" },
+    { name: "Shobana Priya S.", state: "Andhra Pradesh", zone: "Southern Zone" },
+    { name: "Irbaz", state: "Karnataka", zone: "Southern Zone" },
+    { name: "Mugunthan", state: "Telangana", zone: "Southern Zone" },
+    { name: "Hariharn", state: "Pondicherry", zone: "Southern Zone" },
+    { name: "Haziel Rynjah", state: "Meghalaya", zone: "North-Eastern Zone" },
+    { name: "Abhisek Buragohain", state: "Assam", zone: "North-Eastern Zone" },
+    { name: "Be An H. Phom", state: "Nagaland", zone: "North-Eastern Zone" },
+];
+
 
 const moderator: Member = {
     name: 'SHREYASI NATH',
@@ -166,75 +161,42 @@ export default function GoverningBodyPage() {
         </CardContent>
       </Card>
 
-      {/* State Heads */}
-       <Card className="shadow-lg">
+      {/* State, Community, and Student Leadership Table */}
+      <Card className="shadow-lg">
         <CardHeader className="flex flex-row items-center space-x-3 bg-primary/10">
             <MapPin className="h-7 w-7 text-primary" />
-            <CardTitle className="text-2xl font-headline text-primary">State Heads</CardTitle>
+            <CardTitle className="text-2xl font-headline text-primary">State & Community Leadership</CardTitle>
         </CardHeader>
-        <CardContent className="p-4 space-y-6">
-          {Object.entries(stateHeads).map(([zone, heads]) => (
-            <div key={zone}>
-              <h3 className="font-headline text-xl text-foreground mb-3 border-b pb-2 flex items-center">
-                <Landmark className="mr-3 h-5 w-5 text-muted-foreground" /> {zone}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-                {heads.length > 0 ? (
-                    heads.map((head) => (
-                       <div key={head.name} className="flex items-center space-x-3 p-2 rounded-md bg-background hover:bg-muted/50">
-                          <UserCircle className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                          <div>
-                            <p className="font-semibold text-foreground">{head.name}</p>
-                            <p className="text-sm text-muted-foreground">{head.state}</p>
-                          </div>
-                       </div>
-                    ))
-                ) : (
-                   <p className="text-sm text-muted-foreground col-span-full italic">
-                    Heads for this zone will be announced soon.
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
-      
-      {/* Moderator */}
-      <Card className="shadow-lg">
-        <CardHeader className="flex flex-row items-center space-x-3 bg-primary/10">
-          <Shield className="h-7 w-7 text-primary" />
-          <CardTitle className="text-2xl font-headline text-primary">Moderator</CardTitle>
-        </CardHeader>
-        <CardContent className="p-4">
-            <MemberListItem member={moderator} />
-        </CardContent>
-      </Card>
-
-      {/* Student Ambassadors */}
-      <Card className="shadow-lg">
-        <CardHeader className="flex flex-row items-center space-x-3 bg-primary/10">
-            <Star className="h-7 w-7 text-primary" />
-            <CardTitle className="text-2xl font-headline text-primary">Student Ambassadors</CardTitle>
-        </CardHeader>
-        <CardContent className="p-4">
-            {studentAmbassadors.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {studentAmbassadors.map((ambassador) => (
-                   <div key={ambassador.name} className="flex items-center space-x-3 p-2 rounded-md bg-background hover:bg-muted/50">
-                      <School className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold text-foreground">{ambassador.name}</p>
-                        <p className="text-sm text-muted-foreground">{ambassador.institution}</p>
-                      </div>
-                   </div>
-                ))}
-                </div>
-            ) : (
-               <p className="text-muted-foreground text-center italic py-4">
-                Our student ambassador list is being updated and will be published soon.
-              </p>
-            )}
+        <CardContent className="p-0">
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[180px]">Role</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Details</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {stateHeads.map((head, index) => (
+                        <TableRow key={`${head.name}-${index}`}>
+                            {index === 0 ? <TableCell className="font-semibold align-top" rowSpan={stateHeads.length}>State Heads</TableCell> : null}
+                            <TableCell>{head.name}</TableCell>
+                            <TableCell>{head.state} <span className="text-xs text-muted-foreground">({head.zone})</span></TableCell>
+                        </TableRow>
+                    ))}
+                    <TableRow className="bg-muted/30">
+                        <TableCell className="font-semibold flex items-center gap-2"><Shield className="h-4 w-4"/> Moderator</TableCell>
+                        <TableCell>{moderator.name}</TableCell>
+                        <TableCell>{moderator.role}</TableCell>
+                    </TableRow>
+                     <TableRow>
+                        <TableCell className="font-semibold flex items-center gap-2"><Star className="h-4 w-4"/> Student Ambassadors</TableCell>
+                        <TableCell colSpan={2} className="text-muted-foreground italic">
+                            Our student ambassador list is being updated and will be published soon.
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
         </CardContent>
       </Card>
     </div>
