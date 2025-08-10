@@ -412,26 +412,26 @@ const contestWinners: Record<string, string> = {
 };
 
 const governingBody: Record<string, string> = {
-  'NIZAM UDDIN SK': 'Founder & Director',
-  'JANARTHAN VEERAMANI': 'Director of Administration',
-  'MOHD ASAD': 'Head of Academic',
-  'MOHD ADNAN': 'MANAGING DIRECTOR OF NORTHERN ZONE',
-  'PRITAM KARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
-  'ANSHI JHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
-  'M. MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
-  'MUZAHID KAMAL': 'Managing Director of Western Zone',
-  'MEHETAB HUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
-  'RABJOT SINGH GULATI': 'State Head, Uttar Pradesh',
-  'GOPIKA V.': 'State Head, Kerala',
-  'P.KAYAL VIZHI': 'State Head, Tamil Nadu',
-  'SHOBANA PRIYA S.': 'State Head, Andhra Pradesh',
-  'IRBAZ': 'State Head, Karnataka',
-  'M.MUGUNTHAN': 'State Head, Telangana',
-  'A.HARIHARAN': 'State Head, Pondicherry',
-  'HAZIEL RYNJAH': 'State Head, Meghalaya',
-  'ABHISEK BURAGOHAIN': 'State Head, Assam',
-  'BE AN H. PHOM': 'State Head, Nagaland',
-  'SHREYASI NATH': 'MODERATOR',
+    'NIZAMUDDINSK': 'Founder & Director',
+    'JANARTHANVEERAMANI': 'Director of Administration',
+    'MOHDASAD': 'Head of Academic',
+    'MOHDADNAN': 'MANAGING DIRECTOR OF NORTHERN ZONE',
+    'PRITAMKARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
+    'ANSHIJHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
+    'MMEGADHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
+    'MUZAHIDKAMAL': 'Managing Director of Western Zone',
+    'MEHETABHUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
+    'RABJOTSINGHGULATI': 'State Head, Uttar Pradesh',
+    'GOPIKAV': 'State Head, Kerala',
+    'PKAYALVIZHI': 'State Head, Tamil Nadu',
+    'SHOBANAPRIYAS': 'State Head, Andhra Pradesh',
+    'IRBAZ': 'State Head, Karnataka',
+    'MMUGUNTHAN': 'State Head, Telangana',
+    'AHARIHARAN': 'State Head, Pondicherry',
+    'HAZIELRYNJAH': 'State Head, Meghalaya',
+    'ABHISEKBURAGOHAIN': 'State Head, Assam',
+    'BEANHPHOM': 'State Head, Nagaland',
+    'SHREYASINATH': 'MODERATOR',
 };
 
 const stateToZone: Record<string, string> = {
@@ -621,153 +621,153 @@ export default function MembershipPage() {
           </CardContent>
         </Card>
       </section>
-
-      <section id="member-list">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
-              <ShieldCheck className="mr-3 h-8 w-8 text-primary" /> Our Members
-            </CardTitle>
-            <CardDescription className="text-center">
-              Our community is growing every day. Find fellow members from across the country.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col sm:flex-row gap-4 mb-4">
-              <div className="relative flex-grow">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Search by name or Reg No..."
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-              <Select value={selectedState} onValueChange={setSelectedState}>
-                <SelectTrigger className="w-full sm:w-[200px]">
-                  <SelectValue placeholder="Filter by State" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All States</SelectItem>
-                  {uniqueStates.map(state => (
-                    <SelectItem key={state} value={state}>{state}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-             <p className="text-sm text-muted-foreground mb-4">
-                Showing {filteredMembers.length} of {processedMembers.length} members.
-            </p>
-
-            <TooltipProvider>
-              <div className="border rounded-md">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="cursor-pointer" onClick={() => requestSort('regNo')}>
-                        <div className="flex items-center">Reg No. {getSortIcon('regNo')}</div>
-                      </TableHead>
-                      <TableHead className="cursor-pointer" onClick={() => requestSort('name')}>
-                        <div className="flex items-center">Name {getSortIcon('name')}</div>
-                      </TableHead>
-                      <TableHead className="cursor-pointer" onClick={() => requestSort('state')}>
-                        <div className="flex items-center">State {getSortIcon('state')}</div>
-                      </TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredMembers.map(member => (
-                      <TableRow key={member.regNo} className={(member.role || member.award) ? 'bg-primary/10' : ''}>
-                        <TableCell>{member.regNo}</TableCell>
-                        <TableCell className="font-medium">
-                          <div className="flex items-center gap-2">
-                             {(member.role || member.award) ? (
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        {member.role ? <Crown className="h-4 w-4 text-yellow-600" /> : <Award className="h-4 w-4 text-blue-600" />}
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p>{member.role || member.award}</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                             ) : null}
-                            <span>{member.name}</span>
-                          </div>
-                        </TableCell>
-                        <TableCell>{member.state}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </TooltipProvider>
-          </CardContent>
-        </Card>
-      </section>
       
-      <section id="member-stats">
-        <Card className="shadow-lg">
+      <TooltipProvider>
+        <section id="member-list">
+          <Card className="shadow-lg">
             <CardHeader>
-                <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
-                    <BarChart2 className="mr-3 h-8 w-8 text-primary" /> Member Statistics
-                </CardTitle>
-                <CardDescription className="text-center">
-                    A visual breakdown of our community.
-                </CardDescription>
+              <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+                <ShieldCheck className="mr-3 h-8 w-8 text-primary" /> Our Members
+              </CardTitle>
+              <CardDescription className="text-center">
+                Our community is growing every day. Find fellow members from across the country.
+              </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-12">
-                <div className="h-[400px] w-full">
-                     <p className="text-center font-semibold text-foreground mb-4">Top 15 States by Member Count</p>
-                    <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={memberStatsByState} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
-                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis type="number" />
-                            <YAxis type="category" dataKey="name" width={100} tick={{ fontSize: 12 }} />
-                             <Tooltip
-                                cursor={{ fill: 'hsl(var(--muted))' }}
-                                content={({ active, payload }) => {
-                                    if (active && payload && payload.length) {
-                                        return (
-                                        <div className="bg-background border p-2 rounded-md shadow-md">
-                                            <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
-                                        </div>
-                                        );
-                                    }
-                                    return null;
-                                }}
-                            />
-                            <Bar dataKey="value" fill="hsl(var(--primary))" barSize={20} />
-                        </BarChart>
-                    </ResponsiveContainer>
+            <CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                <div className="relative flex-grow">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Search by name or Reg No..."
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    className="pl-10"
+                  />
                 </div>
-                <div className="h-[400px] w-full">
-                    <p className="text-center font-semibold text-foreground mb-4">Members by Zone</p>
-                    <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={memberStatsByZone} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
-                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis type="number" />
-                            <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 12 }} />
-                             <Tooltip
-                                cursor={{ fill: 'hsl(var(--muted))' }}
-                                content={({ active, payload }) => {
-                                    if (active && payload && payload.length) {
-                                        return (
-                                        <div className="bg-background border p-2 rounded-md shadow-md">
-                                            <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
-                                        </div>
-                                        );
-                                    }
-                                    return null;
-                                }}
-                            />
-                            <Bar dataKey="value" fill="hsl(var(--accent))" barSize={30} />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
+                <Select value={selectedState} onValueChange={setSelectedState}>
+                  <SelectTrigger className="w-full sm:w-[200px]">
+                    <SelectValue placeholder="Filter by State" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All States</SelectItem>
+                    {uniqueStates.map(state => (
+                      <SelectItem key={state} value={state}>{state}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                  Showing {filteredMembers.length} of {processedMembers.length} members.
+              </p>
+
+              <div className="border rounded-md">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="cursor-pointer" onClick={() => requestSort('regNo')}>
+                          <div className="flex items-center">Reg No. {getSortIcon('regNo')}</div>
+                        </TableHead>
+                        <TableHead className="cursor-pointer" onClick={() => requestSort('name')}>
+                          <div className="flex items-center">Name {getSortIcon('name')}</div>
+                        </TableHead>
+                        <TableHead className="cursor-pointer" onClick={() => requestSort('state')}>
+                          <div className="flex items-center">State {getSortIcon('state')}</div>
+                        </TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {filteredMembers.map(member => (
+                        <TableRow key={member.regNo} className={(member.role || member.award) ? 'bg-primary/10' : ''}>
+                          <TableCell>{member.regNo}</TableCell>
+                          <TableCell className="font-medium">
+                            <div className="flex items-center gap-2">
+                              {(member.role || member.award) ? (
+                                  <Tooltip>
+                                      <TooltipTrigger>
+                                          {member.role ? <Crown className="h-4 w-4 text-yellow-600" /> : <Award className="h-4 w-4 text-blue-600" />}
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                          <p>{member.role || member.award}</p>
+                                      </TooltipContent>
+                                  </Tooltip>
+                              ) : null}
+                              <span>{member.name}</span>
+                            </div>
+                          </TableCell>
+                          <TableCell>{member.state}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+              </div>
             </CardContent>
-        </Card>
-      </section>
+          </Card>
+        </section>
+        
+        <section id="member-stats">
+          <Card className="shadow-lg">
+              <CardHeader>
+                  <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+                      <BarChart2 className="mr-3 h-8 w-8 text-primary" /> Member Statistics
+                  </CardTitle>
+                  <CardDescription className="text-center">
+                      A visual breakdown of our community.
+                  </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-12">
+                  <div className="h-[400px] w-full">
+                      <p className="text-center font-semibold text-foreground mb-4">Top 15 States by Member Count</p>
+                      <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={memberStatsByState} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
+                              <CartesianGrid strokeDasharray="3 3" />
+                              <XAxis type="number" />
+                              <YAxis type="category" dataKey="name" width={100} tick={{ fontSize: 12 }} />
+                              <RechartsTooltip
+                                  cursor={{ fill: 'hsl(var(--muted))' }}
+                                  content={({ active, payload }) => {
+                                      if (active && payload && payload.length) {
+                                          return (
+                                          <div className="bg-background border p-2 rounded-md shadow-md">
+                                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
+                                          </div>
+                                          );
+                                      }
+                                      return null;
+                                  }}
+                              />
+                              <Bar dataKey="value" fill="hsl(var(--primary))" barSize={20} />
+                          </BarChart>
+                      </ResponsiveContainer>
+                  </div>
+                  <div className="h-[400px] w-full">
+                      <p className="text-center font-semibold text-foreground mb-4">Members by Zone</p>
+                      <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={memberStatsByZone} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
+                              <CartesianGrid strokeDasharray="3 3" />
+                              <XAxis type="number" />
+                              <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 12 }} />
+                              <RechartsTooltip
+                                  cursor={{ fill: 'hsl(var(--muted))' }}
+                                  content={({ active, payload }) => {
+                                      if (active && payload && payload.length) {
+                                          return (
+                                          <div className="bg-background border p-2 rounded-md shadow-md">
+                                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
+                                          </div>
+                                          );
+                                      }
+                                      return null;
+                                  }}
+                              />
+                              <Bar dataKey="value" fill="hsl(var(--accent))" barSize={30} />
+                          </BarChart>
+                      </ResponsiveContainer>
+                  </div>
+              </CardContent>
+          </Card>
+        </section>
+      </TooltipProvider>
 
     </div>
   );
