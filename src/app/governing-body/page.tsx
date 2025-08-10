@@ -122,7 +122,7 @@ const studentAmbassadors: StudentAmbassador[] = [
 const LeadershipMemberCard = ({ member }: { member: Member }) => (
     <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
         <Avatar className="h-24 w-24 border-4 border-primary mb-4">
-            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
+            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover" />
             <AvatarFallback className="text-3xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
         </Avatar>
         <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
@@ -133,7 +133,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => (
 const MemberListItem = ({ member }: { member: Member }) => (
     <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
         <Avatar className="h-14 w-14 border-2 border-primary">
-            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
+            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
             <AvatarFallback className="text-xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
         </Avatar>
         <div>
@@ -202,7 +202,7 @@ export default function GoverningBodyPage() {
                             {index === 0 ? <TableCell className="font-semibold align-top" rowSpan={stateHeads.length}>State Heads</TableCell> : null}
                             <TableCell className="flex items-center gap-2">
                                 <Avatar className="h-10 w-10 border-2 border-primary">
-                                    <AvatarImage src={head.imageUrl || `https://placehold.co/64x64.png`} alt={head.name} data-ai-hint="person portrait" />
+                                    <AvatarImage src={head.imageUrl || `https://placehold.co/64x64.png`} alt={head.name} data-ai-hint="person portrait" className="object-cover" />
                                     <AvatarFallback className="text-sm bg-muted text-muted-foreground">{head.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                                 </Avatar>
                                 {head.name}
@@ -211,10 +211,10 @@ export default function GoverningBodyPage() {
                         </TableRow>
                     ))}
                     <TableRow className="bg-muted/30">
-                        <TableCell className="font-semibold flex items-center gap-2"><Shield className="h-4 w-4"/> Moderator</TableCell>
+                        <TableCell className="font-semibold"><div className="flex items-center gap-2"><Shield className="h-4 w-4"/> Moderator</div></TableCell>
                         <TableCell className="flex items-center gap-2">
                              <Avatar className="h-10 w-10 border-2 border-primary">
-                                <AvatarImage src={moderator.imageUrl || `https://placehold.co/64x64.png`} alt={moderator.name} data-ai-hint="person portrait" />
+                                <AvatarImage src={moderator.imageUrl || `https://placehold.co/64x64.png`} alt={moderator.name} data-ai-hint="person portrait" className="object-cover" />
                                 <AvatarFallback className="text-sm bg-muted text-muted-foreground">{moderator.avatarFallback}</AvatarFallback>
                             </Avatar>
                             {moderator.name}
@@ -222,7 +222,7 @@ export default function GoverningBodyPage() {
                         <TableCell>{moderator.role}</TableCell>
                     </TableRow>
                      <TableRow>
-                        <TableCell className="font-semibold flex items-center gap-2"><Trophy className="h-4 w-4"/> Student Ambassadors</TableCell>
+                        <TableCell className="font-semibold"><div className="flex items-center gap-2"><Trophy className="h-4 w-4"/> Student Ambassadors</div></TableCell>
                         <TableCell colSpan={2} className="text-muted-foreground italic">
                             Our student ambassador list is being updated and will be published soon.
                         </TableCell>
