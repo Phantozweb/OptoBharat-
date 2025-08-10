@@ -19,7 +19,7 @@ const mainNavLinks = [
 ];
 
 const contentSubLinks = [
-    { href: '/blogs-events', label: 'Blogs', icon: Book },
+    { href: '/blogs', label: 'Blogs', icon: Book },
     { href: '/events', label: 'Events', icon: CalendarDays },
     { href: '/resources', label: 'Resources', icon: BookOpen },
 ];

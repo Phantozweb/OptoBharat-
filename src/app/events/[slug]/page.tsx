@@ -33,12 +33,12 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
 
       <Card className="shadow-lg">
         <CardHeader>
-            <div className="flex items-center text-sm text-muted-foreground">
+            <div className="flex items-center text-sm text-muted-foreground justify-center">
                 <Calendar className="mr-2 h-4 w-4" />
                 <span>Conducted on {event.date}</span>
             </div>
         </CardHeader>
-        <CardContent className="prose prose-lg max-w-none">
+        <CardContent>
             {event.content}
         </CardContent>
       </Card>

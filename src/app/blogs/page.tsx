@@ -4,13 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Rss, BookOpen, CheckCircle, FileText, TrendingUp, Newspaper, CalendarDays, ArrowRight } from 'lucide-react';
 
-export default function BlogsEventsPage() {
+export default function BlogsPage() {
   return (
     <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <div className="flex justify-center items-center mb-4">
-          <Newspaper className="h-12 w-12 text-primary mr-3" />
-          <BookOpen className="h-12 w-12 text-primary" />
+          <Newspaper className="h-12 w-12 text-primary" />
         </div>
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">
           BLOGS & LEARNING
