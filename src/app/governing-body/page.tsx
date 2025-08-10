@@ -119,24 +119,33 @@ const studentAmbassadors: StudentAmbassador[] = [
     // Add student ambassadors here
 ];
 
-const LeadershipMemberCard = ({ member }: { member: Member }) => (
-    <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
-        <Avatar className="h-24 w-24 border-4 border-primary mb-4 shadow-md">
-            <AvatarImage 
-                src={member.imageUrl} 
-                alt={member.name} 
-                data-ai-hint={member.dataAiHint || "person portrait"} 
-                className="object-cover" 
-                style={{ objectPosition: member.name === 'MOHD ASAD' ? '50% 20%' : 'center' }}
-            />
-            <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
-                <User className="h-12 w-12" /> 
-            </AvatarFallback>
-        </Avatar>
-        <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
-        <CardDescription className="text-primary font-semibold text-sm mt-1">{member.role}</CardDescription>
-    </Card>
-);
+const LeadershipMemberCard = ({ member }: { member: Member }) => {
+    let objectPosition = 'center';
+    if (member.name === 'MOHD ASAD') {
+        objectPosition = '50% 20%';
+    } else if (member.name === 'JANARTHAN VEERAMANI') {
+        objectPosition = '50% 35%';
+    }
+
+    return (
+        <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
+            <Avatar className="h-24 w-24 border-4 border-primary mb-4 shadow-md">
+                <AvatarImage 
+                    src={member.imageUrl} 
+                    alt={member.name} 
+                    data-ai-hint={member.dataAiHint || "person portrait"} 
+                    className="object-cover" 
+                    style={{ objectPosition }}
+                />
+                <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
+                    <User className="h-12 w-12" /> 
+                </AvatarFallback>
+            </Avatar>
+            <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
+            <CardDescription className="text-primary font-semibold text-sm mt-1">{member.role}</CardDescription>
+        </Card>
+    );
+};
 
 const MemberListItem = ({ member }: { member: Member }) => (
     <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
@@ -252,3 +261,5 @@ export default function GoverningBodyPage() {
     </div>
   );
 }
+
+    
