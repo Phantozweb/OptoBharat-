@@ -1,8 +1,12 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Gem } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Gem, Mail } from 'lucide-react';
+import Link from 'next/link';
 
 export default function SponsorsPage() {
+  const emailAddress = "inquiry.optobharat@gmail.com";
+
   return (
     <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
@@ -20,6 +24,22 @@ export default function SponsorsPage() {
         <CardContent className="text-center text-lg text-muted-foreground">
           <p>This page is currently under construction.</p>
           <p>We are preparing to feature the sponsors who make our work possible. Please check back soon!</p>
+        </CardContent>
+      </Card>
+
+      <Card className="shadow-lg bg-primary/5">
+        <CardHeader>
+          <CardTitle className="text-2xl md:text-3xl font-headline text-center text-primary">Become a Sponsor</CardTitle>
+        </CardHeader>
+        <CardContent className="text-center">
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Our work is made possible by the generous support of our sponsors. If you would like to help us empower the next generation of optometrists, we would be honored to have your support.
+          </p>
+          <Button asChild size="lg">
+            <Link href={`mailto:${emailAddress}?subject=Sponsorship Inquiry with OPTOBHARAT`}>
+              <Mail className="mr-2 h-5 w-5" /> Contact for Sponsorship
+            </Link>
+          </Button>
         </CardContent>
       </Card>
     </div>
