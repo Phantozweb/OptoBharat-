@@ -411,34 +411,26 @@ const governingBody = {
   'MOHD ADNAN': 'MANAGING DIRECTOR OF NORTHERN ZONE',
   'PRITAM KARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
   'ANSHI JHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
-  'M.MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
+  'M MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
   'MUZAHID KAMAL': 'Managing Director of Western Zone',
   'MEHETAB HUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
   'SHREYASI NATH': 'MODERATOR',
-  'Rabjot Singh Gulati': 'State Head (Uttar Pradesh)',
-  'Gopika V.': 'State Head (Kerala)',
-  'GOPIKA. V': 'State Head (Kerala)',
-  'P.Kayal Vizhi': 'State Head (Tamil Nadu)',
-  'P.KAYAL VIZHI': 'State Head (Tamil Nadu)',
-  'Shobana Priya S.': 'State Head (Andhra Pradesh)',
-  'SHOBANA PRIYA .S': 'State Head (Andhra Pradesh)',
-  'Irbaz': 'State Head (Karnataka)',
-  'Mugunthan': 'State Head (Telangana)',
-  'M.MUGUNTHAN': 'State Head (Telangana)',
-  'Hariharn': 'State Head (Pondicherry)',
-  'A.HARIHARAN': 'State Head (Pondicherry)',
-  'Haziel Rynjah': 'State Head (Meghalaya)',
-  'Abhisek Buragohain': 'State Head (Assam)',
+  'RABJOT SINGH GULATI': 'State Head (Uttar Pradesh)',
+  'GOPIKA V': 'State Head (Kerala)',
+  'P KAYAL VIZHI': 'State Head (Tamil Nadu)',
+  'SHOBANA PRIYA S': 'State Head (Andhra Pradesh)',
+  'IRBAZ': 'State Head (Karnataka)',
+  'MUGUNTHAN': 'State Head (Telangana)',
+  'HARIHARN': 'State Head (Pondicherry)',
+  'HAZIEL RYNJAH': 'State Head (Meghalaya)',
   'ABHISEK BURAGOHAIN': 'State Head (Assam)',
-  'Be An H. Phom': 'State Head (Nagaland)',
-  'BE-AN.H.PHOM': 'State Head (Nagaland)',
+  'BE AN H PHOM': 'State Head (Nagaland)',
 };
 
 const contestWinners = {
-    'Sreesandhiya G': '1st Place, Optopreneur 2025',
-    'SREESANDHIYA.G': '1st Place, Optopreneur 2025',
-    'Anik Dingal': '2nd Place, Optopreneur 2025',
-    'Mohd Khalid': '3rd Place, Optopreneur 2025',
+    'SREESANDHIYA G': '1st Place, Optopreneur 2025',
+    'ANIK DINGAL': '2nd Place, Optopreneur 2025',
+    'MOHD KHALID': '3rd Place, Optopreneur 2025',
 };
 
 const normalizeState = (state: string) => {
@@ -506,17 +498,20 @@ const generateRegNo = (state: string, index: number) => {
     return `OB-${stateCode}-${paddedIndex}`;
 };
 
+const normalizeName = (name: string) => {
+  return name.toUpperCase().replace(/[.\s]/g, '');
+};
+
 const processedMembers: Member[] = originalMembers.map((member, index) => {
-    const normalizedName = member.name.toUpperCase().replace(/\s\.|[^\w\s]/gi, '').replace(/\s+/g, ' ').trim();
-    const simpleName = member.name.replace(/\s\./g, '.').trim();
+    const normalizedName = normalizeName(member.name);
     const state = normalizeState(member.state);
     
-    const roleKey = Object.keys(governingBody).find(key => key.toUpperCase() === normalizedName);
-    const awardKey = Object.keys(contestWinners).find(key => key.toUpperCase() === normalizedName);
+    const roleKey = Object.keys(governingBody).find(key => normalizeName(key) === normalizedName);
+    const awardKey = Object.keys(contestWinners).find(key => normalizeName(key) === normalizedName);
 
     return {
         ...member,
-        name: simpleName,
+        name: member.name.replace(/\s\./g, '.').trim(),
         state,
         regNo: generateRegNo(state, index),
         role: roleKey ? governingBody[roleKey as keyof typeof governingBody] : undefined,
@@ -837,5 +832,3 @@ export default function MembershipPage() {
     </div>
   );
 }
-
-    
