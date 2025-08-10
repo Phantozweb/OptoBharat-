@@ -12,18 +12,9 @@ export default function OptobharatHomePage() {
       {/* Hero Section */}
       <section className="text-center py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <div className="relative inline-block">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 800 924.44"
-              className="absolute inset-0 m-auto h-full w-auto text-primary/10 -z-0"
-              aria-hidden="true"
-              fill="currentColor"
-            >
-              <path d="M642.74,924.44c-11.45,0-22.9-2.29-34.34-6.87-10.28-4.2-19.4-10.28-26.24-18.25L421.3,710.25,283,744.59c-10.28,2.29-21.68,3.43-34.34,3.43-30.8,0-59.9-12.55-81-34.34-21.11-21.68-33.19-50.77-33.19-82.15V438.31l-114.07-56c-13.69-6.87-23.96-19.39-28.52-34.34-4.56-14.94-3.43-30.8,3.43-44.5,6.87-13.69,18.25-23.96,33.19-28.52l121.95-35.49L108.9,122.95c-7.99-9.13-11.41-21.68-9.13-33.19,2.28-11.41,9.13-20.54,19.39-26.24L229,4.56C243.55-1.52,259.88-1.52,274.43,4.56l87.86,51.34,1.43-4.56c2.28-7.99,8-14.83,16-19.39,7.99-4.56,17.11-6.87,26.24-6.87,14.94,0,28.52,5.7,38.78,16l45.63,47.91,5.7-16c3.43-7.99,10.28-13.69,19.39-16,9.13-2.29,18.25-1.14,26.24,4.56l11.41,7.99c9.13,6.87,14.83,17.11,16,27.38,1.14,10.28-2.29,20.54-9.13,28.52l-21.68,25.09,21.68,1.14c11.41,0,21.68,4.56,28.52,11.41,6.87,8,9.13,18.25,6.87,28.52l-9.13,40.95,30.8,6.87c10.28,2.28,19.39,8,26.24,16,6.87,8,10.28,18.25,10.28,28.52l-20.54,124.34,44.5,13.69c11.41,3.43,20.54,9.13,27.38,18.25,6.87,9.13,10.28,20.54,9.13,31.94l-10.28,78.73,50.19,101.55c6.87,14.94,6.87,31.94,0,46.78-6.87,14.94-19.39,26.24-35.49,29.66l-91.27,19.39-43.34,70.74c-6.87,10.28-17.11,17.11-28.52,19.39-11.41,2.29-22.81,1.14-33.19-4.56l-33.19-18.25-41.08,50.19c-8,9.13-18.25,14.83-30.8,17.11-12.55,2.28-25.09,1.14-36.5-4.57Z"/>
-            </svg>
-            <h1 className="relative text-5xl md:text-6xl font-bold font-headline mb-6">
-                OPTO<span className="text-primary">BHARAT</span>
-            </h1>
+          <h1 className="relative text-5xl md:text-6xl font-bold font-headline mb-6">
+              OPTO<span className="text-primary">BHARAT</span>
+          </h1>
         </div>
         <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto px-4">
           India&apos;s largest optometry student community, dedicated to uniting future optometrists across the nation and worldwide.

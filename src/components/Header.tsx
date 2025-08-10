@@ -28,7 +28,7 @@ export function Header() {
           key={link.label} 
           variant="ghost" 
           asChild 
-          className="text-foreground hover:text-primary transition-colors w-full md:w-auto justify-start md:justify-center text-base"
+          className="text-foreground hover:text-primary transition-colors w-full justify-start text-base"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <Link href={link.href}>
@@ -44,10 +44,7 @@ export function Header() {
     <header className="w-full border-b border-border/40 bg-background/95 sticky top-0 z-40">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
-        <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-          <NavContent />
-        </nav>
-        <div className="flex items-center space-x-2 md:hidden">
+        <div className="flex items-center space-x-2">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -56,9 +53,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[340px] p-0 pt-10 bg-background">
-                <SheetHeader className="p-6 pt-0">
-                  <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
-                </SheetHeader>
+                <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                 <nav className="flex flex-col space-y-2 p-6 pt-0">
                   <NavContent />
                 </nav>
