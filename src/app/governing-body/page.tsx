@@ -133,7 +133,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
     } else if (member.name === 'JANARTHAN VEERAMANI') {
         objectPosition = '50% 35%';
     } else if (member.name === 'NIZAM UDDIN SK') {
-        objectPosition = '50% 80%';
+        objectPosition = '50% 20%';
         transform = 'scale(1.15)';
     }
 
