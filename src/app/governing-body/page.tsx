@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, UserCircle, Landmark, MapPin, School, Star, Crown, Shield, BookUser, Building, User, Users2, UserCheck, Trophy } from 'lucide-react';
+import { Users, User, Crown, MapPin, Shield, Trophy } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 
@@ -122,9 +122,15 @@ const studentAmbassadors: StudentAmbassador[] = [
 const LeadershipMemberCard = ({ member }: { member: Member }) => (
     <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
         <Avatar className="h-24 w-24 border-4 border-primary mb-4 shadow-md">
-            <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover" />
-            <AvatarFallback className="text-3xl bg-muted text-primary">
-                {!member.imageUrl ? <User className="h-12 w-12" /> : member.avatarFallback}
+            <AvatarImage 
+                src={member.imageUrl} 
+                alt={member.name} 
+                data-ai-hint={member.dataAiHint || "person portrait"} 
+                className="object-cover" 
+                style={{ objectPosition: member.name === 'MOHD ASAD' ? '50% 20%' : 'center' }}
+            />
+            <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
+                <User className="h-12 w-12" /> 
             </AvatarFallback>
         </Avatar>
         <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
@@ -136,8 +142,8 @@ const MemberListItem = ({ member }: { member: Member }) => (
     <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
         <Avatar className="h-14 w-14 border-2 border-primary">
              <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
-            <AvatarFallback className="text-xl bg-muted text-primary">
-                 {!member.imageUrl ? <User className="h-8 w-8" /> : member.avatarFallback}
+            <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
+                 <User className="h-8 w-8" />
             </AvatarFallback>
         </Avatar>
         <div>
@@ -175,7 +181,7 @@ export default function GoverningBodyPage() {
       {/* Zonal Directors */}
       <Card className="shadow-lg">
         <CardHeader className="flex flex-row items-center space-x-3 bg-primary/10">
-          <Building className="h-7 w-7 text-primary" />
+          <Users className="h-7 w-7 text-primary" />
           <CardTitle className="text-2xl font-headline text-primary">Zonal Directors</CardTitle>
         </CardHeader>
         <CardContent className="p-4 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
@@ -206,9 +212,15 @@ export default function GoverningBodyPage() {
                             {index === 0 ? <TableCell className="font-semibold align-top" rowSpan={stateHeads.length}>State Heads</TableCell> : null}
                             <TableCell className="flex items-center gap-2">
                                 <Avatar className="h-10 w-10 border-2 border-primary">
-                                    <AvatarImage src={head.imageUrl} alt={head.name} data-ai-hint="person portrait" className="object-cover" />
-                                    <AvatarFallback className="text-sm bg-muted text-primary">
-                                        {!head.imageUrl ? <User className="w-5 h-5"/> : head.name.split(' ').map(n => n[0]).join('')}
+                                    <AvatarImage 
+                                        src={head.imageUrl} 
+                                        alt={head.name} 
+                                        data-ai-hint="person portrait" 
+                                        className="object-cover"
+                                        style={{ objectPosition: head.name === 'Rabjot Singh Gulati' ? '50% 20%' : 'center' }}
+                                    />
+                                    <AvatarFallback className="text-sm bg-muted text-primary shadow-inner">
+                                        <User className="w-5 h-5"/>
                                     </AvatarFallback>
                                 </Avatar>
                                 {head.name}
@@ -221,7 +233,7 @@ export default function GoverningBodyPage() {
                         <TableCell className="flex items-center gap-2">
                              <Avatar className="h-10 w-10 border-2 border-primary">
                                 <AvatarImage src={moderator.imageUrl} alt={moderator.name} data-ai-hint="person portrait" className="object-cover" />
-                                <AvatarFallback className="text-sm bg-muted text-primary">{moderator.avatarFallback}</AvatarFallback>
+                                <AvatarFallback className="text-sm bg-muted text-primary shadow-inner">{moderator.avatarFallback}</AvatarFallback>
                             </Avatar>
                             {moderator.name}
                         </TableCell>
