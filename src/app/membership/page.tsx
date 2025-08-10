@@ -404,6 +404,10 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'mariya', state: 'Delhi' },
   { name: 'Shaheen parveen', state: 'Delhi' },
   { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
+  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
+  { name: 'Anik Dingal', state: 'West Bengal' },
+  { name: 'Sunny Hant', state: 'India' },
+  { name: 'Naveen M', state: 'India' },
 ];
 
 const contestWinners: Record<string, string> = {
@@ -492,7 +496,7 @@ const normalizeState = (state: string): string => {
 };
 
 const normalizeName = (name: string) => {
-  return name.toUpperCase().replace(/[.\s]/g, '');
+  return name.toUpperCase().replace(/[.\s']/g, '');
 };
 
 const generateRegNo = (state: string, index: number): string => {
