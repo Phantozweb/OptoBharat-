@@ -501,8 +501,44 @@ const normalizeName = (name: string) => {
   return name.toUpperCase().replace(/[.\s']/g, '');
 };
 
+const stateToAbbreviation: Record<string, string> = {
+  'Andhra Pradesh': 'AP',
+  'Arunachal Pradesh': 'AR',
+  'Assam': 'AS',
+  'Bihar': 'BR',
+  'Chhattisgarh': 'CG',
+  'Goa': 'GA',
+  'Gujarat': 'GJ',
+  'Haryana': 'HR',
+  'Himachal Pradesh': 'HP',
+  'Jharkhand': 'JH',
+  'Karnataka': 'KA',
+  'Kerala': 'KL',
+  'Madhya Pradesh': 'MP',
+  'Maharashtra': 'MH',
+  'Manipur': 'MN',
+  'Meghalaya': 'ML',
+  'Mizoram': 'MZ',
+  'Nagaland': 'NL',
+  'Odisha': 'OD',
+  'Punjab': 'PB',
+  'Rajasthan': 'RJ',
+  'Sikkim': 'SK',
+  'Tamil Nadu': 'TN',
+  'Telangana': 'TS',
+  'Tripura': 'TR',
+  'Uttar Pradesh': 'UP',
+  'Uttarakhand': 'UK',
+  'West Bengal': 'WB',
+  'Delhi': 'DL',
+  'Chandigarh': 'CH',
+  'Jammu and Kashmir': 'JK',
+  // Add others if they appear and have official codes
+};
+
+
 const generateRegNo = (state: string, index: number): string => {
-  const stateCode = (state.substring(0, 2) || 'XX').toUpperCase();
+  const stateCode = stateToAbbreviation[state] || 'XX';
   const paddedIndex = (index + 1).toString().padStart(4, '0');
   return `OB-${stateCode}-${paddedIndex}`;
 };
