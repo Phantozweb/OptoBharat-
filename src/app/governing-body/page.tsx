@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, UserCircle, Landmark, MapPin } from 'lucide-react';
+import { Users, UserCircle, Landmark, MapPin, School, Star } from 'lucide-react';
 
 interface Member {
   name: string;
@@ -17,12 +17,12 @@ interface StateHead {
   state: string;
 }
 
-interface StateHeadSection {
-  title: string;
-  heads: StateHead[];
+interface StudentAmbassador {
+    name: string;
+    institution: string;
 }
 
-const governingBodyMembers: Member[] = [
+const leadershipMembers: Member[] = [
   {
     name: 'NIZAM UDDIN SK',
     role: 'Founder and Director of OPTOBHARAT',
@@ -30,9 +30,9 @@ const governingBodyMembers: Member[] = [
     dataAiHint: 'person portrait',
   },
   {
-    name: 'SHREYASI NATH',
-    role: 'MODERATOR, OPTOBHARAT',
-    avatarFallback: 'SN',
+    name: 'JANARTHAN VEERAMANI',
+    role: 'Director of Administration',
+    avatarFallback: 'JV',
     dataAiHint: 'person portrait',
   },
   {
@@ -41,10 +41,13 @@ const governingBodyMembers: Member[] = [
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
   },
+];
+
+const zonalDirectors: Member[] = [
   {
-    name: 'JANARTHAN VEERAMANI',
+    name: 'M. Mega Dharshini',
     role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA, - OPTOBHARAT',
-    avatarFallback: 'JV',
+    avatarFallback: 'MD',
     dataAiHint: 'person portrait',
   },
   {
@@ -79,33 +82,39 @@ const governingBodyMembers: Member[] = [
   },
 ];
 
-const stateHeadSections: StateHeadSection[] = [
-  { 
-    title: "Central Zone",
-    heads: [
-      { name: "Rabjot Singh Gulati", state: "Uttar Pradesh" },
-    ]
-  },
-  { 
-    title: "Southern Zone",
-    heads: [
-      { name: "Gopika V.", state: "Kerala" },
-      { name: "M. Mega Dharshini", state: "Tamil Nadu" },
-      { name: "Shobana Priya S.", state: "Andhra Pradesh" },
-      { name: "Irbaz", state: "Karnataka" },
-      { name: "Mugunthan", state: "Telangana" },
-      { name: "Hariharn", state: "Pondicherry" },
-    ]
-  },
-   { 
-    title: "North-Eastern Zone",
-    heads: [
-      { name: "Haziel Rynjah", state: "Meghalaya" },
-      { name: "Abhisek Buragohain", state: "Assam" },
-      { name: "Be An H. Phom", state: "Nagaland" },
-    ]
-  },
+const stateHeads = {
+  "Central Zone": [
+    { name: "Rabjot Singh Gulati", state: "Uttar Pradesh" },
+  ],
+  "Southern Zone": [
+    { name: "Gopika V.", state: "Kerala" },
+    { name: "P.Kayal Vizhi", state: "Tamil Nadu" },
+    { name: "Shobana Priya S.", state: "Andhra Pradesh" },
+    { name: "Irbaz", state: "Karnataka" },
+    { name: "Mugunthan", state: "Telangana" },
+    { name: "Hariharn", state: "Pondicherry" },
+  ],
+  "North-Eastern Zone": [
+    { name: "Haziel Rynjah", state: "Meghalaya" },
+    { name: "Abhisek Buragohain", state: "Assam" },
+    { name: "Be An H. Phom", state: "Nagaland" },
+  ],
+  "Western Zone": [],
+  "Eastern Zone": [],
+  "Northern Zone": [],
+};
+
+const moderator: Member = {
+    name: 'SHREYASI NATH',
+    role: 'MODERATOR, OPTOBHARAT',
+    avatarFallback: 'SN',
+    dataAiHint: 'person portrait',
+};
+
+const studentAmbassadors: StudentAmbassador[] = [
+    // Add student ambassadors here
 ];
+
 
 export default function GoverningBodyPage() {
   return (
@@ -131,10 +140,28 @@ export default function GoverningBodyPage() {
         </Card>
       </section>
 
-      <section id="members">
-        <h2 className="text-3xl font-headline text-center mb-8 text-primary">Meet the Directors</h2>
+      <section id="leadership">
+        <h2 className="text-3xl font-headline text-center mb-8 text-primary">Core Leadership</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-center">
+          {leadershipMembers.map((member) => (
+            <Card key={member.name} className="shadow-md text-center flex flex-col items-center p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
+              <Avatar className="h-32 w-32 mb-4 border-4 border-primary">
+                <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
+                <AvatarFallback className="text-3xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
+              </Avatar>
+              <CardHeader className="p-2">
+                <CardTitle className="text-xl font-headline leading-tight">{member.name}</CardTitle>
+                <CardDescription className="text-sm text-primary font-semibold pt-1">{member.role}</CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+      </section>
+      
+      <section id="zonal-directors">
+        <h2 className="text-3xl font-headline text-center mb-8 text-primary">Zonal Directors</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {governingBodyMembers.map((member) => (
+          {zonalDirectors.map((member) => (
             <Card key={member.name} className="shadow-md text-center flex flex-col items-center p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
               <Avatar className="h-32 w-32 mb-4 border-4 border-primary">
                 <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
@@ -150,44 +177,77 @@ export default function GoverningBodyPage() {
       </section>
 
       <section id="state-heads">
-        <h2 className="text-3xl font-headline text-center mt-12 mb-8 text-primary">Zonal State Heads</h2>
+        <h2 className="text-3xl font-headline text-center mt-12 mb-8 text-primary">State Heads</h2>
         <div className="space-y-8">
-          {stateHeadSections.map((section) => (
-            <Card key={section.title} className="shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
+          {Object.entries(stateHeads).map(([zone, heads]) => (
+            <Card key={zone} className="shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
               <CardHeader className="flex flex-row items-center space-x-3 p-4 bg-primary/10">
                 <Landmark className="h-8 w-8 text-primary flex-shrink-0" />
-                <CardTitle className="text-xl font-headline leading-tight text-primary">{section.title}</CardTitle>
+                <CardTitle className="text-xl font-headline leading-tight text-primary">{zone}</CardTitle>
               </CardHeader>
               <CardContent className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {section.heads.map((head) => (
-                   <div key={head.name} className="flex items-center space-x-3 p-3 rounded-md bg-background">
-                      <MapPin className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold text-foreground">{head.name}</p>
-                        <p className="text-sm text-muted-foreground">{head.state}</p>
-                      </div>
-                   </div>
-                ))}
-                {section.heads.length === 0 && (
+                {heads.length > 0 ? (
+                    heads.map((head) => (
+                       <div key={head.name} className="flex items-center space-x-3 p-3 rounded-md bg-background">
+                          <MapPin className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                          <div>
+                            <p className="font-semibold text-foreground">{head.name}</p>
+                            <p className="text-sm text-muted-foreground">{head.state}</p>
+                          </div>
+                       </div>
+                    ))
+                ) : (
                    <p className="text-sm text-muted-foreground col-span-full">
-                    Detailed list of state heads for this zone will be updated soon.
+                    List of state heads for this zone will be updated soon.
                   </p>
                 )}
               </CardContent>
             </Card>
           ))}
-           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
-              <CardHeader className="flex flex-row items-center space-x-3 p-4 bg-primary/10">
-                <Landmark className="h-8 w-8 text-primary flex-shrink-0" />
-                <CardTitle className="text-xl font-headline leading-tight text-primary">STATE HEAD LIST SOUTHERN ZONE, INDIA-OPTOBHARAT</CardTitle>
+        </div>
+      </section>
+      
+      <section id="moderator">
+        <h2 className="text-3xl font-headline text-center mb-8 text-primary">Moderator</h2>
+        <div className="flex justify-center">
+            <Card key={moderator.name} className="shadow-md text-center flex flex-col items-center p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50 max-w-sm">
+              <Avatar className="h-32 w-32 mb-4 border-4 border-primary">
+                <AvatarImage src={moderator.imageUrl || `https://placehold.co/128x128.png`} alt={moderator.name} data-ai-hint={moderator.dataAiHint || "person portrait"} />
+                <AvatarFallback className="text-3xl bg-muted text-muted-foreground">{moderator.avatarFallback}</AvatarFallback>
+              </Avatar>
+              <CardHeader className="p-2">
+                <CardTitle className="text-xl font-headline leading-tight">{moderator.name}</CardTitle>
+                <CardDescription className="text-sm text-primary font-semibold pt-1">{moderator.role}</CardDescription>
               </CardHeader>
-              <CardContent className="p-4 pt-2">
-                <p className="text-sm text-muted-foreground">
-                  Detailed list of state heads for this zone will be updated soon.
-                </p>
-              </CardContent>
             </Card>
         </div>
+      </section>
+
+      <section id="student-ambassadors">
+        <h2 className="text-3xl font-headline text-center mt-12 mb-8 text-primary">Student Ambassadors</h2>
+        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
+            <CardHeader className="flex flex-row items-center space-x-3 p-4 bg-primary/10">
+                <Star className="h-8 w-8 text-primary flex-shrink-0" />
+                <CardTitle className="text-xl font-headline leading-tight text-primary">Our Ambassadors</CardTitle>
+            </CardHeader>
+            <CardContent className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {studentAmbassadors.length > 0 ? (
+                    studentAmbassadors.map((ambassador) => (
+                       <div key={ambassador.name} className="flex items-center space-x-3 p-3 rounded-md bg-background">
+                          <School className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                          <div>
+                            <p className="font-semibold text-foreground">{ambassador.name}</p>
+                            <p className="text-sm text-muted-foreground">{ambassador.institution}</p>
+                          </div>
+                       </div>
+                    ))
+                ) : (
+                   <p className="text-sm text-muted-foreground col-span-full">
+                    The list of Student Ambassadors will be updated soon.
+                  </p>
+                )}
+            </CardContent>
+        </Card>
       </section>
     </div>
   );
