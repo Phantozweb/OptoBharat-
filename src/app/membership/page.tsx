@@ -643,6 +643,8 @@ export default function MembershipPage() {
               </CardTitle>
               <CardDescription className="text-center">
                 Our community is growing every day. Find fellow members from across the country.
+                 <br />
+                <span className="text-xs italic">Last updated on August 10, 2025</span>
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -727,6 +729,8 @@ export default function MembershipPage() {
               </CardTitle>
               <CardDescription className="text-center">
                 A visual breakdown of our community of {allMembers.length} members.
+                <br />
+                <span className="text-xs italic">Last updated on August 10, 2025</span>
               </CardDescription>
             </CardHeader>
             <CardContent className="px-2 sm:px-6">
