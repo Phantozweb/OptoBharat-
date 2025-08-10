@@ -110,6 +110,17 @@ const studentAmbassadors: StudentAmbassador[] = [
     // Add student ambassadors here
 ];
 
+const LeadershipMemberCard = ({ member }: { member: Member }) => (
+    <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
+        <Avatar className="h-24 w-24 border-4 border-primary mb-4">
+            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
+            <AvatarFallback className="text-3xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
+        </Avatar>
+        <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
+        <CardDescription className="text-primary font-semibold text-sm mt-1">{member.role}</CardDescription>
+    </Card>
+);
+
 const MemberListItem = ({ member }: { member: Member }) => (
     <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
         <Avatar className="h-14 w-14 border-2 border-primary">
@@ -136,17 +147,17 @@ export default function GoverningBodyPage() {
       </section>
 
       {/* Core Leadership */}
-      <Card className="shadow-lg">
-        <CardHeader className="flex flex-row items-center space-x-3 bg-primary/10">
-          <Crown className="h-7 w-7 text-primary" />
-          <CardTitle className="text-2xl font-headline text-primary">Core Leadership</CardTitle>
-        </CardHeader>
-        <CardContent className="p-4 space-y-2">
-          {leadershipMembers.map((member) => (
-            <MemberListItem key={member.name} member={member} />
-          ))}
-        </CardContent>
-      </Card>
+      <section>
+        <div className="flex items-center justify-center space-x-3 mb-6">
+          <Crown className="h-8 w-8 text-primary" />
+          <h2 className="text-3xl font-headline text-primary text-center">Core Leadership</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {leadershipMembers.map((member) => (
+                <LeadershipMemberCard key={member.name} member={member} />
+            ))}
+        </div>
+      </section>
       
       {/* Zonal Directors */}
       <Card className="shadow-lg">
@@ -202,5 +213,3 @@ export default function GoverningBodyPage() {
     </div>
   );
 }
-
-    
