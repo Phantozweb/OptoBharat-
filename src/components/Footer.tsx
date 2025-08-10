@@ -4,12 +4,12 @@ import { Facebook, Instagram, Linkedin, Send, Twitter, Youtube } from 'lucide-re
 
 export function Footer() {
   const socialLinks = [
-    { name: 'X', href: '#', icon: Twitter },
-    { name: 'LinkedIn', href: '#', icon: Linkedin },
-    { name: 'Facebook', href: '#', icon: Facebook },
-    { name: 'Instagram', href: '#', icon: Instagram },
-    { name: 'YouTube', href: '#', icon: Youtube },
-    { name: 'Telegram', href: '#', icon: Send },
+    { name: 'X', href: 'https://x.com/optobharat?t=u6gxL49iiIYR5lVaz3784A&s=09', icon: Twitter },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/optobharat/', icon: Linkedin },
+    { name: 'Facebook', href: 'https://www.facebook.com/share/15SA2emDi3/', icon: Facebook },
+    { name: 'Instagram', href: 'https://www.instagram.com/optobharat?igsh=MWxpMWxjcHhyZ2U2Nw==', icon: Instagram },
+    { name: 'YouTube', href: 'https://youtube.com/@optobharat?si=nM1pCgKaM_fXzDXE', icon: Youtube },
+    { name: 'WhatsApp Channel', href: 'https://whatsapp.com/channel/0029Vb5XGSX1t90TXG5ws60E', icon: Send },
   ];
 
   return (
