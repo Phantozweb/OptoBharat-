@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -282,12 +281,12 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Madhu Prasad', state: 'Delhi' },
   { name: 'Ansh Baria', state: 'Delhi' },
   { name: 'ASIF SHAIK', state: 'Telangana' },
-  { name: 'Anshi jha', state: 'Uttar pradesh' },
+  { name: 'Anshi jha', state: 'Uttar Pradesh' },
   { name: 'Jay Kumar', state: 'Rajasthan' },
   { name: 'SHEEBA', state: 'Uttar Pradesh' },
   { name: 'Delina Chyrmang', state: 'Meghalaya' },
   { name: 'Mohd Junaid', state: 'Uttar Pradesh' },
-  { name: 'Rehan Ahamad.', state: 'Uttar pradesh' },
+  { name: 'Rehan Ahamad.', state: 'Uttar Pradesh' },
   { name: 'Irbaz Miraji', state: 'Karnataka' },
   { name: 'Askar', state: 'Kerala' },
   { name: 'Sirin Saine Riba', state: 'West Bengal' },
@@ -302,8 +301,8 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Mayuri', state: 'Tamil Nadu' },
   { name: 'Aneesha Sulthana np', state: 'Kerala' },
   { name: 'Naina Jawed', state: 'Jharkhand' },
-  { name: 'Mohd Sakib', state: 'Uttar pradesh' },
-  { name: 'Navjot singh', state: 'Uttarpradesh' },
+  { name: 'Mohd Sakib', state: 'Uttar Pradesh' },
+  { name: 'Navjot singh', state: 'Uttar Pradesh' },
   { name: 'Ayaz Raza', state: 'Bihar' },
   { name: 'DANISH NAWAZ', state: 'Bihar' },
   { name: 'MOHD Raqib', state: 'Uttar Pradesh' },
@@ -311,12 +310,12 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Md zeeshan ali', state: 'Bihar' },
   { name: 'Anshika singh', state: 'Bihar' },
   { name: 'Shagufi', state: 'Uttar Pradesh' },
-  { name: 'Sareesh khan', state: 'Uttar pradesh' },
+  { name: 'Sareesh khan', state: 'Uttar Pradesh' },
   { name: 'Ayush Sharma', state: 'Himachal Pradesh' },
   { name: 'Jasmine', state: 'Rajasthan' },
   { name: 'Tabassum parween', state: 'Bihar' },
   { name: 'Optom K P Singh Patel', state: 'Uttar Pradesh' },
-  { name: 'Tayyaba saifi', state: 'Uttar pradesh' },
+  { name: 'Tayyaba saifi', state: 'Uttar Pradesh' },
   { name: 'Rudranil Ghosal', state: 'West Bengal' },
   { name: 'Debasmita Dutta', state: 'West Bengal' },
   { name: 'Tusha', state: 'Delhi' },
@@ -327,8 +326,8 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'KADEEJA SHERIN PA', state: 'Kerala' },
   { name: 'SOURENDU SARKAR', state: 'West Bengal' },
   { name: 'Sangeeta Yadav', state: 'Odisha' },
-  { name: 'Rishav raj kashyap', state: 'Uttarpradesh' },
-  { name: 'Anika Pandey', state: 'Uttar pradesh' },
+  { name: 'Rishav raj kashyap', state: 'Uttar Pradesh' },
+  { name: 'Anika Pandey', state: 'Uttar Pradesh' },
   { name: 'Santiya William', state: 'Tamil Nadu' },
   { name: 'Zeermika Teronpi', state: 'Assam' },
   { name: 'Sneha Khandelwal', state: 'Odisha' },
@@ -350,13 +349,13 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Harpreet kaur rana', state: 'Delhi' },
   { name: 'Rahul Sharma', state: 'Haryana' },
   { name: 'Radha Agarwal', state: 'Delhi' },
-  { name: 'Gopal Agrawal', state: 'Uttarpradesh' },
+  { name: 'Gopal Agrawal', state: 'Uttar Pradesh' },
   { name: 'Saman', state: 'Uttar Pradesh' },
   { name: 'Hariharan T', state: 'Tamil Nadu' },
   { name: 'B. Thulasi', state: 'Tamil Nadu' },
   { name: 'Sathya pooja', state: 'Tamil Nadu' },
   { name: 'M.Mugunthan', state: 'Tamil Nadu' },
-  { name: 'Gaurav Sen', state: 'Uttar pradesh' },
+  { name: 'Gaurav Sen', state: 'Uttar Pradesh' },
   { name: 'A.Hariharan', state: 'Tamil Nadu' },
   { name: 'T.Sugappriya', state: 'Tamil Nadu' },
   { name: 'J.Aiswarya', state: 'Tamil Nadu' },
@@ -407,180 +406,150 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
 ];
 
-const governingBody = {
+const contestWinners: Record<string, string> = {
+  ...optopreneurWinners,
+  ...quizWinners
+};
+
+const governingBody: Record<string, string> = {
   'NIZAM UDDIN SK': 'Founder & Director',
   'JANARTHAN VEERAMANI': 'Director of Administration',
   'MOHD ASAD': 'Head of Academic',
   'MOHD ADNAN': 'MANAGING DIRECTOR OF NORTHERN ZONE',
   'PRITAM KARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
   'ANSHI JHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
-  'M MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
+  'M. MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
   'MUZAHID KAMAL': 'Managing Director of Western Zone',
   'MEHETAB HUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
+  'RABJOT SINGH GULATI': 'State Head, Uttar Pradesh',
+  'GOPIKA V.': 'State Head, Kerala',
+  'P.KAYAL VIZHI': 'State Head, Tamil Nadu',
+  'SHOBANA PRIYA S.': 'State Head, Andhra Pradesh',
+  'IRBAZ': 'State Head, Karnataka',
+  'M.MUGUNTHAN': 'State Head, Telangana',
+  'A.HARIHARAN': 'State Head, Pondicherry',
+  'HAZIEL RYNJAH': 'State Head, Meghalaya',
+  'ABHISEK BURAGOHAIN': 'State Head, Assam',
+  'BE AN H. PHOM': 'State Head, Nagaland',
   'SHREYASI NATH': 'MODERATOR',
-  'RABJOT SINGH GULATI': 'State Head (Uttar Pradesh)',
-  'GOPIKA V': 'State Head (Kerala)',
-  'P KAYAL VIZHI': 'State Head (Tamil Nadu)',
-  'SHOBANA PRIYA S': 'State Head (Andhra Pradesh)',
-  'IRBAZ': 'State Head (Karnataka)',
-  'MUGUNTHAN': 'State Head (Telangana)',
-  'HARIHARN': 'State Head (Pondicherry)',
-  'HAZIEL RYNJAH': 'State Head (Meghalaya)',
-  'ABHISEK BURAGOHAIN': 'State Head (Assam)',
-  'BE AN H PHOM': 'State Head (Nagaland)',
 };
 
-const contestWinners = { ...optopreneurWinners, ...quizWinners };
-
-const normalizeState = (state: string) => {
-    const s = state.toLowerCase().replace(/\./g, '').trim();
-    if (s.startsWith('tamil')) return 'Tamil Nadu';
-    if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p' || s === 'utar prdesh' || s === 'uttar pardesh') return 'Uttar Pradesh';
-    if (s.startsWith('west')) return 'West Bengal';
-    if (s === 'lakhimpur kheri') return 'Uttar Pradesh'; // Map specific location to state
-    if (s === 'guja') return 'Gujarat';
-    return state.charAt(0).toUpperCase() + state.slice(1).toLowerCase();
-};
-
-const stateToZone: { [key: string]: string } = {
-  // North
-  'Jammu and Kashmir': 'Northern Zone',
-  'Punjab': 'Northern Zone',
-  'Haryana': 'Northern Zone',
-  'Himachal Pradesh': 'Northern Zone',
-  'Delhi': 'Northern Zone',
-  'Chandigarh': 'Northern Zone',
-
-  // Central
-  'Uttar Pradesh': 'Central Zone',
-  'Madhya Pradesh': 'Central Zone',
-
-  // East
-  'West Bengal': 'Eastern Zone',
-  'Bihar': 'Eastern Zone',
-  'Jharkhand': 'Eastern Zone',
-  'Odisha': 'Eastern Zone',
-
-  // West
-  'Rajasthan': 'Western Zone',
-  'Gujarat': 'Western Zone',
-  'Maharashtra': 'Western Zone',
-
-  // South
+const stateToZone: Record<string, string> = {
   'Tamil Nadu': 'Southern Zone',
-  'Karnataka': 'Southern Zone',
-  'Kerala': 'Southern Zone',
-  'Telangana': 'Southern Zone',
-  'Andhra Pradesh': 'Southern Zone',
-  'Pondicherry': 'Southern Zone',
-
-  // North-East
+  'Uttar Pradesh': 'Northern Zone',
   'Assam': 'North-Eastern Zone',
+  'Odisha': 'Eastern Zone',
+  'Jharkhand': 'Eastern Zone',
+  'Pakistan': 'International',
+  'Lakhimpur Kheri': 'Northern Zone',
+  'Delhi': 'Northern Zone',
+  'Punjab': 'Northern Zone',
+  'West Bengal': 'Eastern Zone',
   'Arunachal Pradesh': 'North-Eastern Zone',
+  'Karnataka': 'Southern Zone',
+  'Rajasthan': 'Western Zone',
+  'Telangana': 'Southern Zone',
+  'Kerala': 'Southern Zone',
   'Nagaland': 'North-Eastern Zone',
   'Meghalaya': 'North-Eastern Zone',
+  'Bihar': 'Eastern Zone',
+  'India': 'National',
   'Tripura': 'North-Eastern Zone',
-  'Sikkim': 'North-Eastern Zone',
-  
-  // International / Other
-  'Pakistan': 'International',
+  'Chandigarh': 'Northern Zone',
+  'Himachal Pradesh': 'Northern Zone',
   'Kenya': 'International',
+  'Madhya Pradesh': 'Central Zone',
+  'Gujarat': 'Western Zone',
+  'Haryana': 'Northern Zone',
+  'Maharashtra': 'Western Zone',
+  'Jammu and Kashmir': 'Northern Zone',
   'Nigeria': 'International',
   'USA': 'International',
-  'India': 'Uncategorized',
+  'Sikkim': 'North-Eastern Zone',
 };
 
-
-const generateRegNo = (state: string, index: number) => {
-    const stateCode = (state.substring(0, 2).toUpperCase());
-    const paddedIndex = String(index + 1).padStart(4, '0');
-    return `OB-${stateCode}-${paddedIndex}`;
+const normalizeState = (state: string): string => {
+  const normalized = state.trim().toLowerCase();
+  const stateMap: Record<string, string> = {
+      'tamilnadu': 'Tamil Nadu',
+      'uttar pradesh': 'Uttar Pradesh',
+      'up': 'Uttar Pradesh',
+      'u. p': 'Uttar Pradesh',
+      'utaar pradesh': 'Uttar Pradesh',
+      'utter pradesh': 'Uttar Pradesh',
+      'uttar pardesh': 'Uttar Pradesh',
+      'uttarpradesh': 'Uttar Pradesh',
+      'karnataka': 'Karnataka',
+      'westbengal': 'West Bengal',
+      'gujarat': 'Gujarat',
+      'guja': 'Gujarat',
+      'bihar': 'Bihar',
+      'kerala': 'Kerala',
+      'jammu and kashmir': 'Jammu and Kashmir',
+      'lakhimpur kheri': 'Lakhimpur Kheri'
+  };
+  return stateMap[normalized] || state.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 };
 
 const normalizeName = (name: string) => {
   return name.toUpperCase().replace(/[.\s]/g, '');
 };
 
-const processedMembers: Member[] = originalMembers.map((member, index) => {
-    const normalizedName = normalizeName(member.name);
-    const state = normalizeState(member.state);
-    
-    const roleKey = Object.keys(governingBody).find(key => normalizeName(key) === normalizedName);
-    const awardKey = Object.keys(contestWinners).find(key => normalizeName(key) === normalizedName);
-
-    return {
-        ...member,
-        name: member.name.replace(/\s\./g, '.').trim(),
-        state,
-        regNo: generateRegNo(state, index),
-        role: roleKey ? governingBody[roleKey as keyof typeof governingBody] : undefined,
-        award: awardKey ? contestWinners[awardKey as keyof typeof contestWinners] : undefined,
-        zone: stateToZone[state] || 'Uncategorized',
-    };
-});
+const generateRegNo = (state: string, index: number): string => {
+  const stateCode = (state.substring(0, 2) || 'XX').toUpperCase();
+  const paddedIndex = (index + 1).toString().padStart(4, '0');
+  return `OB-${stateCode}-${paddedIndex}`;
+};
 
 export default function MembershipPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedState, setSelectedState] = useState('all');
   const [sortConfig, setSortConfig] = useState<{ key: keyof Member; direction: 'ascending' | 'descending' } | null>(null);
-  const [stateFilter, setStateFilter] = useState<string>('all');
-  
-  const allStates = useMemo(() => ['all', ...Array.from(new Set(processedMembers.map(m => m.state))).sort()], []);
 
-  const sortedAndFilteredMembers = useMemo(() => {
-    let filtered = [...processedMembers];
+  const processedMembers: Member[] = useMemo(() => {
+    let members = originalMembers.map((member, index) => {
+      const normalizedState = normalizeState(member.state);
+      const normalizedName = normalizeName(member.name);
+      
+      const memberData: Member = {
+        ...member,
+        state: normalizedState,
+        regNo: generateRegNo(normalizedState, index),
+        zone: stateToZone[normalizedState] || 'Unknown',
+        role: governingBody[normalizedName],
+        award: contestWinners[normalizedName],
+      };
+      
+      return memberData;
+    });
 
-    if (stateFilter !== 'all') {
-      filtered = filtered.filter(member => member.state === stateFilter);
-    }
-
-    if (searchTerm) {
-      filtered = filtered.filter(member =>
-        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        member.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        member.regNo.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-    
     if (sortConfig !== null) {
-      filtered.sort((a, b) => {
-        const valA = a[sortConfig.key] || '';
-        const valB = b[sortConfig.key] || '';
-        if (valA < valB) {
+      members.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
           return sortConfig.direction === 'ascending' ? -1 : 1;
         }
-        if (valA > valB) {
+        if (a[sortConfig.key] > b[sortConfig.key]) {
           return sortConfig.direction === 'ascending' ? 1 : -1;
         }
         return 0;
       });
     }
+    return members;
+  }, [sortConfig]);
 
-    return filtered;
-  }, [searchTerm, sortConfig, stateFilter]);
-
-  const memberStats = useMemo(() => {
-    const stateCounts: { [key: string]: number } = {};
-    const zoneCounts: { [key: string]: number } = {};
-
-    processedMembers.forEach(member => {
-      // State count
-      stateCounts[member.state] = (stateCounts[member.state] || 0) + 1;
-      // Zone count
-      if(member.zone) {
-        zoneCounts[member.zone] = (zoneCounts[member.zone] || 0) + 1;
-      }
+  const filteredMembers = useMemo(() => {
+    return processedMembers.filter(member => {
+      const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            member.regNo.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesState = selectedState === 'all' || member.state === selectedState;
+      return matchesSearch && matchesState;
     });
+  }, [processedMembers, searchTerm, selectedState]);
 
-    const stateData = Object.entries(stateCounts)
-      .map(([name, total]) => ({ name, total }))
-      .sort((a, b) => b.total - a.total);
-      
-    const zoneData = Object.entries(zoneCounts)
-      .map(([name, total]) => ({ name, total }))
-      .sort((a, b) => b.total - a.total);
-
-    return { stateData, zoneData };
-  }, []);
+  const uniqueStates = useMemo(() => {
+    const states = new Set(processedMembers.map(m => m.state));
+    return Array.from(states).sort();
+  }, [processedMembers]);
 
   const requestSort = (key: keyof Member) => {
     let direction: 'ascending' | 'descending' = 'ascending';
@@ -589,245 +558,217 @@ export default function MembershipPage() {
     }
     setSortConfig({ key, direction });
   };
-
+  
   const getSortIcon = (key: keyof Member) => {
     if (!sortConfig || sortConfig.key !== key) {
-      return <ArrowUpDown className="ml-2 h-4 w-4 opacity-50" />;
+      return <ArrowUpDown className="h-4 w-4 ml-2 opacity-30" />;
     }
-    return sortConfig.direction === 'ascending' 
-        ? <ArrowUpDown className="ml-2 h-4 w-4" /> // Replace with ArrowUpIcon if available
-        : <ArrowUpDown className="ml-2 h-4 w-4" />; // Replace with ArrowDownIcon if available
+    return sortConfig.direction === 'ascending' ? '▲' : '▼';
   };
+
+  const memberStatsByState = useMemo(() => {
+    const counts = filteredMembers.reduce((acc, member) => {
+        acc[member.state] = (acc[member.state] || 0) + 1;
+        return acc;
+    }, {} as Record<string, number>);
+
+    return Object.entries(counts)
+        .map(([name, value]) => ({ name, value }))
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 15);
+  }, [filteredMembers]);
+
+  const memberStatsByZone = useMemo(() => {
+      const counts = filteredMembers.reduce((acc, member) => {
+          const zone = member.zone || 'Unknown';
+          acc[zone] = (acc[zone] || 0) + 1;
+          return acc;
+      }, {} as Record<string, number>);
+
+      return Object.entries(counts)
+          .map(([name, value]) => ({ name, value }))
+          .sort((a, b) => b.value - a.value);
+  }, [filteredMembers]);
+
 
   return (
     <div className="space-y-16 md:space-y-20">
-       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
-        <UserPlus className="mx-auto h-16 w-16 text-primary mb-4" />
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4">
-          MEMBERSHIP <span className="text-primary">OPTOBHARAT</span>
+      <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
+        <Users className="mx-auto h-16 w-16 text-primary mb-4" />
+        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">
+          OPTOBHARAT Membership
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Join India's largest optometry student community and unlock a world of opportunities.
-        </p>
-      </section>
-
-      <section id="benefits">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl font-headline text-center">BENEFITS OF OPTOBHARAT MEMBERSHIP</CardTitle>
-          </CardHeader>
-          <CardContent className="text-base space-y-4 text-muted-foreground px-4 md:px-6">
-            <p>
-              By joining OPTOBHARAT, you gain access to an exclusive community of optometry students across India, dedicated to learning, collaboration, and professional growth. Enjoy access to educational resources, networking opportunities, career guidance, and mentorship from experienced professionals. Connect with peers, mentors, and industry leaders to strengthen your academic foundation and prepare for a successful career in eye care. As a member, you’ll also get early access to exclusive webinars, workshops, and career-enhancing opportunities designed to empower the next generation of optometrists.
-            </p>
-          </CardContent>
-        </Card>
       </section>
 
       <section id="how-to-join">
-        <Card className="shadow-lg bg-primary/5">
+        <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-3xl font-headline text-center text-primary">How to Join</CardTitle>
+            <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+              <UserPlus className="mr-3 h-8 w-8 text-primary" /> How to Join
+            </CardTitle>
           </CardHeader>
-          <CardContent className="text-base space-y-6 text-muted-foreground px-4 md:px-6">
-            <p className="text-center">
-              Ready to be part of India’s first and largest optometry student community?
-            </p>
-            <p className="text-center">
-              Simply fill out our membership form to unlock these exclusive benefits and connect with like-minded optometry students passionate about shaping the future of eye care.
+          <CardContent className="space-y-6 px-4 md:px-6">
+            <p className="text-muted-foreground text-center">
+              Become a part of India&apos;s largest optometry student community! To join OPTOBHARAT, please fill out our membership registration form.
             </p>
             <div className="text-center">
               <Button asChild size="lg">
-                <Link href="https://forms.gle/J47RgFwMQ5VXUmKY7" target="_blank" rel="noopener noreferrer">
-                  Fill Membership Form
+                <Link href="https://forms.gle/q4eB9tXy8cML19f89" target="_blank">
+                  Go to Registration Form
                 </Link>
               </Button>
             </div>
-            <p className="text-center font-semibold text-foreground">
-              First, you need to fill out the membership form to become eligible to join the WhatsApp community group. Otherwise, we won't be able to grant you access.
-            </p>
           </CardContent>
         </Card>
       </section>
 
-      <section id="our-members">
+      <section id="member-list">
         <Card className="shadow-lg">
           <CardHeader>
-              <div className="flex items-center gap-3 mb-4">
-                <Users className="h-8 w-8 text-primary" />
-                <CardTitle className="text-3xl font-headline text-primary">Our Members</CardTitle>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                 <div className="relative w-full sm:w-auto sm:flex-grow">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                    <Input 
-                      placeholder="Search members, states, or RegNo..." 
-                      className="pl-10"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                 </div>
-                 <Select value={stateFilter} onValueChange={setStateFilter}>
-                    <SelectTrigger className="w-full sm:w-[180px]">
-                        <SelectValue placeholder="Filter by State" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {allStates.map(state => (
-                           <SelectItem key={state} value={state}>{state === 'all' ? 'All States' : state}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-              </div>
-              <p className="text-sm text-muted-foreground mt-4">
-                Showing <span className="font-bold text-foreground">{sortedAndFilteredMembers.length}</span> of <span className="font-bold text-foreground">{processedMembers.length}</span> members.
-              </p>
+            <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+              <ShieldCheck className="mr-3 h-8 w-8 text-primary" /> Our Members
+            </CardTitle>
+            <CardDescription className="text-center">
+              Our community is growing every day. Find fellow members from across the country.
+            </CardDescription>
           </CardHeader>
-          <CardContent className="p-0">
-             <TooltipProvider>
-                <div className="overflow-x-auto">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>
-                           <Button variant="ghost" onClick={() => requestSort('regNo')}>
-                                Reg No.
-                                {getSortIcon('regNo')}
-                           </Button>
-                        </TableHead>
-                        <TableHead>
-                           <Button variant="ghost" onClick={() => requestSort('name')}>
-                                Member Name
-                                {getSortIcon('name')}
-                            </Button>
-                        </TableHead>
-                        <TableHead>
-                           <Button variant="ghost" onClick={() => requestSort('state')}>
-                                State
-                                {getSortIcon('state')}
-                            </Button>
-                        </TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {sortedAndFilteredMembers.map((member) => {
-                        const isSpecial = member.role || member.award;
-                        const tooltipContent = member.role || member.award;
-                        const highlightClass = member.role ? 'bg-primary/10' : 'bg-amber-400/10';
+          <CardContent>
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
+              <div className="relative flex-grow">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Search by name or Reg No..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <Select value={selectedState} onValueChange={setSelectedState}>
+                <SelectTrigger className="w-full sm:w-[200px]">
+                  <SelectValue placeholder="Filter by State" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All States</SelectItem>
+                  {uniqueStates.map(state => (
+                    <SelectItem key={state} value={state}>{state}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+             <p className="text-sm text-muted-foreground mb-4">
+                Showing {filteredMembers.length} of {processedMembers.length} members.
+            </p>
 
-                        return (
-                          <TableRow key={member.regNo} className={isSpecial ? highlightClass : ''}>
-                            <TableCell className="font-mono text-xs">{member.regNo}</TableCell>
-                            <TableCell className="font-medium">
-                              <div className="flex items-center gap-2">
-                                {member.name}
-                                {isSpecial && (
-                                  <Tooltip>
+            <TooltipProvider>
+              <div className="border rounded-md">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="cursor-pointer" onClick={() => requestSort('regNo')}>
+                        <div className="flex items-center">Reg No. {getSortIcon('regNo')}</div>
+                      </TableHead>
+                      <TableHead className="cursor-pointer" onClick={() => requestSort('name')}>
+                        <div className="flex items-center">Name {getSortIcon('name')}</div>
+                      </TableHead>
+                      <TableHead className="cursor-pointer" onClick={() => requestSort('state')}>
+                        <div className="flex items-center">State {getSortIcon('state')}</div>
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredMembers.map(member => (
+                      <TableRow key={member.regNo} className={(member.role || member.award) ? 'bg-primary/10' : ''}>
+                        <TableCell>{member.regNo}</TableCell>
+                        <TableCell className="font-medium">
+                          <div className="flex items-center gap-2">
+                             {(member.role || member.award) ? (
+                                <Tooltip>
                                     <TooltipTrigger>
-                                        {member.role ? <Crown className="h-4 w-4 text-primary" /> : <Award className="h-4 w-4 text-amber-500" />}
+                                        {member.role ? <Crown className="h-4 w-4 text-yellow-600" /> : <Award className="h-4 w-4 text-blue-600" />}
                                     </TooltipTrigger>
                                     <TooltipContent>
-                                      <p>{tooltipContent}</p>
+                                        <p>{member.role || member.award}</p>
                                     </TooltipContent>
-                                  </Tooltip>
-                                )}
-                              </div>
-                            </TableCell>
-                            <TableCell>{member.state}</TableCell>
-                          </TableRow>
-                        )
-                      })}
-                    </TableBody>
-                  </Table>
-                  {sortedAndFilteredMembers.length === 0 && (
-                    <p className="text-center text-muted-foreground py-8">No members found.</p>
-                  )}
-                </div>
-             </TooltipProvider>
-          </CardContent>
-        </Card>
-      </section>
-
-      <section id="member-statistics">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <BarChart2 className="h-8 w-8 text-primary" />
-              <CardTitle className="text-3xl font-headline text-primary">Member Statistics</CardTitle>
-            </div>
-            <CardDescription>A visual breakdown of our community members.</CardDescription>
-          </CardHeader>
-          <CardContent className="grid grid-cols-1 gap-12">
-            <TooltipProvider>
-              <div>
-                <h3 className="text-xl font-semibold text-center mb-4">Members by State</h3>
-                <div className="w-full h-[400px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={memberStats.stateData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" fontSize={12} interval={0} angle={-45} textAnchor="end" height={80} />
-                      <YAxis allowDecimals={false} />
-                      <RechartsTooltip
-                        cursor={{ fill: 'hsl(var(--muted))' }}
-                        content={({ active, payload }) => {
-                          if (active && payload && payload.length) {
-                            return (
-                              <div className="rounded-lg border bg-background p-2 shadow-sm">
-                                <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
-                              </div>
-                            )
-                          }
-                          return null
-                        }}
-                      />
-                      <Bar dataKey="total" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-               <div>
-                <h3 className="text-xl font-semibold text-center mb-4">Members by Zone</h3>
-                <div className="w-full h-[400px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={memberStats.zoneData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" fontSize={12} />
-                      <YAxis allowDecimals={false} />
-                      <RechartsTooltip
-                        cursor={{ fill: 'hsl(var(--muted))' }}
-                        content={({ active, payload }) => {
-                          if (active && payload && payload.length) {
-                            return (
-                              <div className="rounded-lg border bg-background p-2 shadow-sm">
-                                <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
-                              </div>
-                            )
-                          }
-                          return null
-                        }}
-                      />
-                      <Bar dataKey="total" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
+                                </Tooltip>
+                             ) : null}
+                            <span>{member.name}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>{member.state}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
               </div>
             </TooltipProvider>
           </CardContent>
         </Card>
       </section>
-
-      <section id="privacy-policy">
+      
+      <section id="member-stats">
         <Card className="shadow-lg">
-          <CardHeader className="flex flex-row items-center justify-center space-x-3">
-            <ShieldCheck className="h-8 w-8 text-primary" />
-            <CardTitle className="text-3xl font-headline text-center">Privacy & Policy</CardTitle>
-          </CardHeader>
-          <CardContent className="text-base text-muted-foreground text-center px-4 md:px-6">
-            <p>
-              At OPTOBHARAT, we prioritize your privacy. We are committed to safeguarding your personal information and ensuring a secure experience within our community. We do not send spam, nor do we sell or share user data with third parties. Your trust is our responsibility.
-            </p>
-          </CardContent>
+            <CardHeader>
+                <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+                    <BarChart2 className="mr-3 h-8 w-8 text-primary" /> Member Statistics
+                </CardTitle>
+                <CardDescription className="text-center">
+                    A visual breakdown of our community.
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-12">
+                <div className="h-[400px] w-full">
+                     <p className="text-center font-semibold text-foreground mb-4">Top 15 States by Member Count</p>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={memberStatsByState} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
+                             <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis type="number" />
+                            <YAxis type="category" dataKey="name" width={100} tick={{ fontSize: 12 }} />
+                             <Tooltip
+                                cursor={{ fill: 'hsl(var(--muted))' }}
+                                content={({ active, payload }) => {
+                                    if (active && payload && payload.length) {
+                                        return (
+                                        <div className="bg-background border p-2 rounded-md shadow-md">
+                                            <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
+                                        </div>
+                                        );
+                                    }
+                                    return null;
+                                }}
+                            />
+                            <Bar dataKey="value" fill="hsl(var(--primary))" barSize={20} />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+                <div className="h-[400px] w-full">
+                    <p className="text-center font-semibold text-foreground mb-4">Members by Zone</p>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={memberStatsByZone} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
+                             <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis type="number" />
+                            <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 12 }} />
+                             <Tooltip
+                                cursor={{ fill: 'hsl(var(--muted))' }}
+                                content={({ active, payload }) => {
+                                    if (active && payload && payload.length) {
+                                        return (
+                                        <div className="bg-background border p-2 rounded-md shadow-md">
+                                            <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
+                                        </div>
+                                        );
+                                    }
+                                    return null;
+                                }}
+                            />
+                            <Bar dataKey="value" fill="hsl(var(--accent))" barSize={30} />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            </CardContent>
         </Card>
       </section>
+
     </div>
   );
 }
