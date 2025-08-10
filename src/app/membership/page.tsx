@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -10,6 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown } from 'lucide-react';
+
 
 interface Member {
   name: string;
@@ -277,12 +277,12 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Madhu Prasad', state: 'Delhi' },
   { name: 'Ansh Baria', state: 'Delhi' },
   { name: 'ASIF SHAIK', state: 'Telangana' },
-  { name: 'Anshi jha', state: 'Uttar Pradesh' },
+  { name: 'Anshi jha', state: 'Uttar pradesh' },
   { name: 'Jay Kumar', state: 'Rajasthan' },
   { name: 'SHEEBA', state: 'Uttar Pradesh' },
   { name: 'Delina Chyrmang', state: 'Meghalaya' },
   { name: 'Mohd Junaid', state: 'Uttar Pradesh' },
-  { name: 'Rehan Ahamad.', state: 'Uttar Pradesh' },
+  { name: 'Rehan Ahamad.', state: 'Uttar pradesh' },
   { name: 'Irbaz Miraji', state: 'Karnataka' },
   { name: 'Askar', state: 'Kerala' },
   { name: 'Sirin Saine Riba', state: 'West Bengal' },
@@ -297,8 +297,8 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Mayuri', state: 'Tamil Nadu' },
   { name: 'Aneesha Sulthana np', state: 'Kerala' },
   { name: 'Naina Jawed', state: 'Jharkhand' },
-  { name: 'Mohd Sakib', state: 'Uttar Pradesh' },
-  { name: 'Navjot singh', state: 'Uttar Pradesh' },
+  { name: 'Mohd Sakib', state: 'Uttar pradesh' },
+  { name: 'Navjot singh', state: 'Uttarpradesh' },
   { name: 'Ayaz Raza', state: 'Bihar' },
   { name: 'DANISH NAWAZ', state: 'Bihar' },
   { name: 'MOHD Raqib', state: 'Uttar Pradesh' },
@@ -306,12 +306,12 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Md zeeshan ali', state: 'Bihar' },
   { name: 'Anshika singh', state: 'Bihar' },
   { name: 'Shagufi', state: 'Uttar Pradesh' },
-  { name: 'Sareesh khan', state: 'Uttar Pradesh' },
+  { name: 'Sareesh khan', state: 'Uttar pradesh' },
   { name: 'Ayush Sharma', state: 'Himachal Pradesh' },
   { name: 'Jasmine', state: 'Rajasthan' },
   { name: 'Tabassum parween', state: 'Bihar' },
   { name: 'Optom K P Singh Patel', state: 'Uttar Pradesh' },
-  { name: 'Tayyaba saifi', state: 'Uttar Pradesh' },
+  { name: 'Tayyaba saifi', state: 'Uttar pradesh' },
   { name: 'Rudranil Ghosal', state: 'West Bengal' },
   { name: 'Debasmita Dutta', state: 'West Bengal' },
   { name: 'Tusha', state: 'Delhi' },
@@ -322,8 +322,8 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'KADEEJA SHERIN PA', state: 'Kerala' },
   { name: 'SOURENDU SARKAR', state: 'West Bengal' },
   { name: 'Sangeeta Yadav', state: 'Odisha' },
-  { name: 'Rishav raj kashyap', state: 'Uttar Pradesh' },
-  { name: 'Anika Pandey', state: 'Uttar Pradesh' },
+  { name: 'Rishav raj kashyap', state: 'Uttarpradesh' },
+  { name: 'Anika Pandey', state: 'Uttar pradesh' },
   { name: 'Santiya William', state: 'Tamil Nadu' },
   { name: 'Zeermika Teronpi', state: 'Assam' },
   { name: 'Sneha Khandelwal', state: 'Odisha' },
@@ -345,13 +345,13 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Harpreet kaur rana', state: 'Delhi' },
   { name: 'Rahul Sharma', state: 'Haryana' },
   { name: 'Radha Agarwal', state: 'Delhi' },
-  { name: 'Gopal Agrawal', state: 'Uttar Pradesh' },
+  { name: 'Gopal Agrawal', state: 'Uttarpradesh' },
   { name: 'Saman', state: 'Uttar Pradesh' },
   { name: 'Hariharan T', state: 'Tamil Nadu' },
   { name: 'B. Thulasi', state: 'Tamil Nadu' },
   { name: 'Sathya pooja', state: 'Tamil Nadu' },
   { name: 'M.Mugunthan', state: 'Tamil Nadu' },
-  { name: 'Gaurav Sen', state: 'Uttar Pradesh' },
+  { name: 'Gaurav Sen', state: 'Uttar pradesh' },
   { name: 'A.Hariharan', state: 'Tamil Nadu' },
   { name: 'T.Sugappriya', state: 'Tamil Nadu' },
   { name: 'J.Aiswarya', state: 'Tamil Nadu' },
@@ -410,23 +410,32 @@ const governingBody = {
   'PRITAM KARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
   'ANSHI JHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
   'M. Mega Dharshini': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
+  'M.MEGA DHARSHINI': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
   'MUZAHID KAMAL': 'Managing Director of Western Zone',
   'MEHETAB HUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
   'SHREYASI NATH': 'MODERATOR',
   'Rabjot Singh Gulati': 'State Head (Uttar Pradesh)',
   'Gopika V.': 'State Head (Kerala)',
+  'GOPIKA. V': 'State Head (Kerala)',
   'P.Kayal Vizhi': 'State Head (Tamil Nadu)',
+  'P.KAYAL VIZHI': 'State Head (Tamil Nadu)',
   'Shobana Priya S.': 'State Head (Andhra Pradesh)',
+  'SHOBANA PRIYA .S': 'State Head (Andhra Pradesh)',
   'Irbaz': 'State Head (Karnataka)',
   'Mugunthan': 'State Head (Telangana)',
+  'M.MUGUNTHAN': 'State Head (Telangana)',
   'Hariharn': 'State Head (Pondicherry)',
+  'A.HARIHARAN': 'State Head (Pondicherry)',
   'Haziel Rynjah': 'State Head (Meghalaya)',
   'Abhisek Buragohain': 'State Head (Assam)',
+  'ABHISEK BURAGOHAIN': 'State Head (Assam)',
   'Be An H. Phom': 'State Head (Nagaland)',
+  'BE-AN.H.PHOM': 'State Head (Nagaland)',
 };
 
 const contestWinners = {
     'Sreesandhiya G': '1st Place, Optopreneur 2025',
+    'SREESANDHIYA.G': '1st Place, Optopreneur 2025',
     'Anik Dingal': '2nd Place, Optopreneur 2025',
     'Mohd Khalid': '3rd Place, Optopreneur 2025',
 };
@@ -434,7 +443,7 @@ const contestWinners = {
 const normalizeState = (state: string) => {
     const s = state.toLowerCase().replace(/\./g, '').trim();
     if (s.startsWith('tamil')) return 'Tamil Nadu';
-    if (s.startsWith('uttar') || s === 'up' || s === 'u. p') return 'Uttar Pradesh';
+    if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p') return 'Uttar Pradesh';
     if (s.startsWith('west')) return 'West Bengal';
     return state.charAt(0).toUpperCase() + state.slice(1);
 };
@@ -446,16 +455,20 @@ const generateRegNo = (state: string, index: number) => {
 };
 
 const processedMembers: Member[] = originalMembers.map((member, index) => {
-    const normalizedName = member.name.toUpperCase().replace(/\s\./g, '.').trim();
+    const normalizedName = member.name.toUpperCase().replace(/\s\.|[^\w\s]/gi, '').replace(/\s+/g, ' ').trim();
     const simpleName = member.name.replace(/\s\./g, '.').trim();
     const state = normalizeState(member.state);
+    
+    const roleKey = Object.keys(governingBody).find(key => key.toUpperCase() === normalizedName);
+    const awardKey = Object.keys(contestWinners).find(key => key.toUpperCase() === normalizedName);
+
     return {
         ...member,
         name: simpleName,
         state,
         regNo: generateRegNo(state, index),
-        role: Object.entries(governingBody).find(([key]) => key.toUpperCase() === normalizedName)?.[1],
-        award: Object.entries(contestWinners).find(([key]) => key === simpleName)?.[1],
+        role: roleKey ? governingBody[roleKey as keyof typeof governingBody] : undefined,
+        award: awardKey ? contestWinners[awardKey as keyof typeof contestWinners] : undefined,
     };
 });
 
