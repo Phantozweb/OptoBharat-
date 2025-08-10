@@ -25,10 +25,8 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen bg-background">
         <Header />
-        <main className="flex-grow">
-          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-            {children}
-          </div>
+        <main className="flex-grow container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          {children}
         </main>
         <Footer />
         <Toaster />

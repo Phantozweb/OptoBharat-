@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, UserCircle, Landmark } from 'lucide-react';
+import { Users, UserCircle, Landmark, MapPin } from 'lucide-react';
 
 interface Member {
   name: string;
@@ -10,6 +10,16 @@ interface Member {
   imageUrl?: string;
   avatarFallback: string;
   dataAiHint?: string;
+}
+
+interface StateHead {
+  name: string;
+  state: string;
+}
+
+interface StateHeadSection {
+  title: string;
+  heads: StateHead[];
 }
 
 const governingBodyMembers: Member[] = [
@@ -69,9 +79,32 @@ const governingBodyMembers: Member[] = [
   },
 ];
 
-const stateHeadSections = [
-  { title: "STATE HEAD LIST CENTRAL ZONE, INDIA-OPTOBHARAT" },
-  { title: "STATE HEAD LIST SOUTHERN ZONE, INDIA-OPTOBHARAT" },
+const stateHeadSections: StateHeadSection[] = [
+  { 
+    title: "Central Zone",
+    heads: [
+      { name: "Rabjot Singh Gulati", state: "Uttar Pradesh" },
+    ]
+  },
+  { 
+    title: "Southern Zone",
+    heads: [
+      { name: "Gopika V.", state: "Kerala" },
+      { name: "M. Mega Dharshini", state: "Tamil Nadu" },
+      { name: "Shobana Priya S.", state: "Andhra Pradesh" },
+      { name: "Irbaz", state: "Karnataka" },
+      { name: "Mugunthan", state: "Telangana" },
+      { name: "Hariharn", state: "Pondicherry" },
+    ]
+  },
+   { 
+    title: "North-Eastern Zone",
+    heads: [
+      { name: "Haziel Rynjah", state: "Meghalaya" },
+      { name: "Abhisek Buragohain", state: "Assam" },
+      { name: "Be An H. Phom", state: "Nagaland" },
+    ]
+  },
 ];
 
 export default function GoverningBodyPage() {
@@ -99,7 +132,7 @@ export default function GoverningBodyPage() {
       </section>
 
       <section id="members">
-        <h2 className="text-3xl font-headline text-center mb-8 text-primary">Meet the Team</h2>
+        <h2 className="text-3xl font-headline text-center mb-8 text-primary">Meet the Directors</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {governingBodyMembers.map((member) => (
             <Card key={member.name} className="shadow-md text-center flex flex-col items-center p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
@@ -118,20 +151,42 @@ export default function GoverningBodyPage() {
 
       <section id="state-heads">
         <h2 className="text-3xl font-headline text-center mt-12 mb-8 text-primary">Zonal State Heads</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="space-y-8">
           {stateHeadSections.map((section) => (
             <Card key={section.title} className="shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
-              <CardHeader className="flex flex-row items-center space-x-3 p-4">
+              <CardHeader className="flex flex-row items-center space-x-3 p-4 bg-primary/10">
                 <Landmark className="h-8 w-8 text-primary flex-shrink-0" />
-                <CardTitle className="text-xl font-headline leading-tight">{section.title}</CardTitle>
+                <CardTitle className="text-xl font-headline leading-tight text-primary">{section.title}</CardTitle>
               </CardHeader>
-              <CardContent className="p-4 pt-0">
+              <CardContent className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {section.heads.map((head) => (
+                   <div key={head.name} className="flex items-center space-x-3 p-3 rounded-md bg-background">
+                      <MapPin className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-foreground">{head.name}</p>
+                        <p className="text-sm text-muted-foreground">{head.state}</p>
+                      </div>
+                   </div>
+                ))}
+                {section.heads.length === 0 && (
+                   <p className="text-sm text-muted-foreground col-span-full">
+                    Detailed list of state heads for this zone will be updated soon.
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
+              <CardHeader className="flex flex-row items-center space-x-3 p-4 bg-primary/10">
+                <Landmark className="h-8 w-8 text-primary flex-shrink-0" />
+                <CardTitle className="text-xl font-headline leading-tight text-primary">STATE HEAD LIST SOUTHERN ZONE, INDIA-OPTOBHARAT</CardTitle>
+              </CardHeader>
+              <CardContent className="p-4 pt-2">
                 <p className="text-sm text-muted-foreground">
                   Detailed list of state heads for this zone will be updated soon.
                 </p>
               </CardContent>
             </Card>
-          ))}
         </div>
       </section>
     </div>
