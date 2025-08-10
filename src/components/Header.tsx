@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, ShieldCheck, BookOpen, ChevronDown, Handshake, Gem, Users2 } from 'lucide-react';
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, ShieldCheck, BookOpen, ChevronDown, Handshake, Gem, Users2, CalendarDays, Book } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
@@ -13,28 +13,29 @@ import { usePathname } from 'next/navigation';
 
 const mainNavLinks = [
   { href: '/', label: 'Home', icon: HomeIcon },
-  { href: '/about', label: 'About', icon: Info },
   { href: '/governing-body', label: 'Governing Body', icon: Users },
   { href: '/membership', label: 'Membership', icon: UserPlus },
   { href: '/forum', label: 'Optobharat Forum', icon: MessageSquare },
-  { href: '/blogs-events', label: 'Blogs & Events', icon: NewspaperIcon },
+  { href: '/blogs-events', label: 'Blogs', icon: Book },
+  { href: '/blogs-events', label: 'Events', icon: CalendarDays },
+  { href: '/resources', label: 'Resources', icon: BookOpen },
 ];
 
-const joinSupportSubLinks = [
+const supportSubLinks = [
     { href: '/about/partners', label: 'Partnership', icon: Handshake },
     { href: '/about/partners', label: 'Collaboration', icon: Users2 },
     { href: '/about/sponsors', label: 'Sponsorship', icon: Gem },
 ];
 
 const moreNavLinks = [
-  { href: '/resources', label: 'Resources', icon: BookOpen },
+  { href: '/about', label: 'About', icon: Info },
   { href: '/community-guidelines', label: 'Community Guidelines', icon: ShieldCheck },
   { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
 const allMobileNavLinks = [
     ...mainNavLinks,
-    ...joinSupportSubLinks,
+    ...supportSubLinks,
     ...moreNavLinks
 ];
 
@@ -66,18 +67,18 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {mainNavLinks.map((link) => (
-            <NavLink key={link.href} href={link.href} label={link.label} />
+            <NavLink key={link.label} href={link.href} label={link.label} />
           ))}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Join & Support
+                    Support
                     <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                {joinSupportSubLinks.map((link) => (
+                {supportSubLinks.map((link) => (
                     <DropdownMenuItem key={link.label} asChild>
                         <Link href={link.href} className="flex items-center gap-2">
                             {link.icon && <link.icon className="h-4 w-4" />}
