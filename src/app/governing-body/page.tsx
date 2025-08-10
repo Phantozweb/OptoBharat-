@@ -126,23 +126,26 @@ const studentAmbassadors: StudentAmbassador[] = [
 
 const LeadershipMemberCard = ({ member }: { member: Member }) => {
     let objectPosition = 'center';
+    let transform = 'none';
+
     if (member.name === 'MOHD ASAD') {
         objectPosition = '50% 20%';
     } else if (member.name === 'JANARTHAN VEERAMANI') {
         objectPosition = '50% 35%';
     } else if (member.name === 'NIZAM UDDIN SK') {
-        objectPosition = '50% 40%';
+        objectPosition = '50% 60%';
+        transform = 'scale(1.15)';
     }
 
     return (
         <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
-            <Avatar className="h-24 w-24 border-4 border-primary mb-4 shadow-md">
+            <Avatar className="h-24 w-24 border-4 border-primary mb-4 shadow-md overflow-hidden">
                 <AvatarImage 
                     src={member.imageUrl} 
                     alt={member.name} 
                     data-ai-hint={member.dataAiHint || "person portrait"} 
                     className="object-cover" 
-                    style={{ objectPosition }}
+                    style={{ objectPosition, transform }}
                 />
                 <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
                     <User className="h-12 w-12" />
