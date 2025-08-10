@@ -9,7 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown, BarChart2 } from 'lucide-react';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip } from "recharts";
 
 
 interface Member {
@@ -445,9 +445,10 @@ const contestWinners = {
 const normalizeState = (state: string) => {
     const s = state.toLowerCase().replace(/\./g, '').trim();
     if (s.startsWith('tamil')) return 'Tamil Nadu';
-    if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p') return 'Uttar Pradesh';
+    if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p' || s === 'utar prdesh' || s === 'sageer alam' || s === 'uttar pardesh') return 'Uttar Pradesh';
     if (s.startsWith('west')) return 'West Bengal';
     if (s === 'lakhimpur kheri') return 'Uttar Pradesh'; // Map specific location to state
+    if (s === 'guja') return 'Gujarat';
     return state.charAt(0).toUpperCase() + state.slice(1).toLowerCase();
 };
 
@@ -613,7 +614,7 @@ export default function MembershipPage() {
           MEMBERSHIP <span className="text-primary">OPTOBHARAT</span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Join India&apos;s largest optometry student community and unlock a world of opportunities.
+          Join India's largest optometry student community and unlock a world of opportunities.
         </p>
       </section>
 
@@ -650,7 +651,7 @@ export default function MembershipPage() {
               </Button>
             </div>
             <p className="text-center font-semibold text-foreground">
-              First, you need to fill out the membership form to become eligible to join the WhatsApp community group. Otherwise, we won&apos;t be able to grant you access.
+              First, you need to fill out the membership form to become eligible to join the WhatsApp community group. Otherwise, we won't be able to grant you access.
             </p>
           </CardContent>
         </Card>
@@ -763,70 +764,72 @@ export default function MembershipPage() {
             <CardDescription>A visual breakdown of our community members.</CardDescription>
           </CardHeader>
           <CardContent className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold text-center mb-4">Members by State</h3>
-              <div className="w-full h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={memberStats.stateData} layout="vertical" margin={{ left: 20, right: 20 }}>
-                    <XAxis type="number" hide />
-                    <YAxis 
-                      dataKey="name" 
-                      type="category" 
-                      width={100} 
-                      tickLine={false} 
-                      axisLine={false} 
-                      fontSize={12}
-                    />
-                    <Tooltip
-                      cursor={{ fill: 'hsl(var(--muted))' }}
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          return (
-                            <div className="rounded-lg border bg-background p-2 shadow-sm">
-                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
-                            </div>
-                          )
-                        }
-                        return null
-                      }}
-                    />
-                    <Bar dataKey="total" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
+            <TooltipProvider>
+              <div>
+                <h3 className="text-xl font-semibold text-center mb-4">Members by State</h3>
+                <div className="w-full h-[400px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={memberStats.stateData} layout="vertical" margin={{ left: 20, right: 20 }}>
+                      <XAxis type="number" hide />
+                      <YAxis 
+                        dataKey="name" 
+                        type="category" 
+                        width={100} 
+                        tickLine={false} 
+                        axisLine={false} 
+                        fontSize={12}
+                      />
+                      <RechartsTooltip
+                        cursor={{ fill: 'hsl(var(--muted))' }}
+                        content={({ active, payload }) => {
+                          if (active && payload && payload.length) {
+                            return (
+                              <div className="rounded-lg border bg-background p-2 shadow-sm">
+                                <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
+                              </div>
+                            )
+                          }
+                          return null
+                        }}
+                      />
+                      <Bar dataKey="total" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
-            </div>
-             <div>
-              <h3 className="text-xl font-semibold text-center mb-4">Members by Zone</h3>
-              <div className="w-full h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={memberStats.zoneData} layout="vertical" margin={{ left: 20, right: 20 }}>
-                    <XAxis type="number" hide />
-                    <YAxis 
-                      dataKey="name" 
-                      type="category" 
-                      width={100} 
-                      tickLine={false} 
-                      axisLine={false} 
-                      fontSize={12}
-                    />
-                    <Tooltip
-                      cursor={{ fill: 'hsl(var(--muted))' }}
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          return (
-                            <div className="rounded-lg border bg-background p-2 shadow-sm">
-                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
-                            </div>
-                          )
-                        }
-                        return null
-                      }}
-                    />
-                    <Bar dataKey="total" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
+               <div>
+                <h3 className="text-xl font-semibold text-center mb-4">Members by Zone</h3>
+                <div className="w-full h-[400px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={memberStats.zoneData} layout="vertical" margin={{ left: 20, right: 20 }}>
+                      <XAxis type="number" hide />
+                      <YAxis 
+                        dataKey="name" 
+                        type="category" 
+                        width={100} 
+                        tickLine={false} 
+                        axisLine={false} 
+                        fontSize={12}
+                      />
+                      <RechartsTooltip
+                        cursor={{ fill: 'hsl(var(--muted))' }}
+                        content={({ active, payload }) => {
+                          if (active && payload && payload.length) {
+                            return (
+                              <div className="rounded-lg border bg-background p-2 shadow-sm">
+                                <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
+                              </div>
+                            )
+                          }
+                          return null
+                        }}
+                      />
+                      <Bar dataKey="total" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
-            </div>
+            </TooltipProvider>
           </CardContent>
         </Card>
       </section>
@@ -847,5 +850,3 @@ export default function MembershipPage() {
     </div>
   );
 }
-
-    
