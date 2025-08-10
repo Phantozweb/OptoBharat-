@@ -1,9 +1,14 @@
 
 import { notFound } from 'next/navigation';
-import { events, type OptoEvent } from '@/lib/events-data';
+import { events as optopreneurEvents, type OptoEvent as OptopreneurEvent } from '@/lib/events-data';
+import { events as quizEvents, type OptoEvent as QuizEvent } from '@/lib/quiz-event-data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Calendar } from 'lucide-react';
 import type { Metadata, ResolvingMetadata } from 'next';
+
+type OptoEvent = OptopreneurEvent | QuizEvent;
+
+const allEvents: OptoEvent[] = [...optopreneurEvents, ...quizEvents];
 
 type Props = {
   params: { slug: string };
@@ -35,13 +40,13 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 }
 
 export async function generateStaticParams() {
-  return events.map((event) => ({
+  return allEvents.map((event) => ({
     slug: event.slug,
   }));
 }
 
 function getEventFromParams(slug: string): OptoEvent | undefined {
-  return events.find((event) => event.slug === slug);
+  return allEvents.find((event) => event.slug === slug);
 }
 
 export default function EventDetailPage({ params }: { params: { slug: string } }) {

@@ -13,6 +13,12 @@ export interface OptoEvent {
   content: React.ReactNode;
 }
 
+export const winners = {
+    'SREESANDHIYA G': '1st Place, Optopreneur 2025',
+    'ANIK DINGAL': '2nd Place, Optopreneur 2025',
+    'MOHD KHALID': '3rd Place, Optopreneur 2025',
+};
+
 const WinnerCard = ({
     place,
     name,

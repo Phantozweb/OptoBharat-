@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, ArrowRight } from 'lucide-react';
-import { events } from '@/lib/events-data';
+import { events as optopreneurEvents } from '@/lib/events-data';
+import { events as quizEvents } from '@/lib/quiz-event-data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
   description: 'Explore past and upcoming events, webinars, and workshops hosted by OPTOBHARAT. Join us for continuous learning and professional growth in the field of optometry.',
   keywords: ['OPTOBHARAT events', 'optometry webinars', 'eye care workshops', 'optometry conferences India', 'student events'],
 };
+
+const allEvents = [...optopreneurEvents, ...quizEvents];
 
 export default function EventsPage() {
   return (
@@ -42,7 +45,7 @@ export default function EventsPage() {
             <CardTitle className="text-3xl font-headline text-center">Past Events</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {events.map((event) => (
+            {allEvents.map((event) => (
               <Card key={event.slug} className="flex flex-col bg-primary/5 hover:shadow-md transition-shadow">
                 <CardHeader>
                   <div className="flex items-center gap-4">

@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -10,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown, BarChart2 } from 'lucide-react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip, CartesianGrid } from "recharts";
+import { winners as optopreneurWinners } from '@/lib/events-data';
+import { winners as quizWinners } from '@/lib/quiz-event-data';
 
 
 interface Member {
@@ -427,11 +430,7 @@ const governingBody = {
   'BE AN H PHOM': 'State Head (Nagaland)',
 };
 
-const contestWinners = {
-    'SREESANDHIYA G': '1st Place, Optopreneur 2025',
-    'ANIK DINGAL': '2nd Place, Optopreneur 2025',
-    'MOHD KHALID': '3rd Place, Optopreneur 2025',
-};
+const contestWinners = { ...optopreneurWinners, ...quizWinners };
 
 const normalizeState = (state: string) => {
     const s = state.toLowerCase().replace(/\./g, '').trim();
