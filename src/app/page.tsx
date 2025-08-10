@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -15,6 +14,7 @@ const growthData = [
     { date: 'Apr 11, 2025', members: 100 },
     { date: 'Apr 29, 2025', members: 200 },
     { date: 'May 6, 2025', members: 300 },
+    { date: 'Jul 27, 2025', members: 400 },
     { date: 'Aug 10, 2025', members: 384 },
 ];
 
