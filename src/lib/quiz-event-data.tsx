@@ -1,4 +1,3 @@
-
 import { BrainCircuit, type LucideIcon, Trophy, User, Info, Mail, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,12 +12,12 @@ export interface OptoEvent {
 }
 
 export const winners = {
-    'MAMTA BISHNOI': '1st Place, National Quiz Competition 2025',
+    'MAMTABISHNOI': '1st Place, National Quiz Competition 2025',
     'REBEKAH R': '2nd Place, National Quiz Competition 2025',
-    'VASU RAJVANSHI': '3rd Place, National Quiz Competition 2025',
-    'HARIHARAN T': 'Winner, National Quiz Competition 2025',
-    'SUNNY HANT': 'Winner, National Quiz Competition 2025',
-    'NAVEEN M': 'Winner, National Quiz Competition 2025',
+    'VASURAJVANSHI': '3rd Place, National Quiz Competition 2025',
+    'HARIHARANT': 'Winner, National Quiz Competition 2025',
+    'SUNNYHANT': 'Winner, National Quiz Competition 2025',
+    'NAVEENM': 'Winner, National Quiz Competition 2025',
 };
 
 const WinnerCard = ({
