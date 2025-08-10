@@ -16,26 +16,21 @@ const WinnerCard = ({
     name,
     projectTitle,
     description,
-    badgeText,
     badgeColor,
   }: {
     place: string;
     name: string;
     projectTitle: string;
     description?: string;
-    badgeText: string;
     badgeColor: string;
   }) => (
     <Card className="flex flex-col text-center h-full hover:shadow-xl transition-shadow duration-300 bg-primary/5">
         <CardHeader>
-            <div className="mx-auto mb-4 relative">
+             <div className="mx-auto mb-4">
                 <Trophy className="h-20 w-20 text-primary/30" />
-                <div className={`absolute -bottom-2 -right-2 flex items-center justify-center h-10 w-10 rounded-full ${badgeColor} text-white font-bold text-lg border-4 border-background`}>
-                    {badgeText}
-                </div>
             </div>
-            <CardTitle className="text-xl font-headline text-primary">{place}</CardTitle>
-            <CardDescription className="text-lg font-semibold text-foreground pt-1">{name}</CardDescription>
+            <CardTitle className={`text-xl font-headline text-white rounded-md py-1 px-3 ${badgeColor} self-center`}>{place}</CardTitle>
+            <CardDescription className="text-lg font-semibold text-foreground pt-2">{name}</CardDescription>
         </CardHeader>
         <CardContent className="flex-grow flex flex-col justify-center">
             <p className="font-semibold text-base text-muted-foreground">&quot;{projectTitle}&quot;</p>
@@ -68,7 +63,6 @@ export const events: OptoEvent[] = [
                         name="Sreesandhiya G"
                         projectTitle="Intelligent Contact Lens Dispensing System with Mobile-Integrated AI"
                         description="🧠 A groundbreaking idea that redefines smart vision solutions using AI technology."
-                        badgeText="1"
                         badgeColor="bg-yellow-500"
                     />
                     <WinnerCard
@@ -76,14 +70,12 @@ export const events: OptoEvent[] = [
                         name="Anik Dingal"
                         projectTitle="A Smart, Portable IOP Device with Built-In Corneal Biomechanics Compensation"
                         description="🔬 A step forward in accessible glaucoma care through portable diagnostic innovation."
-                        badgeText="2"
                         badgeColor="bg-slate-500"
                     />
                     <WinnerCard
                         place="3rd Place"
                         name="Mohd Khalid"
                         projectTitle="Emerging Ideas in Optometry and Clinical Advancements"
-                        badgeText="3"
                         badgeColor="bg-yellow-700"
                     />
                 </div>
