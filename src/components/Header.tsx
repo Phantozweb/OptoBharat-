@@ -5,24 +5,25 @@ import { useState } from 'react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, Gavel, FileText, ChevronDown, BookOpen, ShieldCheck, Handshake, Gem } from 'lucide-react';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, DropdownMenuPortal } from '@/components/ui/dropdown-menu';
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, ShieldCheck, BookOpen, ChevronDown, Handshake, Gem, Users2 } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 
 const mainNavLinks = [
   { href: '/', label: 'Home', icon: HomeIcon },
+  { href: '/about', label: 'About', icon: Info },
   { href: '/governing-body', label: 'Governing Body', icon: Users },
   { href: '/membership', label: 'Membership', icon: UserPlus },
   { href: '/forum', label: 'Optobharat Forum', icon: MessageSquare },
   { href: '/blogs-events', label: 'Blogs & Events', icon: NewspaperIcon },
 ];
 
-const aboutSubLinks = [
-    { href: '/about', label: 'About OPTOBHARAT', icon: Info },
-    { href: '/about/partners', label: 'Our Partners & Collaboration', icon: Handshake },
-    { href: '/about/sponsors', label: 'Our Sponsors', icon: Gem },
+const joinSupportSubLinks = [
+    { href: '/about/partners', label: 'Partnership', icon: Handshake },
+    { href: '/about/partners', label: 'Collaboration', icon: Users2 },
+    { href: '/about/sponsors', label: 'Sponsorship', icon: Gem },
 ];
 
 const moreNavLinks = [
@@ -33,7 +34,7 @@ const moreNavLinks = [
 
 const allMobileNavLinks = [
     ...mainNavLinks,
-    ...aboutSubLinks,
+    ...joinSupportSubLinks,
     ...moreNavLinks
 ];
 
@@ -71,13 +72,13 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    About
+                    Join & Support
                     <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                {aboutSubLinks.map((link) => (
-                    <DropdownMenuItem key={link.href} asChild>
+                {joinSupportSubLinks.map((link) => (
+                    <DropdownMenuItem key={link.label} asChild>
                         <Link href={link.href} className="flex items-center gap-2">
                             {link.icon && <link.icon className="h-4 w-4" />}
                             {link.label}
@@ -121,7 +122,7 @@ export function Header() {
                 <nav className="flex flex-col space-y-2 p-6 pt-0">
                   {allMobileNavLinks.map((link) => (
                       <Button 
-                        key={link.href} 
+                        key={link.href + link.label} // Use a more unique key for items with same href
                         variant="ghost" 
                         asChild 
                         className="text-foreground hover:text-primary transition-colors w-full justify-start text-base"
