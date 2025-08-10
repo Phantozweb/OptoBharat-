@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, User, Crown, MapPin, Shield, Trophy, UserCog, Woman } from 'lucide-react';
+import { Users, User, Crown, MapPin, Shield, Trophy } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 
@@ -143,7 +143,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
                     style={{ objectPosition }}
                 />
                 <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
-                    {member.isFemale ? <Woman className="h-12 w-12" /> : <User className="h-12 w-12" />} 
+                    <User className="h-12 w-12" />
                 </AvatarFallback>
             </Avatar>
             <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
@@ -152,20 +152,35 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
     );
 };
 
-const MemberListItem = ({ member }: { member: Member }) => (
-    <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
-        <Avatar className="h-14 w-14 border-2 border-primary">
-             <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
-            <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
-                 {member.isFemale ? <Woman className="h-8 w-8" /> : <User className="h-8 w-8" />}
-            </AvatarFallback>
-        </Avatar>
-        <div>
-            <p className="font-bold text-lg text-foreground">{member.name}</p>
-            <p className="text-sm text-primary font-semibold">{member.role}</p>
+const MemberListItem = ({ member }: { member: Member }) => {
+    let objectPosition = 'center';
+    if (member.name === 'ANSHI JHA') {
+        objectPosition = '50% 20%';
+    } else if (member.name === 'PRITAM KARMAKAR') {
+        objectPosition = '50% 35%';
+    }
+
+    return (
+        <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
+            <Avatar className="h-14 w-14 border-2 border-primary">
+                 <AvatarImage 
+                    src={member.imageUrl} 
+                    alt={member.name} 
+                    data-ai-hint={member.dataAiHint || "person portrait"} 
+                    className="object-cover" 
+                    style={{ objectPosition }}
+                 />
+                <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
+                     <User className="h-8 w-8" />
+                </AvatarFallback>
+            </Avatar>
+            <div>
+                <p className="font-bold text-lg text-foreground">{member.name}</p>
+                <p className="text-sm text-primary font-semibold">{member.role}</p>
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 
 export default function GoverningBodyPage() {
@@ -234,7 +249,7 @@ export default function GoverningBodyPage() {
                                         style={{ objectPosition: head.name === 'Rabjot Singh Gulati' ? '50% 20%' : 'center' }}
                                     />
                                     <AvatarFallback className="text-sm bg-muted text-primary shadow-inner">
-                                        {head.isFemale ? <Woman className="w-5 h-5"/> : <User className="w-5 h-5"/>}
+                                        <User className="w-5 h-5"/>
                                     </AvatarFallback>
                                 </Avatar>
                                 {head.name}
@@ -266,5 +281,3 @@ export default function GoverningBodyPage() {
     </div>
   );
 }
-
-    
