@@ -9,13 +9,13 @@ import {
   Users,
   Globe,
   Activity,
-  Lightbulb, // Changed from Search for Research & Innovation
+  Lightbulb,
   Building,
   Award,
   CalendarDays,
   MessageCircleQuestion,
-  ClipboardCheck, // Changed for Community Guidelines visual cue
-  Info // For the main guidelines section title
+  ClipboardCheck,
+  Info
 } from 'lucide-react';
 
 export default function OptobharatForumPage() {
@@ -73,7 +73,7 @@ export default function OptobharatForumPage() {
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <MessageSquare className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4">
@@ -111,10 +111,10 @@ export default function OptobharatForumPage() {
 
       <section id="forum-topics" aria-labelledby="forum-topics-heading">
         <h2 id="forum-topics-heading" className="sr-only">Forum Topics</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {forumSections.map((section) => (
-            <Card key={section.title} className="shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden">
-              <CardHeader className="flex flex-row items-center space-x-3 pb-3 bg-card/50 p-4">
+            <Card key={section.title} className="shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-primary/5">
+              <CardHeader className="flex flex-row items-center space-x-3 pb-3 p-4">
                 <section.icon aria-hidden="true" className="h-8 w-8 text-primary flex-shrink-0" />
                 <CardTitle className="text-xl font-headline leading-tight">{section.title}</CardTitle>
               </CardHeader>
@@ -134,7 +134,7 @@ export default function OptobharatForumPage() {
           </CardHeader>
           <CardContent className="space-y-6 p-4 md:p-6">
             <p className="text-center text-muted-foreground">
-              Check the community for the guidelines. {/* This is from user input, seems odd but following instructions */}
+              Check the community for the guidelines.
             </p>
             <ol className="list-decimal list-inside space-y-3 text-muted-foreground text-sm md:text-base pl-4">
               <li>

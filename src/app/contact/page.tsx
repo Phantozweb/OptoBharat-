@@ -30,7 +30,7 @@ export default function ContactPage() {
   const emailAddress = "inquiry.optobharat@gmail.com";
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <MessageCircle className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">

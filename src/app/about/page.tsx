@@ -4,7 +4,7 @@ import { CheckCircle, Users, Briefcase, BookOpen, Award, Eye } from 'lucide-reac
 
 export default function AboutOptobharatPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <Eye className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4">
@@ -34,7 +34,7 @@ export default function AboutOptobharatPage() {
         </Card>
       </section>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12">
         <section id="why-optobharat">
           <Card className="shadow-lg h-full bg-primary/5">
             <CardHeader>

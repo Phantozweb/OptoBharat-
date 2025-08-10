@@ -5,20 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, ExternalLink, Facebook, Instagram, Linkedin, Send, Twitter, Youtube, Users, Award, MessageSquare, NewspaperIcon, Info, Mail, Briefcase, Palette, Trophy, FlaskConical, Cpu, Landmark } from 'lucide-react';
 
-// Placeholder for a logo image if you have one, e.g., '/optobharat-logo.png'
-// For now, text logo is handled by the Header component.
-// const logoUrl = 'https://placehold.co/200x100.png'; 
 
 export default function OptobharatHomePage() {
-  // Social links are now primarily in the Footer.
-  // The 'Join Our Platforms' section has been removed from here to avoid redundancy.
-
   return (
-    <div className="space-y-12">
+    <div className="space-y-16 md:space-y-20">
       {/* Hero Section */}
       <section className="text-center py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
-        {/* If you have a logo image, you can uncomment and use it here */}
-        {/* <Image src={logoUrl} alt="OPTOBHARAT Logo" width={150} height={75} className="mx-auto mb-4" data-ai-hint="logo optometry" /> */}
         <h1 className="text-5xl md:text-6xl font-bold font-headline mb-6">
           OPTO<span className="text-primary">BHARAT</span>
         </h1>
@@ -26,7 +18,7 @@ export default function OptobharatHomePage() {
           India&apos;s largest optometry student community, dedicated to uniting future optometrists across the nation and worldwide.
         </p>
         <Button asChild size="lg">
-          <Link href="/membership#how-to-join"> {/* Updated to point to membership page section */}
+          <Link href="/membership#how-to-join">
             Join the Community <CheckCircle className="ml-2 h-5 w-5" />
           </Link>
         </Button>
@@ -68,10 +60,9 @@ export default function OptobharatHomePage() {
             <p>
               The Governing Body of OPTOBHARAT consists of dedicated leaders committed to fostering a strong and collaborative optometry student community across India. With a vision to empower future optometrists, our team works towards knowledge-sharing, professional development, and strengthening the field of eye care. Together, we shape the future of optometry in India and beyond.
             </p>
-            {/* Consider linking this to a dedicated Governing Body page if one exists or is planned */}
             <div className="text-center">
               <Button variant="link" asChild>
-                 <Link href="/governing-body"> {/* Placeholder, update if you have a specific page */}
+                 <Link href="/governing-body">
                     Read more ...
                  </Link>
               </Button>
@@ -127,7 +118,7 @@ export default function OptobharatHomePage() {
         </Card>
       </section>
 
-      {/* JOIN THE COMMUNITY Section (Simplified as social links are in footer) */}
+      {/* JOIN THE COMMUNITY Section */}
       <section id="join-community">
         <Card className="shadow-lg bg-primary/5">
           <CardHeader>

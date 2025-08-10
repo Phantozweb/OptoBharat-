@@ -2,14 +2,14 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CalendarDays, Rss, Award, BookOpen, CheckCircle, Users, Video, FileText, TrendingUp, UsersRound, NewspaperIcon } from 'lucide-react';
+import { CalendarDays, Rss, Award, BookOpen, CheckCircle, Users, Video, FileText, TrendingUp, UsersRound, Newspaper } from 'lucide-react';
 
 export default function BlogsEventsPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <div className="flex justify-center items-center mb-4">
-          <NewspaperIcon className="h-12 w-12 text-primary mr-3" />
+          <Newspaper className="h-12 w-12 text-primary mr-3" />
           <BookOpen className="h-12 w-12 text-primary" />
         </div>
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">
@@ -82,11 +82,6 @@ export default function BlogsEventsPage() {
                         <Video className="mr-2 h-5 w-5 text-primary" /> Past Events & Recordings:
                     </h4>
                     <p className="text-muted-foreground pl-7">Coming soon...</p>
-                    {/* Example of how a past event could be listed (optional)
-                    <div className="mt-2 pl-7">
-                        <Link href="#" className="text-primary hover:underline">Event Title - Watch Recording</Link>
-                    </div>
-                    */}
                 </div>
                  <div className="text-center mt-4">
                     <Button variant="outline" disabled>
@@ -111,7 +106,7 @@ export default function BlogsEventsPage() {
             </div>
             <div className="text-center mt-6">
                 <Button asChild>
-                    <Link href="/contact"> {/* Assuming contact page is the right place */}
+                    <Link href="/contact">
                         Contact Us to Collaborate
                     </Link>
                 </Button>

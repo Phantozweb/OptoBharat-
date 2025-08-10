@@ -76,7 +76,7 @@ const stateHeadSections = [
 
 export default function GoverningBodyPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-16 md:space-y-20">
       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <Users className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">
@@ -102,10 +102,10 @@ export default function GoverningBodyPage() {
         <h2 className="text-3xl font-headline text-center mb-8 text-primary">Meet the Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {governingBodyMembers.map((member) => (
-            <Card key={member.name} className="shadow-md text-center flex flex-col items-center p-4 hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
-              <Avatar className="h-28 w-28 mb-4 border-2 border-primary">
-                <AvatarImage src={member.imageUrl || `https://placehold.co/120x120.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
-                <AvatarFallback className="text-2xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
+            <Card key={member.name} className="shadow-md text-center flex flex-col items-center p-6 hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden bg-card/50">
+              <Avatar className="h-32 w-32 mb-4 border-4 border-primary">
+                <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} />
+                <AvatarFallback className="text-3xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
               </Avatar>
               <CardHeader className="p-2">
                 <CardTitle className="text-xl font-headline leading-tight">{member.name}</CardTitle>
