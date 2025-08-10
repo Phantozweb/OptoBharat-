@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, User, Crown, MapPin, Shield, Trophy, UserCog } from 'lucide-react';
+import { Users, User, Crown, MapPin, Shield, Trophy, UserCog, Woman } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 
@@ -59,14 +59,7 @@ const zonalDirectors: Member[] = [
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
   },
-  {
-    name: 'MUZAHID KAMAL',
-    role: 'Managing Director of Western Zone,India',
-    imageUrl: 'https://iili.io/FL46kcg.png',
-    avatarFallback: 'MK',
-    dataAiHint: 'person portrait',
-  },
-  {
+   {
     name: 'ANSHI JHA',
     role: 'MANAGING DIRECTOR OF CENTRAL ZONE,INDIA',
     imageUrl: 'https://iili.io/FL4gFu2.jpg',
@@ -76,10 +69,17 @@ const zonalDirectors: Member[] = [
   },
   {
     name: 'M. Mega Dharshini',
-    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA,',
+    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA',
     avatarFallback: 'MD',
     dataAiHint: 'person portrait',
     isFemale: true,
+  },
+  {
+    name: 'MUZAHID KAMAL',
+    role: 'Managing Director of Western Zone,India',
+    imageUrl: 'https://iili.io/FL46kcg.png',
+    avatarFallback: 'MK',
+    dataAiHint: 'person portrait',
   },
   {
     name: 'MEHETAB HUSSAIN',
@@ -90,7 +90,7 @@ const zonalDirectors: Member[] = [
   },
   {
     name: 'PRITAM KARMAKAR',
-    role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA.',
+    role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA',
     imageUrl: 'https://iili.io/FL4sn6P.jpg',
     avatarFallback: 'PK',
     dataAiHint: 'person portrait',
@@ -143,7 +143,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
                     style={{ objectPosition }}
                 />
                 <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
-                    {member.isFemale ? <UserCog className="h-12 w-12" /> : <User className="h-12 w-12" />} 
+                    {member.isFemale ? <Woman className="h-12 w-12" /> : <User className="h-12 w-12" />} 
                 </AvatarFallback>
             </Avatar>
             <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
@@ -157,7 +157,7 @@ const MemberListItem = ({ member }: { member: Member }) => (
         <Avatar className="h-14 w-14 border-2 border-primary">
              <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
             <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
-                 {member.isFemale ? <UserCog className="h-8 w-8" /> : <User className="h-8 w-8" />}
+                 {member.isFemale ? <Woman className="h-8 w-8" /> : <User className="h-8 w-8" />}
             </AvatarFallback>
         </Avatar>
         <div>
@@ -234,7 +234,7 @@ export default function GoverningBodyPage() {
                                         style={{ objectPosition: head.name === 'Rabjot Singh Gulati' ? '50% 20%' : 'center' }}
                                     />
                                     <AvatarFallback className="text-sm bg-muted text-primary shadow-inner">
-                                        {head.isFemale ? <UserCog className="w-5 h-5"/> : <User className="w-5 h-5"/>}
+                                        {head.isFemale ? <Woman className="w-5 h-5"/> : <User className="w-5 h-5"/>}
                                     </AvatarFallback>
                                 </Avatar>
                                 {head.name}
@@ -266,3 +266,5 @@ export default function GoverningBodyPage() {
     </div>
   );
 }
+
+    
