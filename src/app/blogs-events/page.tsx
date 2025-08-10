@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CalendarDays, Rss, Award, BookOpen, CheckCircle, Users, Video, FileText, TrendingUp, UsersRound, Newspaper } from 'lucide-react';
+import { CalendarDays, Rss, BookOpen, CheckCircle, UsersRound, Video, FileText, TrendingUp, Newspaper, Trophy } from 'lucide-react';
 
 export default function BlogsEventsPage() {
   return (
@@ -81,7 +81,25 @@ export default function BlogsEventsPage() {
                     <h4 className="text-xl font-semibold font-headline text-foreground mb-2 flex items-center">
                         <Video className="mr-2 h-5 w-5 text-primary" /> Past Events & Recordings:
                     </h4>
-                    <p className="text-muted-foreground pl-7">Coming soon...</p>
+                     <Card className="mt-4 shadow-sm bg-background">
+                      <CardHeader>
+                        <CardTitle className="text-lg font-headline text-primary flex items-center">
+                          <Trophy className="mr-2 h-5 w-5" /> Official Announcement – Optopreneur 2025 Winners
+                        </CardTitle>
+                        <CardDescription>Organized by OPTOBHARAT</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4 text-sm text-muted-foreground">
+                        <p>We are proud to announce the Top 3 Winners of Optopreneur 2025, a nationwide contest celebrating innovation and entrepreneurship among India’s brightest Optometry students! 🌟</p>
+                        <div className="space-y-3">
+                          <p><strong className="text-foreground">🥇 1st Place: Sreesandhiya G</strong><br />Project Title: “Intelligent Contact Lens Dispensing System with Mobile-Integrated AI”<br />🧠 A groundbreaking idea that redefines smart vision solutions using AI technology.</p>
+                          <p><strong className="text-foreground">🥈 2nd Place: Anik Dingal</strong><br />Project Title: “A Smart, Portable IOP Device with Built-In Corneal Biomechanics Compensation”<br />🔬 A step forward in accessible glaucoma care through portable diagnostic innovation.</p>
+                          <p><strong className="text-foreground">🥉 3rd Place: Mohd Khalid</strong><br />Project Title: “Emerging Ideas in Optometry and Clinical Advancements”</p>
+                        </div>
+                        <hr className="my-3" />
+                        <p>These exceptional students have demonstrated forward-thinking ideas that could shape the future of optometric care in India and beyond. Their vision and dedication inspire us all! 💡✨</p>
+                        <p>👏 A big thank you to all participants for sharing your ideas and contributing to the growth of eye care innovation.</p>
+                      </CardContent>
+                    </Card>
                 </div>
                  <div className="text-center mt-4">
                     <Button variant="outline" disabled>
