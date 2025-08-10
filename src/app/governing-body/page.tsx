@@ -28,7 +28,7 @@ interface StudentAmbassador {
 const leadershipMembers: Member[] = [
   {
     name: 'NIZAM UDDIN SK',
-    role: 'Founder and Director of OPTOBHARAT',
+    role: 'Founder and Director',
     avatarFallback: 'NS',
     dataAiHint: 'person portrait',
   },
@@ -40,7 +40,7 @@ const leadershipMembers: Member[] = [
   },
   {
     name: 'MOHD ASAD',
-    role: 'HEAD OF ACADEMIC, OPTOBHARAT',
+    role: 'HEAD OF ACADEMIC',
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
   },
