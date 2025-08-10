@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown, BarChart2 } from 'lucide-react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip, CartesianGrid } from "recharts";
 import { winners as optopreneurWinners } from '@/lib/events-data';
@@ -510,8 +511,8 @@ export default function MembershipPage() {
   const [selectedState, setSelectedState] = useState('all');
   const [sortConfig, setSortConfig] = useState<{ key: keyof Member; direction: 'ascending' | 'descending' } | null>(null);
 
-  const processedMembers: Member[] = useMemo(() => {
-    let members = originalMembers.map((member, index) => {
+  const allMembers: Member[] = useMemo(() => {
+    return originalMembers.map((member, index) => {
       const normalizedState = normalizeState(member.state);
       const normalizedName = normalizeName(member.name);
       
@@ -526,7 +527,10 @@ export default function MembershipPage() {
       
       return memberData;
     });
+  }, []);
 
+  const sortedMembers = useMemo(() => {
+    let members = [...allMembers];
     if (sortConfig !== null) {
       members.sort((a, b) => {
         if (a[sortConfig.key]! < b[sortConfig.key]!) {
@@ -539,21 +543,21 @@ export default function MembershipPage() {
       });
     }
     return members;
-  }, [sortConfig]);
+  }, [allMembers, sortConfig]);
 
   const filteredMembers = useMemo(() => {
-    return processedMembers.filter(member => {
+    return sortedMembers.filter(member => {
       const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             member.regNo.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesState = selectedState === 'all' || member.state === selectedState;
       return matchesSearch && matchesState;
     });
-  }, [processedMembers, searchTerm, selectedState]);
+  }, [sortedMembers, searchTerm, selectedState]);
 
   const uniqueStates = useMemo(() => {
-    const states = new Set(processedMembers.map(m => m.state));
+    const states = new Set(allMembers.map(m => m.state));
     return Array.from(states).sort();
-  }, [processedMembers]);
+  }, [allMembers]);
 
   const requestSort = (key: keyof Member) => {
     let direction: 'ascending' | 'descending' = 'ascending';
@@ -571,7 +575,7 @@ export default function MembershipPage() {
   };
 
   const memberStatsByState = useMemo(() => {
-    const counts = processedMembers.reduce((acc, member) => {
+    const counts = allMembers.reduce((acc, member) => {
         acc[member.state] = (acc[member.state] || 0) + 1;
         return acc;
     }, {} as Record<string, number>);
@@ -580,10 +584,10 @@ export default function MembershipPage() {
         .map(([name, value]) => ({ name, value }))
         .sort((a, b) => b.value - a.value)
         .slice(0, 15);
-  }, [processedMembers]);
+  }, [allMembers]);
 
   const memberStatsByZone = useMemo(() => {
-    const counts = processedMembers.reduce((acc, member) => {
+    const counts = allMembers.reduce((acc, member) => {
         const zone = member.zone || 'Unknown';
         acc[zone] = (acc[zone] || 0) + 1;
         return acc;
@@ -596,7 +600,7 @@ export default function MembershipPage() {
             if (b.name === 'International' || b.name === 'Unknown') return -1;
             return b.value - a.value;
         });
-  }, [processedMembers]);
+  }, [allMembers]);
 
 
   return (
@@ -666,7 +670,7 @@ export default function MembershipPage() {
                 </Select>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
-                  Showing {filteredMembers.length} of {processedMembers.length} members.
+                  Showing {filteredMembers.length} of {allMembers.length} members.
               </p>
 
               <div className="border rounded-md">
@@ -693,8 +697,10 @@ export default function MembershipPage() {
                               <span>{member.name}</span>
                               {(member.role || member.award) && (
                                   <Tooltip>
-                                      <TooltipTrigger>
+                                      <TooltipTrigger asChild>
+                                        <span className="inline-block">
                                           {member.role ? <Crown className="h-4 w-4 text-yellow-600" /> : <Award className="h-4 w-4 text-blue-600" />}
+                                        </span>
                                       </TooltipTrigger>
                                       <TooltipContent>
                                           <p>{member.role || member.award}</p>
@@ -715,64 +721,74 @@ export default function MembershipPage() {
         
         <section id="member-stats">
           <Card className="shadow-lg">
-              <CardHeader>
-                  <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
-                      <BarChart2 className="mr-3 h-8 w-8 text-primary" /> Member Statistics
-                  </CardTitle>
-                  <CardDescription className="text-center">
-                      A visual breakdown of our community of {processedMembers.length} members.
-                  </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-12">
-                  <div className="h-[400px] w-full">
-                      <p className="text-center font-semibold text-foreground mb-4">Top 15 States by Member Count</p>
-                      <ResponsiveContainer width="100%" height="100%">
-                          <BarChart data={memberStatsByState} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
-                              <CartesianGrid strokeDasharray="3 3" />
-                              <XAxis type="number" />
-                              <YAxis type="category" dataKey="name" width={100} tick={{ fontSize: 12 }} />
-                              <RechartsTooltip
-                                  cursor={{ fill: 'hsl(var(--muted))' }}
-                                  content={({ active, payload }) => {
-                                      if (active && payload && payload.length) {
-                                          return (
-                                          <div className="bg-background border p-2 rounded-md shadow-md">
-                                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
-                                          </div>
-                                          );
-                                      }
-                                      return null;
-                                  }}
-                              />
-                              <Bar dataKey="value" fill="hsl(var(--primary))" barSize={20} />
-                          </BarChart>
-                      </ResponsiveContainer>
+            <CardHeader>
+              <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+                <BarChart2 className="mr-3 h-8 w-8 text-primary" /> Member Statistics
+              </CardTitle>
+              <CardDescription className="text-center">
+                A visual breakdown of our community of {allMembers.length} members.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="px-2 sm:px-6">
+              <Tabs defaultValue="state" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="state">State-wise</TabsTrigger>
+                  <TabsTrigger value="zone">Zone-wise</TabsTrigger>
+                </TabsList>
+                <TabsContent value="state">
+                  <div className="h-[450px] w-full pt-6">
+                    <p className="text-center font-semibold text-foreground mb-4">Top 15 States by Member Count</p>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={memberStatsByState} layout="vertical" margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" />
+                        <YAxis type="category" dataKey="name" width={100} tick={{ fontSize: 12 }} />
+                        <RechartsTooltip
+                          cursor={{ fill: 'hsl(var(--muted))' }}
+                          content={({ active, payload }) => {
+                            if (active && payload && payload.length) {
+                              return (
+                                <div className="bg-background border p-2 rounded-md shadow-md">
+                                  <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
+                                </div>
+                              );
+                            }
+                            return null;
+                          }}
+                        />
+                        <Bar dataKey="value" fill="hsl(var(--primary))" barSize={20} />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
-                  <div className="h-[400px] w-full">
-                      <p className="text-center font-semibold text-foreground mb-4">Members by Zone</p>
-                      <ResponsiveContainer width="100%" height="100%">
-                          <BarChart data={memberStatsByZone} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
-                              <CartesianGrid strokeDasharray="3 3" />
-                              <XAxis type="number" />
-                              <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 12 }} />
-                              <RechartsTooltip
-                                  cursor={{ fill: 'hsl(var(--muted))' }}
-                                  content={({ active, payload }) => {
-                                      if (active && payload && payload.length) {
-                                          return (
-                                          <div className="bg-background border p-2 rounded-md shadow-md">
-                                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
-                                          </div>
-                                          );
-                                      }
-                                      return null;
-                                  }}
-                              />
-                              <Bar dataKey="value" fill="hsl(var(--accent))" barSize={30} />
-                          </BarChart>
-                      </ResponsiveContainer>
+                </TabsContent>
+                <TabsContent value="zone">
+                  <div className="h-[450px] w-full pt-6">
+                    <p className="text-center font-semibold text-foreground mb-4">Members by Zone</p>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={memberStatsByZone} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" />
+                        <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 12 }} />
+                        <RechartsTooltip
+                          cursor={{ fill: 'hsl(var(--muted))' }}
+                          content={({ active, payload }) => {
+                            if (active && payload && payload.length) {
+                              return (
+                                <div className="bg-background border p-2 rounded-md shadow-md">
+                                  <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value} members`}</p>
+                                </div>
+                              );
+                            }
+                            return null;
+                          }}
+                        />
+                        <Bar dataKey="value" fill="hsl(var(--accent))" barSize={30} />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
-              </CardContent>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
           </Card>
         </section>
       </TooltipProvider>
