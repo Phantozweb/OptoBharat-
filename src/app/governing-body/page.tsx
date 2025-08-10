@@ -55,13 +55,20 @@ const leadershipMembers: Member[] = [
 const zonalDirectors: Member[] = [
   {
     name: 'MOHD ADNAN',
-    role: 'MANAGING DIRECTOR OF NORTHERN ZONE,INDIA',
+    role: 'MANAGING DIRECTOR OF NORTHERN ZONE',
     avatarFallback: 'MA',
+    dataAiHint: 'person portrait',
+  },
+  {
+    name: 'PRITAM KARMAKAR',
+    role: 'MANAGING DIRECTOR OF EASTERN ZONE',
+    imageUrl: 'https://iili.io/FL4sn6P.jpg',
+    avatarFallback: 'PK',
     dataAiHint: 'person portrait',
   },
    {
     name: 'ANSHI JHA',
-    role: 'MANAGING DIRECTOR OF CENTRAL ZONE,INDIA',
+    role: 'MANAGING DIRECTOR OF CENTRAL ZONE',
     imageUrl: 'https://iili.io/FL4gFu2.jpg',
     avatarFallback: 'AJ',
     dataAiHint: 'person portrait',
@@ -69,30 +76,23 @@ const zonalDirectors: Member[] = [
   },
   {
     name: 'M. Mega Dharshini',
-    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA',
+    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE',
     avatarFallback: 'MD',
     dataAiHint: 'person portrait',
     isFemale: true,
   },
   {
     name: 'MUZAHID KAMAL',
-    role: 'Managing Director of Western Zone,India',
+    role: 'Managing Director of Western Zone',
     imageUrl: 'https://iili.io/FL46kcg.png',
     avatarFallback: 'MK',
     dataAiHint: 'person portrait',
   },
   {
     name: 'MEHETAB HUSSAIN',
-    role: 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE,INDIA',
+    role: 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
     imageUrl: 'https://iili.io/FL445EF.jpg',
     avatarFallback: 'MH',
-    dataAiHint: 'person portrait',
-  },
-  {
-    name: 'PRITAM KARMAKAR',
-    role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA',
-    imageUrl: 'https://iili.io/FL4sn6P.jpg',
-    avatarFallback: 'PK',
     dataAiHint: 'person portrait',
   },
 ];
