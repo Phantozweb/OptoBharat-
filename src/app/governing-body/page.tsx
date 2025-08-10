@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, User, Crown, MapPin, Shield, Trophy } from 'lucide-react';
+import { Users, User, Crown, MapPin, Shield, Trophy, UserCog } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 
@@ -12,6 +12,7 @@ interface Member {
   imageUrl?: string;
   avatarFallback: string;
   dataAiHint?: string;
+  isFemale?: boolean;
 }
 
 interface StateHead {
@@ -19,6 +20,7 @@ interface StateHead {
   state: string;
   zone: string;
   imageUrl?: string;
+  isFemale?: boolean;
 }
 
 interface StudentAmbassador {
@@ -53,41 +55,43 @@ const leadershipMembers: Member[] = [
 const zonalDirectors: Member[] = [
   {
     name: 'M. Mega Dharshini',
-    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA, - OPTOBHARAT',
+    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA,',
     avatarFallback: 'MD',
     dataAiHint: 'person portrait',
+    isFemale: true,
   },
   {
     name: 'MUZAHID KAMAL',
-    role: 'Managing Director of Western Zone,India - OPTOBHARAT',
+    role: 'Managing Director of Western Zone,India',
     imageUrl: 'https://iili.io/FL46kcg.png',
     avatarFallback: 'MK',
     dataAiHint: 'person portrait',
   },
   {
     name: 'ANSHI JHA',
-    role: 'MANAGING DIRECTOR OF CENTRAL ZONE,INDIA - OPTOBHARAT',
+    role: 'MANAGING DIRECTOR OF CENTRAL ZONE,INDIA',
     imageUrl: 'https://iili.io/FL4gFu2.jpg',
     avatarFallback: 'AJ',
     dataAiHint: 'person portrait',
+    isFemale: true,
   },
   {
     name: 'MEHETAB HUSSAIN',
-    role: 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE,INDIA - OPTOBHARAT',
+    role: 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE,INDIA',
     imageUrl: 'https://iili.io/FL445EF.jpg',
     avatarFallback: 'MH',
     dataAiHint: 'person portrait',
   },
   {
     name: 'PRITAM KARMAKAR',
-    role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA. - OPTOBHARAT',
+    role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA.',
     imageUrl: 'https://iili.io/FL4sn6P.jpg',
     avatarFallback: 'PK',
     dataAiHint: 'person portrait',
   },
   {
     name: 'MOHD ADNAN',
-    role: 'MANAGING DIRECTOR OF NORTHERN ZONE,INDIA- OPTOBHARAT',
+    role: 'MANAGING DIRECTOR OF NORTHERN ZONE,INDIA',
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
   },
@@ -95,24 +99,25 @@ const zonalDirectors: Member[] = [
 
 const stateHeads: StateHead[] = [
     { name: "Rabjot Singh Gulati", state: "Uttar Pradesh", zone: "Central Zone", imageUrl: "https://iili.io/FL4yJcl.png" },
-    { name: "Gopika V.", state: "Kerala", zone: "Southern Zone" },
-    { name: "P.Kayal Vizhi", state: "Tamil Nadu", zone: "Southern Zone" },
-    { name: "Shobana Priya S.", state: "Andhra Pradesh", zone: "Southern Zone" },
+    { name: "Gopika V.", state: "Kerala", zone: "Southern Zone", isFemale: true },
+    { name: "P.Kayal Vizhi", state: "Tamil Nadu", zone: "Southern Zone", isFemale: true },
+    { name: "Shobana Priya S.", state: "Andhra Pradesh", zone: "Southern Zone", isFemale: true },
     { name: "Irbaz", state: "Karnataka", zone: "Southern Zone" },
     { name: "Mugunthan", state: "Telangana", zone: "Southern Zone" },
     { name: "Hariharn", state: "Pondicherry", zone: "Southern Zone" },
-    { name: "Haziel Rynjah", state: "Meghalaya", zone: "North-Eastern Zone" },
+    { name: "Haziel Rynjah", state: "Meghalaya", zone: "North-Eastern Zone", isFemale: true },
     { name: "Abhisek Buragohain", state: "Assam", zone: "North-Eastern Zone", imageUrl: 'https://iili.io/FL6wZ7I.png' },
-    { name: "Be An H. Phom", state: "Nagaland", zone: "North-Eastern Zone", imageUrl: 'https://iili.io/FL6zzQf.png' },
+    { name: "Be An H. Phom", state: "Nagaland", zone: "North-Eastern Zone", imageUrl: 'https://iili.io/FL6zzQf.png', isFemale: true },
 ];
 
 
 const moderator: Member = {
     name: 'SHREYASI NATH',
-    role: 'MODERATOR, OPTOBHARAT',
+    role: 'MODERATOR',
     imageUrl: 'https://iili.io/FL4bLfR.md.jpg',
     avatarFallback: 'SN',
     dataAiHint: 'person portrait',
+    isFemale: true,
 };
 
 const studentAmbassadors: StudentAmbassador[] = [
@@ -138,7 +143,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
                     style={{ objectPosition }}
                 />
                 <AvatarFallback className="text-3xl bg-muted text-primary shadow-inner">
-                    <User className="h-12 w-12" /> 
+                    {member.isFemale ? <UserCog className="h-12 w-12" /> : <User className="h-12 w-12" />} 
                 </AvatarFallback>
             </Avatar>
             <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
@@ -152,7 +157,7 @@ const MemberListItem = ({ member }: { member: Member }) => (
         <Avatar className="h-14 w-14 border-2 border-primary">
              <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
             <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
-                 <User className="h-8 w-8" />
+                 {member.isFemale ? <UserCog className="h-8 w-8" /> : <User className="h-8 w-8" />}
             </AvatarFallback>
         </Avatar>
         <div>
@@ -229,7 +234,7 @@ export default function GoverningBodyPage() {
                                         style={{ objectPosition: head.name === 'Rabjot Singh Gulati' ? '50% 20%' : 'center' }}
                                     />
                                     <AvatarFallback className="text-sm bg-muted text-primary shadow-inner">
-                                        <User className="w-5 h-5"/>
+                                        {head.isFemale ? <UserCog className="w-5 h-5"/> : <User className="w-5 h-5"/>}
                                     </AvatarFallback>
                                 </Avatar>
                                 {head.name}
@@ -261,5 +266,3 @@ export default function GoverningBodyPage() {
     </div>
   );
 }
-
-    
