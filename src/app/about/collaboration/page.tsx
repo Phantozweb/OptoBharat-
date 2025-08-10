@@ -3,6 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Users2, Mail } from 'lucide-react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Collaboration with OPTOBHARAT',
+  description: 'Explore collaboration opportunities with OPTOBHARAT. Work with our community on innovative projects, research, and events to advance the field of optometry in India and beyond.',
+  keywords: ['OPTOBHARAT collaboration', 'optometry research partnership', 'eye care innovation', 'optometry projects India', 'student community collaboration'],
+};
 
 export default function CollaborationPage() {
   const emailAddress = "inquiry.optobharat@gmail.com";

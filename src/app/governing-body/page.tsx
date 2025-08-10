@@ -4,7 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Users, User, Crown, MapPin, Shield, Trophy } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Governing Body - OPTOBHARAT Leadership',
+  description: 'Meet the Governing Body of OPTOBHARAT, including our Founder & Director Nizam Uddin SK, Director of Administration Janarthan Veeramani, Head of Academic Mohd Asad, and our Zonal Managing Directors like Mohd Adnan and Pritam Karmakar. Discover the leadership guiding India\'s largest optometry student community.',
+  keywords: [
+    'OPTOBHARAT governing body', 'OPTOBHARAT leadership', 'Nizam Uddin SK', 'Janarthan Veeramani', 'Mohd Asad', 
+    'Mohd Adnan', 'Pritam Karmakar', 'Anshi Jha', 'M. Mega Dharshini', 'Muzahid Kamal', 'Mehetab Hussain', 
+    'optometry student leaders', 'managing director optometry', 'zonal director optometry'
+  ],
+};
 
 interface Member {
   name: string;
@@ -53,7 +63,7 @@ const leadershipMembers: Member[] = [
 ];
 
 const zonalDirectors: Member[] = [
-  {
+    {
     name: 'MOHD ADNAN',
     role: 'MANAGING DIRECTOR OF NORTHERN ZONE',
     avatarFallback: 'MA',

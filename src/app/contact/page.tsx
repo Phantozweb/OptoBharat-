@@ -7,6 +7,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, Users, HelpCircle, Send, MessageCircle } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact OPTOBHARAT - Get in Touch with Us',
+  description: 'Contact OPTOBHARAT for questions, feedback, collaborations, or partnership inquiries. Connect with us via email or find answers in our FAQs. Let’s build the future of optometry together!',
+  keywords: ['contact OPTOBHARAT', 'optometry community contact', 'inquiry@optobharat', 'collaboration inquiry', 'optometry FAQs', 'get in touch'],
+};
 
 export default function ContactPage() {
   const faqs = [

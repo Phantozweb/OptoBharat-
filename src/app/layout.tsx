@@ -6,8 +6,25 @@ import { Footer } from '@/components/Footer';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'OPTOBHARAT - India\'s Optometry Student Community',
-  description: 'Connecting and empowering optometry students across India and worldwide. Join OPTOBHARAT for collaboration, knowledge-sharing, and professional growth.',
+  title: {
+    default: 'OPTOBHARAT - India\'s Largest Optometry Student Community',
+    template: '%s - OPTOBHARAT',
+  },
+  description: 'OPTOBHARAT is India\'s largest and most impactful optometry student community, dedicated to empowering the next generation of eye care professionals. Join us for education, innovation, and collaboration.',
+  keywords: ['OPTOBHARAT', 'optometry student community', 'India optometry', 'eye care education', 'optometrist network', 'vision care', 'student community'],
+  openGraph: {
+    title: 'OPTOBHARAT - India\'s Largest Optometry Student Community',
+    description: 'Connecting and empowering optometry students across India and worldwide.',
+    type: 'website',
+    url: 'https://www.optobharat.com', // Replace with your actual domain
+    // image: 'https://www.optobharat.com/og-image.png', // Replace with your actual OG image URL
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OPTOBHARAT - India\'s Largest Optometry Student Community',
+    description: 'Connecting and empowering optometry students across India and worldwide.',
+    // image: 'https://www.optobharat.com/twitter-image.png', // Replace with your actual Twitter image URL
+  },
 };
 
 export default function RootLayout({

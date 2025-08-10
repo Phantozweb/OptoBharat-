@@ -3,6 +3,13 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Rss, BookOpen, CheckCircle, FileText, TrendingUp, Newspaper, CalendarDays, ArrowRight } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blogs & Learning Hub - OPTOBHARAT',
+  description: 'Explore the OPTOBHARAT blog for the latest research, clinical insights, case studies, and career strategies in optometry. Join the conversation and contribute to the future of eye care.',
+  keywords: ['optometry blog', 'optometry research', 'clinical insights', 'eye care trends', 'optometry student resources', 'learning hub', 'career guidance'],
+};
 
 export default function BlogsPage() {
   return (

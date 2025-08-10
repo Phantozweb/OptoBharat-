@@ -17,6 +17,13 @@ import {
   ClipboardCheck,
   Info
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'OPTOBHARAT Forum - Discussions & Community',
+  description: 'Join the OPTOBHARAT forum to engage in discussions on resources, career guidance, mentorship, clinical skills, research, and more. Connect with the optometry community.',
+  keywords: ['OPTOBHARAT forum', 'optometry discussion board', 'student optometrist network', 'career guidance optometry', 'clinical skills discussion', 'research and innovation'],
+};
 
 export default function OptobharatForumPage() {
   const forumSections = [

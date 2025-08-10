@@ -3,6 +3,36 @@ import { notFound } from 'next/navigation';
 import { events, type OptoEvent } from '@/lib/events-data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Calendar } from 'lucide-react';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const event = getEventFromParams(params.slug);
+
+  if (!event) {
+    return {
+      title: 'Event Not Found',
+      description: 'The event you are looking for does not exist.',
+    };
+  }
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `${event.title} - OPTOBHARAT Events`,
+    description: `Details about the ${event.title} event by OPTOBHARAT, conducted on ${event.date}. ${event.subtitle}`,
+    keywords: [event.title, 'OPTOBHARAT event', 'optometry webinar', 'optometry contest', event.subtitle],
+    openGraph: {
+      title: `${event.title} - OPTOBHARAT Events`,
+      description: event.subtitle,
+      // You can add specific images for each event here if available
+      // images: ['/path/to/event-image.jpg', ...previousImages],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return events.map((event) => ({

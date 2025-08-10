@@ -3,6 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Gem, Mail } from 'lucide-react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sponsor OPTOBHARAT',
+  description: 'Support the next generation of optometrists by sponsoring OPTOBHARAT. Your contribution empowers our mission to provide education, resources, and opportunities to students across India.',
+  keywords: ['sponsor OPTOBHARAT', 'optometry sponsorship', 'support eye care education', 'corporate sponsorship India', 'empower students'],
+};
 
 export default function SponsorsPage() {
   const emailAddress = "inquiry.optobharat@gmail.com";

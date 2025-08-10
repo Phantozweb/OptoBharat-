@@ -2,6 +2,14 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download, BookText, FileText, Folder, Building2, BookOpen } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Optometry Resources & Official Documents - OPTOBHARAT',
+  description: 'Access official documents and resources related to the scope of practice for optometrists in India, including government communications, NCAHP acts, and circulars.',
+  keywords: ['optometry resources', 'optometry documents', 'NCAHP Act 2021', 'scope of practice India', 'optometrist regulations', 'government communications optometry'],
+};
+
 
 interface ResourceItemProps {
   title: string;

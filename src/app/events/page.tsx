@@ -4,6 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { CalendarDays, ArrowRight } from 'lucide-react';
 import { events } from '@/lib/events-data';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Events & Webinars - OPTOBHARAT',
+  description: 'Explore past and upcoming events, webinars, and workshops hosted by OPTOBHARAT. Join us for continuous learning and professional growth in the field of optometry.',
+  keywords: ['OPTOBHARAT events', 'optometry webinars', 'eye care workshops', 'optometry conferences India', 'student events'],
+};
 
 export default function EventsPage() {
   return (

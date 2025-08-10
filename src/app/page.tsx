@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, Users, Award, FlaskConical, Trophy } from 'lucide-react';
 
+// Metadata for the homepage is handled in the root layout.tsx
 
 export default function OptobharatHomePage() {
   return (

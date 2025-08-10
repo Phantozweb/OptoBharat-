@@ -1,6 +1,14 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle, Users, Briefcase, BookOpen, Award, Eye } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About OPTOBHARAT - Our Vision, Mission, and Community',
+  description: 'Learn about OPTOBHARAT, India’s largest optometry student community. Discover our mission to connect students, educators, and professionals to foster education, innovation, and collaboration in eye care.',
+  keywords: ['about OPTOBHARAT', 'optometry student community', 'Indian optometry', 'eye care professionals', 'vision care education', 'who can join OPTOBHARAT'],
+};
+
 
 export default function AboutOptobharatPage() {
   return (

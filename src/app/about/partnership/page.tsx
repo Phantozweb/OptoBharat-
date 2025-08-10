@@ -3,6 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Handshake, Mail } from 'lucide-react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Partnership with OPTOBHARAT',
+  description: 'Become a partner with OPTOBHARAT and join our mission to advance the field of optometry. We are seeking synergistic partnerships to create a brighter future in eye care.',
+  keywords: ['OPTOBHARAT partnership', 'optometry partners', 'eye care alliances', 'healthcare partnership India', 'partner with student community'],
+};
 
 export default function PartnershipPage() {
   const emailAddress = "inquiry.optobharat@gmail.com";

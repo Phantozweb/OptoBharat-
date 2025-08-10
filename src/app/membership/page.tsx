@@ -3,6 +3,13 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { UserPlus, ShieldCheck } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Join OPTOBHARAT - Membership',
+  description: 'Become a member of OPTOBHARAT, India’s largest optometry student community. Fill out the membership form to get access to exclusive resources, networking, and career opportunities.',
+  keywords: ['OPTOBHARAT membership', 'join optometry community', 'optometry student registration', 'eye care network India', 'become a member'],
+};
 
 export default function MembershipPage() {
   return (

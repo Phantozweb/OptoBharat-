@@ -1,6 +1,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Eye, CheckCircle, AlertTriangle, ShieldCheck, GraduationCap, Stethoscope, Microscope, BookCopy, Users, Award, PilcrowRight, Glasses } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Community Guidelines & Professional Standards - OPTOBHARAT',
+  description: 'Read the OPTOBHARAT community guidelines and professional standards for optometrists. Learn about the definition of optometry, scope of practice, and our commitment to ethical conduct.',
+  keywords: ['optometry community guidelines', 'professional standards optometry', 'NCAHP Act 2021', 'scope of practice optometrist', 'qualified optometrist India', 'ethical optometry'],
+};
 
 export default function CommunityGuidelinesPage() {
   return (
