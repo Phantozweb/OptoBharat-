@@ -141,9 +141,10 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
     if (member.name === 'MOHD ASAD') {
         objectPosition = '50% 20%';
     } else if (member.name === 'JANARTHAN VEERAMANI') {
-        objectPosition = '50% 35%';
+        objectPosition = '50% 40%';
+        transform = 'scale(1.05)';
     } else if (member.name === 'NIZAM UDDIN SK') {
-        objectPosition = '50% 15%';
+        objectPosition = '50% 20%';
         transform = 'scale(1.15)';
     }
 

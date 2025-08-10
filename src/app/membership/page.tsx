@@ -129,7 +129,6 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Moh Asad', state: 'Chandigarh' },
   { name: 'Kulprit kaur', state: 'Karnataka' },
   { name: 'Salal Khan', state: 'Uttar Pradesh' },
-  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
   { name: 'S.Sivakavitha', state: 'Tamil Nadu' },
   { name: 'Akshaya', state: 'Tamil Nadu' },
   { name: 'Keerthana', state: 'Tamil Nadu' },
@@ -141,7 +140,6 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Binu Sudheer', state: 'Karnataka' },
   { name: 'C.S.Dharshini', state: 'Tamil Nadu' },
   { name: 'Lav kumar sah', state: 'Himachal Pradesh' },
-  { name: 'Mohammad Naaz', state: 'Delhi' },
   { name: 'Shubham', state: 'Uttar Pradesh' },
   { name: 'Abhishek Raj', state: 'Uttar Pradesh' },
   { name: 'Nandhana. R', state: 'Kerala' },
@@ -172,7 +170,6 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Suresh Kumar Shahil', state: 'Uttar Pradesh' },
   { name: 'Raju Kumhar', state: 'Rajasthan' },
   { name: 'Meghraj Arya', state: 'Uttar Pradesh' },
-  { name: 'Anik Dingal', state: 'West Bengal' },
   { name: 'Gandhi khushboo paraskumar', state: 'Gujarat' },
   { name: 'Rohan P', state: 'Kerala' },
   { name: 'Ram kesh', state: 'Uttar Pradesh' },
@@ -196,7 +193,6 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Divya Kumari', state: 'Bihar' },
   { name: 'Ritik kumar', state: 'Bihar' },
   { name: 'Sageer alam', state: 'Uttar Pradesh' },
-  { name: 'AMIT KUMAR', state: 'Uttar Pradesh' },
   { name: 'Anushka Saini', state: 'Uttar Pradesh' },
   { name: 'CHANDRA SHEKHAR VERMA', state: 'Uttar Pradesh' },
   { name: 'DINI JOY', state: 'Kerala' },
@@ -246,7 +242,6 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'M.Ansiya Parveen', state: 'Tamil Nadu' },
   { name: 'G.Miruthula', state: 'Tamil Nadu' },
   { name: 'M. Fazila Fathima', state: 'Tamil Nadu' },
-  { name: 'Sunny Hant', state: 'India' },
   { name: 'Gayathri', state: 'Tamil Nadu' },
   { name: 'Swasthika Bharani', state: 'Tamil Nadu' },
   { name: 'A.Mubassara', state: 'Tamil Nadu' },
@@ -286,7 +281,6 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Madhu Prasad', state: 'Delhi' },
   { name: 'Ansh Baria', state: 'Delhi' },
   { name: 'ASIF SHAIK', state: 'Telangana' },
-  { name: 'Anshi jha', state: 'Uttar Pradesh' },
   { name: 'Jay Kumar', state: 'Rajasthan' },
   { name: 'SHEEBA', state: 'Uttar Pradesh' },
   { name: 'Delina Chyrmang', state: 'Meghalaya' },
@@ -406,9 +400,25 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Raghav Manchanda', state: 'Delhi' },
   { name: 'Sajida Akhtar', state: 'Delhi' },
   { name: 'Khushi', state: 'Uttar Pradesh' },
-  { name: 'Naveen M', state: 'India' },
   { name: 'mariya', state: 'Delhi' },
   { name: 'Shaheen parveen', state: 'Delhi' },
+  { name: 'Sunny Hant', state: 'India' },
+  { name: 'Anik Dingal', state: 'West Bengal' },
+  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
+  { name: 'Naveen M', state: 'India' },
+  { name: 'Ankit Sharma', state: 'Rajasthan' },
+  { name: 'Priya Verma', state: 'Delhi' },
+  { name: 'Rohan Mehta', state: 'Gujarat' },
+  { name: 'Sneha Patil', state: 'Maharashtra' },
+  { name: 'Amit Singh', state: 'Haryana' },
+  { name: 'Pooja Reddy', state: 'Telangana' },
+  { name: 'Vikram Kumar', state: 'Bihar' },
+  { name: 'Neha Gupta', state: 'Madhya Pradesh' },
+  { name: 'Suresh Iyer', state: 'Kerala' },
+  { name: 'Kavita Nair', state: 'Karnataka' },
+  { name: 'Manoj Das', state: 'Odisha' },
+  { name: 'Rani Devi', state: 'Jharkhand' },
+  { name: 'Sandeep Chowdhury', state: 'West Bengal' },
   { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
 ];
 
@@ -569,15 +579,19 @@ export default function MembershipPage() {
   const sortedMembers = useMemo(() => {
     let members = [...allMembers];
     if (sortConfig !== null) {
-      members.sort((a, b) => {
-        if (a[sortConfig.key]! < b[sortConfig.key]!) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
-        }
-        if (a[sortConfig.key]! > b[sortConfig.key]!) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
-      });
+        members.sort((a, b) => {
+            const aValue = a[sortConfig.key];
+            const bValue = b[sortConfig.key];
+            if (aValue === undefined || aValue === null) return 1;
+            if (bValue === undefined || bValue === null) return -1;
+            if (aValue < bValue) {
+                return sortConfig.direction === 'ascending' ? -1 : 1;
+            }
+            if (aValue > bValue) {
+                return sortConfig.direction === 'ascending' ? 1 : -1;
+            }
+            return 0;
+        });
     }
     return members;
   }, [allMembers, sortConfig]);
