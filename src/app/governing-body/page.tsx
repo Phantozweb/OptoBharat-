@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, UserCircle, Landmark, MapPin, School, Star, Crown, Shield, BookUser, Building, User, Users2, UserCheck } from 'lucide-react';
+import { Users, UserCircle, Landmark, MapPin, School, Star, Crown, Shield, BookUser, Building, User, Users2, UserCheck, Trophy } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 
@@ -201,7 +201,7 @@ export default function GoverningBodyPage() {
                         <TableCell>{moderator.role}</TableCell>
                     </TableRow>
                      <TableRow>
-                        <TableCell className="font-semibold flex items-center gap-2"><Star className="h-4 w-4"/> Student Ambassadors</TableCell>
+                        <TableCell className="font-semibold flex items-center gap-2"><Trophy className="h-4 w-4"/> Student Ambassadors</TableCell>
                         <TableCell colSpan={2} className="text-muted-foreground italic">
                             Our student ambassador list is being updated and will be published soon.
                         </TableCell>

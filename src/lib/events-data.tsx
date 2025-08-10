@@ -1,5 +1,5 @@
 
-import { Trophy, type LucideIcon, BrainCircuit, Microscope, Lightbulb, UserCheck, Calendar, Wallet, Link as LinkIcon, Mail } from 'lucide-react';
+import { Trophy, type LucideIcon, BrainCircuit, Microscope, Lightbulb, UserCheck, Calendar, Wallet, Link as LinkIcon, Mail, Info, User, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -57,7 +57,7 @@ export const events: OptoEvent[] = [
   {
     slug: 'optopreneur-2025',
     title: 'Optopreneur 2025',
-    subtitle: 'Nationwide Contest for Optometry Students',
+    subtitle: 'Showcase: Nationwide Contest for Optometry Students',
     date: '10th June 2025',
     Icon: Trophy,
     content: (
@@ -65,55 +65,31 @@ export const events: OptoEvent[] = [
             <section className="text-center">
                 <h2 className="text-2xl font-bold font-headline text-primary mb-2">About Optopreneur 2025</h2>
                 <p className="max-w-3xl mx-auto text-muted-foreground">
-                    Optopreneur 2025, organized by OPTOBHARAT and led by Janarthan V (Director of Southern zone, India), was a premier nationwide contest designed to foster innovation and entrepreneurial spirit among Optometry students in India. The event provided a platform for students to showcase groundbreaking research, innovative concepts, and entrepreneurial proposals relevant to the field of optometry via a poster presentation format.
+                    Optopreneur 2025 was a premier nationwide contest designed to foster innovation and entrepreneurial spirit among Optometry students in India. The event provided a platform for students to showcase groundbreaking research, innovative concepts, and entrepreneurial proposals relevant to the field of optometry.
                 </p>
+                 <div className="mt-6">
+                    <Card className="max-w-md mx-auto bg-primary/5 shadow-md">
+                        <CardHeader>
+                           <CardTitle className="text-lg font-headline text-primary flex items-center justify-center gap-2"><User className="h-5 w-5" /> Event Lead</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                            <p className="font-semibold text-foreground">Janarthan Veeramani</p>
+                            <p className="text-sm text-muted-foreground">Director of Administration, OPTOBHARAT</p>
+                        </CardContent>
+                    </Card>
+                </div>
             </section>
 
-             <InfoCard icon={Lightbulb} title="Need Inspiration? Ideas are Limitless!">
-                <p className="text-muted-foreground mb-6">The possibilities within optometric entrepreneurship are vast. To spark your thinking, consider these examples, but remember, your own unique vision is what we truly seek:</p>
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 className="font-semibold text-lg flex items-center mb-2"><BrainCircuit className="mr-2 h-5 w-5 text-primary"/>Example Tech Innovations:</h4>
-                        <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                            <li>AI tools for preliminary screening assistance.</li>
-                            <li>Low-cost, portable diagnostic device prototypes.</li>
-                            <li>Mobile apps enhancing patient engagement.</li>
-                        </ul>
+             <InfoCard icon={Star} title="Event Highlights">
+                <div className="grid md:grid-cols-2 gap-6 text-center">
+                    <div className="p-4 bg-muted/50 rounded-lg">
+                        <h3 className="text-3xl font-bold text-primary">75</h3>
+                        <p className="text-muted-foreground font-semibold">Abstract Submissions Received</p>
                     </div>
-                     <div>
-                        <h4 className="font-semibold text-lg flex items-center mb-2"><UserCheck className="mr-2 h-5 w-5 text-primary"/>Example New Service Models:</h4>
-                        <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                            <li>Business plans for specialized niche practices.</li>
-                            <li>Subscription models for comprehensive eye care.</li>
-                            <li>Tele-optometry concepts for underserved areas.</li>
-                        </ul>
+                     <div className="p-4 bg-muted/50 rounded-lg">
+                        <h3 className="text-xl font-bold text-destructive">Event Closed</h3>
+                        <p className="text-muted-foreground font-semibold">Registrations are now closed.</p>
                     </div>
-                </div>
-                 <p className="text-sm font-semibold text-center mt-6 text-primary/80">
-                    Important: These are just illustrative examples. We strongly encourage you to submit your own original concepts. Think outside the box!
-                </p>
-            </InfoCard>
-
-             <InfoCard icon={Calendar} title="Key Information">
-                <div className="space-y-4">
-                    <div>
-                        <h4 className="font-semibold text-lg">Abstract Submission Period:</h4>
-                        <p className="text-muted-foreground">🗓️ May 5 – May 25</p>
-                    </div>
-                    <div>
-                        <h4 className="font-semibold text-lg flex items-center"><Wallet className="mr-2 h-5 w-5 text-primary"/>Registration Fees:</h4>
-                         <ul className="list-disc list-inside text-muted-foreground">
-                            <li>Optobharat Members: 50₹</li>
-                            <li>Non-Members: 100₹</li>
-                        </ul>
-                    </div>
-                     <div className="text-center pt-4">
-                        <Button asChild>
-                            <a href="https://optopreneur.netlify.app/" target="_blank" rel="noopener noreferrer">
-                                <LinkIcon className="mr-2 h-4 w-4" /> Visit Event Website
-                            </a>
-                        </Button>
-                     </div>
                 </div>
             </InfoCard>
 
@@ -142,13 +118,33 @@ export const events: OptoEvent[] = [
                     />
                 </div>
             </section>
+
+            <InfoCard icon={Info} title="Contest Details">
+                <div className="space-y-4">
+                    <p className="text-muted-foreground">The contest provided a platform for students to showcase groundbreaking research, innovative concepts, technological ideas, and entrepreneurial proposals relevant to the field of optometry via a poster presentation format.</p>
+                    <div>
+                        <h4 className="font-semibold text-lg">Registration Fees:</h4>
+                         <ul className="list-disc list-inside text-muted-foreground">
+                            <li>Optobharat Members: ₹50</li>
+                            <li>Non-Members: ₹100</li>
+                        </ul>
+                    </div>
+                     <div className="text-center pt-4">
+                        <Button asChild>
+                            <a href="https://optopreneur.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                <LinkIcon className="mr-2 h-4 w-4" /> Visit Event Website (Archived)
+                            </a>
+                        </Button>
+                     </div>
+                </div>
+            </InfoCard>
             
             <section className="text-center space-y-4">
                 <p className="text-lg text-foreground">
                     These exceptional students have demonstrated forward-thinking ideas that could shape the future of optometric care in India and beyond. Their vision and dedication inspire us all! 💡✨
                 </p>
                 <p className="text-base text-muted-foreground">
-                    👏 A big thank you to all participants for sharing your ideas and contributing to the growth of eye care innovation.
+                    👏 A big thank you to all participants for sharing your ideas and contributing to the growth of eye care innovation. For future event inquiries, please contact us.
                 </p>
                 <div className="pt-4">
                      <Button asChild variant="outline">
