@@ -625,7 +625,7 @@ export default function MembershipPage() {
             </p>
             <div className="text-center">
               <Button asChild size="lg">
-                <Link href="https://forms.gle/q4eB9tXy8cML19f89" target="_blank">
+                <Link href="https://forms.gle/J47RgFwMQ5VXUmKY7" target="_blank">
                   Go to Registration Form
                 </Link>
               </Button>

@@ -21,7 +21,7 @@ export default function OptobharatHomePage() {
           India&apos;s largest optometry student community, dedicated to uniting future optometrists across the nation and worldwide.
         </p>
         <Button asChild size="lg">
-          <Link href="/membership#how-to-join">
+          <Link href="https://forms.gle/J47RgFwMQ5VXUmKY7" target="_blank">
             Join the Community <CheckCircle className="ml-2 h-5 w-5" />
           </Link>
         </Button>
@@ -119,7 +119,7 @@ export default function OptobharatHomePage() {
             </div>
             <div className="text-center mt-6">
                 <Button asChild size="lg">
-                    <Link href="/membership#how-to-join">
+                    <Link href="https://forms.gle/J47RgFwMQ5VXUmKY7" target="_blank">
                         Become a Member <Users className="ml-2 h-5 w-5" />
                     </Link>
                 </Button>
