@@ -25,7 +25,7 @@ interface StateHeadSection {
 const governingBodyMembers: Member[] = [
   {
     name: 'NIZAM UDDIN SK',
-    role: 'FOUNDER, OPTOBHARAT',
+    role: 'Founder and Director of OPTOBHARAT',
     avatarFallback: 'NS',
     dataAiHint: 'person portrait',
   },
