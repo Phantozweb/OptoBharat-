@@ -2,26 +2,24 @@
 "use client";
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { UserPlus, ShieldCheck, Search, Users } from 'lucide-react';
-import type { Metadata } from 'next';
-
-// export const metadata: Metadata = { // Cannot export metadata from a client component
-//   title: 'Join OPTOBHARAT - Membership',
-//   description: 'Become a member of OPTOBHARAT, India’s largest optometry student community. Fill out the membership form to get access to exclusive resources, networking, and career opportunities.',
-//   keywords: ['OPTOBHARAT membership', 'join optometry community', 'optometry student registration', 'eye care network India', 'become a member'],
-// };
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown } from 'lucide-react';
 
 interface Member {
   name: string;
   state: string;
+  regNo: string;
+  role?: string;
+  award?: string;
 }
 
-const members: Member[] = [
+const originalMembers: { name: string; state: string }[] = [
   { name: 'Janarthan Veeramani', state: 'Tamil Nadu' },
   { name: 'M.Mega Dharshini', state: 'Tamil Nadu' },
   { name: 'J.Rithnica', state: 'Tamil Nadu' },
@@ -404,17 +402,120 @@ const members: Member[] = [
   { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
 ];
 
+const governingBody = {
+  'NIZAM UDDIN SK': 'Founder & Director',
+  'JANARTHAN VEERAMANI': 'Director of Administration',
+  'MOHD ASAD': 'Head of Academic',
+  'MOHD ADNAN': 'MANAGING DIRECTOR OF NORTHERN ZONE',
+  'PRITAM KARMAKAR': 'MANAGING DIRECTOR OF EASTERN ZONE',
+  'ANSHI JHA': 'MANAGING DIRECTOR OF CENTRAL ZONE',
+  'M. Mega Dharshini': 'MANAGING DIRECTOR OF SOUTHERN ZONE',
+  'MUZAHID KAMAL': 'Managing Director of Western Zone',
+  'MEHETAB HUSSAIN': 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE',
+  'SHREYASI NATH': 'MODERATOR',
+  'Rabjot Singh Gulati': 'State Head (Uttar Pradesh)',
+  'Gopika V.': 'State Head (Kerala)',
+  'P.Kayal Vizhi': 'State Head (Tamil Nadu)',
+  'Shobana Priya S.': 'State Head (Andhra Pradesh)',
+  'Irbaz': 'State Head (Karnataka)',
+  'Mugunthan': 'State Head (Telangana)',
+  'Hariharn': 'State Head (Pondicherry)',
+  'Haziel Rynjah': 'State Head (Meghalaya)',
+  'Abhisek Buragohain': 'State Head (Assam)',
+  'Be An H. Phom': 'State Head (Nagaland)',
+};
+
+const contestWinners = {
+    'Sreesandhiya G': '1st Place, Optopreneur 2025',
+    'Anik Dingal': '2nd Place, Optopreneur 2025',
+    'Mohd Khalid': '3rd Place, Optopreneur 2025',
+};
+
+const normalizeState = (state: string) => {
+    const s = state.toLowerCase().replace(/\./g, '').trim();
+    if (s.startsWith('tamil')) return 'Tamil Nadu';
+    if (s.startsWith('uttar') || s === 'up' || s === 'u. p') return 'Uttar Pradesh';
+    if (s.startsWith('west')) return 'West Bengal';
+    return state.charAt(0).toUpperCase() + state.slice(1);
+};
+
+const generateRegNo = (state: string, index: number) => {
+    const stateCode = (state.substring(0, 2).toUpperCase());
+    const paddedIndex = String(index + 1).padStart(4, '0');
+    return `OB-${stateCode}-${paddedIndex}`;
+};
+
+const processedMembers: Member[] = originalMembers.map((member, index) => {
+    const normalizedName = member.name.toUpperCase().replace(/\s\./g, '.').trim();
+    const simpleName = member.name.replace(/\s\./g, '.').trim();
+    const state = normalizeState(member.state);
+    return {
+        ...member,
+        name: simpleName,
+        state,
+        regNo: generateRegNo(state, index),
+        role: Object.entries(governingBody).find(([key]) => key.toUpperCase() === normalizedName)?.[1],
+        award: Object.entries(contestWinners).find(([key]) => key === simpleName)?.[1],
+    };
+});
+
 export default function MembershipPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortConfig, setSortConfig] = useState<{ key: keyof Member; direction: 'ascending' | 'descending' } | null>(null);
+  const [stateFilter, setStateFilter] = useState<string>('all');
+  
+  const allStates = useMemo(() => ['all', ...Array.from(new Set(processedMembers.map(m => m.state))).sort()], []);
 
-  const filteredMembers = members.filter(member =>
-    member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    member.state.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const sortedAndFilteredMembers = useMemo(() => {
+    let filtered = [...processedMembers];
+
+    if (stateFilter !== 'all') {
+      filtered = filtered.filter(member => member.state === stateFilter);
+    }
+
+    if (searchTerm) {
+      filtered = filtered.filter(member =>
+        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.regNo.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    if (sortConfig !== null) {
+      filtered.sort((a, b) => {
+        if (a[sortConfig.key]! < b[sortConfig.key]!) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key]! > b[sortConfig.key]!) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+
+    return filtered;
+  }, [searchTerm, sortConfig, stateFilter]);
+
+  const requestSort = (key: keyof Member) => {
+    let direction: 'ascending' | 'descending' = 'ascending';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const getSortIcon = (key: keyof Member) => {
+    if (!sortConfig || sortConfig.key !== key) {
+      return <ArrowUpDown className="ml-2 h-4 w-4 opacity-50" />;
+    }
+    return sortConfig.direction === 'ascending' 
+        ? <ArrowUpDown className="ml-2 h-4 w-4" /> 
+        : <ArrowUpDown className="ml-2 h-4 w-4" />; // Icons can be swapped for up/down arrows
+  };
 
   return (
     <div className="space-y-16 md:space-y-20">
-      <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
+       <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
         <UserPlus className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4">
           MEMBERSHIP <span className="text-primary">OPTOBHARAT</span>
@@ -466,44 +567,93 @@ export default function MembershipPage() {
       <section id="our-members">
         <Card className="shadow-lg">
           <CardHeader>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mb-4">
                 <Users className="h-8 w-8 text-primary" />
                 <CardTitle className="text-3xl font-headline text-primary">Our Members</CardTitle>
               </div>
-              <div className="relative w-full sm:w-72">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input 
-                  placeholder="Search members or states..." 
-                  className="pl-10"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                 <div className="relative w-full sm:w-auto sm:flex-grow">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input 
+                      placeholder="Search members, states, or RegNo..." 
+                      className="pl-10"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                 </div>
+                 <Select value={stateFilter} onValueChange={setStateFilter}>
+                    <SelectTrigger className="w-full sm:w-[180px]">
+                        <SelectValue placeholder="Filter by State" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {allStates.map(state => (
+                           <SelectItem key={state} value={state}>{state === 'all' ? 'All States' : state}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
               </div>
-            </div>
           </CardHeader>
           <CardContent className="p-0">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Member Name</TableHead>
-                    <TableHead>State</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredMembers.map((member, index) => (
-                    <TableRow key={index}>
-                      <TableCell className="font-medium">{member.name}</TableCell>
-                      <TableCell>{member.state}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-              {filteredMembers.length === 0 && (
-                <p className="text-center text-muted-foreground py-8">No members found.</p>
-              )}
-            </div>
+             <TooltipProvider>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>
+                           <Button variant="ghost" onClick={() => requestSort('regNo')}>
+                                Reg No.
+                                {getSortIcon('regNo')}
+                           </Button>
+                        </TableHead>
+                        <TableHead>
+                           <Button variant="ghost" onClick={() => requestSort('name')}>
+                                Member Name
+                                {getSortIcon('name')}
+                            </Button>
+                        </TableHead>
+                        <TableHead>
+                           <Button variant="ghost" onClick={() => requestSort('state')}>
+                                State
+                                {getSortIcon('state')}
+                            </Button>
+                        </TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {sortedAndFilteredMembers.map((member) => {
+                        const isSpecial = member.role || member.award;
+                        const tooltipContent = member.role || member.award;
+                        const highlightClass = member.role ? 'bg-primary/10' : 'bg-amber-400/10';
+
+                        return (
+                          <TableRow key={member.regNo} className={isSpecial ? highlightClass : ''}>
+                            <TableCell className="font-mono text-xs">{member.regNo}</TableCell>
+                            <TableCell className="font-medium">
+                              <div className="flex items-center gap-2">
+                                {member.name}
+                                {isSpecial && (
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                        {member.role ? <Crown className="h-4 w-4 text-primary" /> : <Award className="h-4 w-4 text-amber-500" />}
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>{tooltipContent}</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                )}
+                              </div>
+                            </TableCell>
+                            <TableCell>{member.state}</TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+                  {sortedAndFilteredMembers.length === 0 && (
+                    <p className="text-center text-muted-foreground py-8">No members found.</p>
+                  )}
+                </div>
+             </TooltipProvider>
           </CardContent>
         </Card>
       </section>
@@ -524,5 +674,3 @@ export default function MembershipPage() {
     </div>
   );
 }
-
-    
