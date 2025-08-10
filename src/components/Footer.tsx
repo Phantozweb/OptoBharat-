@@ -28,7 +28,7 @@ export function Footer() {
           &copy; {new Date().getFullYear()} OPTOBHARAT. All rights reserved.
         </p>
         <p className="text-xs mt-2">
-          India&apos;s Largest Optometry Student Community.
+          India's Largest Optometry Student Community.
         </p>
       </div>
     </footer>

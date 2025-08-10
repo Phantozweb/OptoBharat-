@@ -18,6 +18,7 @@ interface StateHead {
   name: string;
   state: string;
   zone: string;
+  imageUrl?: string;
 }
 
 interface StudentAmbassador {
@@ -29,18 +30,21 @@ const leadershipMembers: Member[] = [
   {
     name: 'NIZAM UDDIN SK',
     role: 'Founder and Director',
+    imageUrl: 'https://iili.io/FL4tAgI.png',
     avatarFallback: 'NS',
     dataAiHint: 'person portrait',
   },
   {
     name: 'JANARTHAN VEERAMANI',
     role: 'Director of Administration',
+    imageUrl: 'https://iili.io/FL4G8XV.jpg',
     avatarFallback: 'JV',
     dataAiHint: 'person portrait',
   },
   {
     name: 'MOHD ASAD',
     role: 'HEAD OF ACADEMIC',
+    imageUrl: 'https://iili.io/FL4keWu.png',
     avatarFallback: 'MA',
     dataAiHint: 'person portrait',
   },
@@ -56,24 +60,28 @@ const zonalDirectors: Member[] = [
   {
     name: 'MUZAHID KAMAL',
     role: 'Managing Director of Western Zone,India - OPTOBHARAT',
+    imageUrl: 'https://iili.io/FL46kcg.png',
     avatarFallback: 'MK',
     dataAiHint: 'person portrait',
   },
   {
     name: 'ANSHI JHA',
     role: 'MANAGING DIRECTOR OF CENTRAL ZONE,INDIA - OPTOBHARAT',
+    imageUrl: 'https://iili.io/FL4gFu2.jpg',
     avatarFallback: 'AJ',
     dataAiHint: 'person portrait',
   },
   {
     name: 'MEHETAB HUSSAIN',
     role: 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE,INDIA - OPTOBHARAT',
+    imageUrl: 'https://iili.io/FL445EF.jpg',
     avatarFallback: 'MH',
     dataAiHint: 'person portrait',
   },
   {
     name: 'PRITAM KARMAKAR',
     role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA. - OPTOBHARAT',
+    imageUrl: 'https://iili.io/FL4sn6P.jpg',
     avatarFallback: 'PK',
     dataAiHint: 'person portrait',
   },
@@ -86,7 +94,7 @@ const zonalDirectors: Member[] = [
 ];
 
 const stateHeads: StateHead[] = [
-    { name: "Rabjot Singh Gulati", state: "Uttar Pradesh", zone: "Central Zone" },
+    { name: "Rabjot Singh Gulati", state: "Uttar Pradesh", zone: "Central Zone", imageUrl: "https://iili.io/FL4yJcl.png" },
     { name: "Gopika V.", state: "Kerala", zone: "Southern Zone" },
     { name: "P.Kayal Vizhi", state: "Tamil Nadu", zone: "Southern Zone" },
     { name: "Shobana Priya S.", state: "Andhra Pradesh", zone: "Southern Zone" },
@@ -94,14 +102,15 @@ const stateHeads: StateHead[] = [
     { name: "Mugunthan", state: "Telangana", zone: "Southern Zone" },
     { name: "Hariharn", state: "Pondicherry", zone: "Southern Zone" },
     { name: "Haziel Rynjah", state: "Meghalaya", zone: "North-Eastern Zone" },
-    { name: "Abhisek Buragohain", state: "Assam", zone: "North-Eastern Zone" },
-    { name: "Be An H. Phom", state: "Nagaland", zone: "North-Eastern Zone" },
+    { name: "Abhisek Buragohain", state: "Assam", zone: "North-Eastern Zone", imageUrl: 'https://iili.io/FL6wZ7I.png' },
+    { name: "Be An H. Phom", state: "Nagaland", zone: "North-Eastern Zone", imageUrl: 'https://iili.io/FL6zzQf.png' },
 ];
 
 
 const moderator: Member = {
     name: 'SHREYASI NATH',
     role: 'MODERATOR, OPTOBHARAT',
+    imageUrl: 'https://iili.io/FL4bLfR.md.jpg',
     avatarFallback: 'SN',
     dataAiHint: 'person portrait',
 };
@@ -191,13 +200,25 @@ export default function GoverningBodyPage() {
                     {stateHeads.map((head, index) => (
                         <TableRow key={`${head.name}-${index}`}>
                             {index === 0 ? <TableCell className="font-semibold align-top" rowSpan={stateHeads.length}>State Heads</TableCell> : null}
-                            <TableCell>{head.name}</TableCell>
+                            <TableCell className="flex items-center gap-2">
+                                <Avatar className="h-10 w-10 border-2 border-primary">
+                                    <AvatarImage src={head.imageUrl || `https://placehold.co/64x64.png`} alt={head.name} data-ai-hint="person portrait" />
+                                    <AvatarFallback className="text-sm bg-muted text-muted-foreground">{head.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                                </Avatar>
+                                {head.name}
+                            </TableCell>
                             <TableCell>{head.state} <span className="text-xs text-muted-foreground">({head.zone})</span></TableCell>
                         </TableRow>
                     ))}
                     <TableRow className="bg-muted/30">
                         <TableCell className="font-semibold flex items-center gap-2"><Shield className="h-4 w-4"/> Moderator</TableCell>
-                        <TableCell>{moderator.name}</TableCell>
+                        <TableCell className="flex items-center gap-2">
+                             <Avatar className="h-10 w-10 border-2 border-primary">
+                                <AvatarImage src={moderator.imageUrl || `https://placehold.co/64x64.png`} alt={moderator.name} data-ai-hint="person portrait" />
+                                <AvatarFallback className="text-sm bg-muted text-muted-foreground">{moderator.avatarFallback}</AvatarFallback>
+                            </Avatar>
+                            {moderator.name}
+                        </TableCell>
                         <TableCell>{moderator.role}</TableCell>
                     </TableRow>
                      <TableRow>
