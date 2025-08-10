@@ -125,8 +125,8 @@ export const events: OptoEvent[] = [
                     <div>
                         <h4 className="font-semibold text-lg">Registration Fees:</h4>
                          <ul className="list-disc list-inside text-muted-foreground">
-                            <li>Optobharat Members: ₹50</li>
-                            <li>Non-Members: ₹100</li>
+                            <li>Optobharat Members: Rs 50</li>
+                            <li>Non-Members: Rs 100</li>
                         </ul>
                     </div>
                 </div>
