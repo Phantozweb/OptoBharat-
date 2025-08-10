@@ -104,7 +104,6 @@ export const events: OptoEvent[] = [
                         name="Sreesandhiya G"
                         institution="LOTUS INSTITUTE OF HEALTH SCIENCES AND MANAGEMENT Coimbatore, Tamil Nadu"
                         projectTitle="Intelligent Contact Lens Dispensing System with Mobile-Integrated AI"
-                        description="🧠 A groundbreaking idea that redefines smart vision solutions using AI technology."
                         badgeColor="bg-yellow-500"
                     />
                     <WinnerCard
@@ -112,7 +111,6 @@ export const events: OptoEvent[] = [
                         name="Anik Dingal"
                         institution="Vidyasagar college of optometry and vision science, Kolkata, West Bengal"
                         projectTitle="A Smart, Portable IOP Device with Built-In Corneal Biomechanics Compensation"
-                        description="🔬 A step forward in accessible glaucoma care through portable diagnostic innovation."
                         badgeColor="bg-slate-500"
                     />
                     <WinnerCard
