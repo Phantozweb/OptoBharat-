@@ -571,7 +571,7 @@ export default function MembershipPage() {
   };
 
   const memberStatsByState = useMemo(() => {
-    const counts = filteredMembers.reduce((acc, member) => {
+    const counts = processedMembers.reduce((acc, member) => {
         acc[member.state] = (acc[member.state] || 0) + 1;
         return acc;
     }, {} as Record<string, number>);
@@ -580,19 +580,23 @@ export default function MembershipPage() {
         .map(([name, value]) => ({ name, value }))
         .sort((a, b) => b.value - a.value)
         .slice(0, 15);
-  }, [filteredMembers]);
+  }, [processedMembers]);
 
   const memberStatsByZone = useMemo(() => {
-      const counts = filteredMembers.reduce((acc, member) => {
-          const zone = member.zone || 'Unknown';
-          acc[zone] = (acc[zone] || 0) + 1;
-          return acc;
-      }, {} as Record<string, number>);
+    const counts = processedMembers.reduce((acc, member) => {
+        const zone = member.zone || 'Unknown';
+        acc[zone] = (acc[zone] || 0) + 1;
+        return acc;
+    }, {} as Record<string, number>);
 
-      return Object.entries(counts)
-          .map(([name, value]) => ({ name, value }))
-          .sort((a, b) => b.value - a.value);
-  }, [filteredMembers]);
+    return Object.entries(counts)
+        .map(([name, value]) => ({ name, value }))
+        .sort((a, b) => {
+            if (a.name === 'International' || a.name === 'Unknown') return 1;
+            if (b.name === 'International' || b.name === 'Unknown') return -1;
+            return b.value - a.value;
+        });
+  }, [processedMembers]);
 
 
   return (
@@ -716,7 +720,7 @@ export default function MembershipPage() {
                       <BarChart2 className="mr-3 h-8 w-8 text-primary" /> Member Statistics
                   </CardTitle>
                   <CardDescription className="text-center">
-                      A visual breakdown of our community.
+                      A visual breakdown of our community of {processedMembers.length} members.
                   </CardDescription>
               </CardHeader>
               <CardContent className="space-y-12">
