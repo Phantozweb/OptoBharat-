@@ -15,7 +15,7 @@ const mainNavLinks = [
   { href: '/', label: 'Home', icon: HomeIcon },
   { href: '/governing-body', label: 'Governing Body', icon: Users },
   { href: '/membership', label: 'Membership', icon: UserPlus },
-  { href: '/forum', label: 'Optobharat Forum', icon: MessageSquare },
+  { href: '/forum', label: 'Forum', icon: MessageSquare },
 ];
 
 const contentSubLinks = [
