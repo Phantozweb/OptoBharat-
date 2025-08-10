@@ -8,7 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown } from 'lucide-react';
+import { UserPlus, ShieldCheck, Search, Users, Award, Crown, ArrowUpDown, BarChart2 } from 'lucide-react';
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 
 interface Member {
@@ -17,6 +18,7 @@ interface Member {
   regNo: string;
   role?: string;
   award?: string;
+  zone?: string;
 }
 
 const originalMembers: { name: string; state: string }[] = [
@@ -445,8 +447,58 @@ const normalizeState = (state: string) => {
     if (s.startsWith('tamil')) return 'Tamil Nadu';
     if (s.startsWith('uttar') || s === 'up' || s === 'u p' || s === 'u. p') return 'Uttar Pradesh';
     if (s.startsWith('west')) return 'West Bengal';
-    return state.charAt(0).toUpperCase() + state.slice(1);
+    if (s === 'lakhimpur kheri') return 'Uttar Pradesh'; // Map specific location to state
+    return state.charAt(0).toUpperCase() + state.slice(1).toLowerCase();
 };
+
+const stateToZone: { [key: string]: string } = {
+  // North
+  'Jammu and Kashmir': 'Northern Zone',
+  'Punjab': 'Northern Zone',
+  'Haryana': 'Northern Zone',
+  'Himachal Pradesh': 'Northern Zone',
+  'Delhi': 'Northern Zone',
+  'Chandigarh': 'Northern Zone',
+
+  // Central
+  'Uttar Pradesh': 'Central Zone',
+  'Madhya Pradesh': 'Central Zone',
+
+  // East
+  'West Bengal': 'Eastern Zone',
+  'Bihar': 'Eastern Zone',
+  'Jharkhand': 'Eastern Zone',
+  'Odisha': 'Eastern Zone',
+
+  // West
+  'Rajasthan': 'Western Zone',
+  'Gujarat': 'Western Zone',
+  'Maharashtra': 'Western Zone',
+
+  // South
+  'Tamil Nadu': 'Southern Zone',
+  'Karnataka': 'Southern Zone',
+  'Kerala': 'Southern Zone',
+  'Telangana': 'Southern Zone',
+  'Andhra Pradesh': 'Southern Zone',
+  'Pondicherry': 'Southern Zone',
+
+  // North-East
+  'Assam': 'North-Eastern Zone',
+  'Arunachal Pradesh': 'North-Eastern Zone',
+  'Nagaland': 'North-Eastern Zone',
+  'Meghalaya': 'North-Eastern Zone',
+  'Tripura': 'North-Eastern Zone',
+  'Sikkim': 'North-Eastern Zone',
+  
+  // International / Other
+  'Pakistan': 'International',
+  'Kenya': 'International',
+  'Nigeria': 'International',
+  'USA': 'International',
+  'India': 'Uncategorized',
+};
+
 
 const generateRegNo = (state: string, index: number) => {
     const stateCode = (state.substring(0, 2).toUpperCase());
@@ -469,6 +521,7 @@ const processedMembers: Member[] = originalMembers.map((member, index) => {
         regNo: generateRegNo(state, index),
         role: roleKey ? governingBody[roleKey as keyof typeof governingBody] : undefined,
         award: awardKey ? contestWinners[awardKey as keyof typeof contestWinners] : undefined,
+        zone: stateToZone[state] || 'Uncategorized',
     };
 });
 
@@ -496,10 +549,12 @@ export default function MembershipPage() {
     
     if (sortConfig !== null) {
       filtered.sort((a, b) => {
-        if (a[sortConfig.key]! < b[sortConfig.key]!) {
+        const valA = a[sortConfig.key] || '';
+        const valB = b[sortConfig.key] || '';
+        if (valA < valB) {
           return sortConfig.direction === 'ascending' ? -1 : 1;
         }
-        if (a[sortConfig.key]! > b[sortConfig.key]!) {
+        if (valA > valB) {
           return sortConfig.direction === 'ascending' ? 1 : -1;
         }
         return 0;
@@ -508,6 +563,30 @@ export default function MembershipPage() {
 
     return filtered;
   }, [searchTerm, sortConfig, stateFilter]);
+
+  const memberStats = useMemo(() => {
+    const stateCounts: { [key: string]: number } = {};
+    const zoneCounts: { [key: string]: number } = {};
+
+    processedMembers.forEach(member => {
+      // State count
+      stateCounts[member.state] = (stateCounts[member.state] || 0) + 1;
+      // Zone count
+      if(member.zone) {
+        zoneCounts[member.zone] = (zoneCounts[member.zone] || 0) + 1;
+      }
+    });
+
+    const stateData = Object.entries(stateCounts)
+      .map(([name, total]) => ({ name, total }))
+      .sort((a, b) => b.total - a.total);
+      
+    const zoneData = Object.entries(zoneCounts)
+      .map(([name, total]) => ({ name, total }))
+      .sort((a, b) => b.total - a.total);
+
+    return { stateData, zoneData };
+  }, []);
 
   const requestSort = (key: keyof Member) => {
     let direction: 'ascending' | 'descending' = 'ascending';
@@ -522,8 +601,8 @@ export default function MembershipPage() {
       return <ArrowUpDown className="ml-2 h-4 w-4 opacity-50" />;
     }
     return sortConfig.direction === 'ascending' 
-        ? <ArrowUpDown className="ml-2 h-4 w-4" /> 
-        : <ArrowUpDown className="ml-2 h-4 w-4" />; // Icons can be swapped for up/down arrows
+        ? <ArrowUpDown className="ml-2 h-4 w-4" /> // Replace with ArrowUpIcon if available
+        : <ArrowUpDown className="ml-2 h-4 w-4" />; // Replace with ArrowDownIcon if available
   };
 
   return (
@@ -605,6 +684,9 @@ export default function MembershipPage() {
                     </SelectContent>
                 </Select>
               </div>
+              <p className="text-sm text-muted-foreground mt-4">
+                Showing <span className="font-bold text-foreground">{sortedAndFilteredMembers.length}</span> of <span className="font-bold text-foreground">{processedMembers.length}</span> members.
+              </p>
           </CardHeader>
           <CardContent className="p-0">
              <TooltipProvider>
@@ -671,6 +753,84 @@ export default function MembershipPage() {
         </Card>
       </section>
 
+      <section id="member-statistics">
+        <Card className="shadow-lg">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <BarChart2 className="h-8 w-8 text-primary" />
+              <CardTitle className="text-3xl font-headline text-primary">Member Statistics</CardTitle>
+            </div>
+            <CardDescription>A visual breakdown of our community members.</CardDescription>
+          </CardHeader>
+          <CardContent className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-center mb-4">Members by State</h3>
+              <div className="w-full h-[400px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={memberStats.stateData} layout="vertical" margin={{ left: 20, right: 20 }}>
+                    <XAxis type="number" hide />
+                    <YAxis 
+                      dataKey="name" 
+                      type="category" 
+                      width={100} 
+                      tickLine={false} 
+                      axisLine={false} 
+                      fontSize={12}
+                    />
+                    <Tooltip
+                      cursor={{ fill: 'hsl(var(--muted))' }}
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div className="rounded-lg border bg-background p-2 shadow-sm">
+                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
+                            </div>
+                          )
+                        }
+                        return null
+                      }}
+                    />
+                    <Bar dataKey="total" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+             <div>
+              <h3 className="text-xl font-semibold text-center mb-4">Members by Zone</h3>
+              <div className="w-full h-[400px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={memberStats.zoneData} layout="vertical" margin={{ left: 20, right: 20 }}>
+                    <XAxis type="number" hide />
+                    <YAxis 
+                      dataKey="name" 
+                      type="category" 
+                      width={100} 
+                      tickLine={false} 
+                      axisLine={false} 
+                      fontSize={12}
+                    />
+                    <Tooltip
+                      cursor={{ fill: 'hsl(var(--muted))' }}
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div className="rounded-lg border bg-background p-2 shadow-sm">
+                              <p className="font-bold">{`${payload[0].payload.name}: ${payload[0].value}`}</p>
+                            </div>
+                          )
+                        }
+                        return null
+                      }}
+                    />
+                    <Bar dataKey="total" fill="hsl(var(--accent))" radius={[0, 4, 4, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
       <section id="privacy-policy">
         <Card className="shadow-lg">
           <CardHeader className="flex flex-row items-center justify-center space-x-3">
@@ -687,3 +847,5 @@ export default function MembershipPage() {
     </div>
   );
 }
+
+    
