@@ -54,11 +54,10 @@ const leadershipMembers: Member[] = [
 
 const zonalDirectors: Member[] = [
   {
-    name: 'M. Mega Dharshini',
-    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA,',
-    avatarFallback: 'MD',
+    name: 'MOHD ADNAN',
+    role: 'MANAGING DIRECTOR OF NORTHERN ZONE,INDIA',
+    avatarFallback: 'MA',
     dataAiHint: 'person portrait',
-    isFemale: true,
   },
   {
     name: 'MUZAHID KAMAL',
@@ -76,6 +75,13 @@ const zonalDirectors: Member[] = [
     isFemale: true,
   },
   {
+    name: 'M. Mega Dharshini',
+    role: 'MANAGING DIRECTOR OF SOUTHERN ZONE,INDIA,',
+    avatarFallback: 'MD',
+    dataAiHint: 'person portrait',
+    isFemale: true,
+  },
+  {
     name: 'MEHETAB HUSSAIN',
     role: 'MANAGING DIRECTOR OF NORTH-EASTERN ZONE,INDIA',
     imageUrl: 'https://iili.io/FL445EF.jpg',
@@ -87,12 +93,6 @@ const zonalDirectors: Member[] = [
     role: 'MANAGING DIRECTOR OF EASTERN ZONE,INDIA.',
     imageUrl: 'https://iili.io/FL4sn6P.jpg',
     avatarFallback: 'PK',
-    dataAiHint: 'person portrait',
-  },
-  {
-    name: 'MOHD ADNAN',
-    role: 'MANAGING DIRECTOR OF NORTHERN ZONE,INDIA',
-    avatarFallback: 'MA',
     dataAiHint: 'person portrait',
   },
 ];
