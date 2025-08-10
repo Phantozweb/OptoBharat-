@@ -1,6 +1,8 @@
 
-import { Trophy, type LucideIcon } from 'lucide-react';
+import { Trophy, type LucideIcon, BrainCircuit, Microscope, Lightbulb, UserCheck, Calendar, Wallet, Link as LinkIcon, Mail } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export interface OptoEvent {
   slug: string;
@@ -27,14 +29,26 @@ const WinnerCard = ({
     <Card className="flex flex-col text-center h-full hover:shadow-xl transition-shadow duration-300 bg-primary/5">
         <CardHeader>
              <div className="mx-auto mb-4">
-                <Trophy className="h-20 w-20 text-primary/30" />
+                <Trophy className="h-16 w-16 text-primary/30" />
             </div>
-            <CardTitle className={`text-xl font-headline text-white rounded-md py-1 px-3 ${badgeColor} self-center`}>{place}</CardTitle>
-            <CardDescription className="text-lg font-semibold text-foreground pt-2">{name}</CardDescription>
+            <CardTitle className={`text-xl font-headline text-white rounded-md py-1 px-3 ${badgeColor} self-center shadow-md`}>{place}</CardTitle>
+            <CardDescription className="text-xl font-semibold text-foreground pt-4">{name}</CardDescription>
         </CardHeader>
         <CardContent className="flex-grow flex flex-col justify-center">
             <p className="font-semibold text-base text-muted-foreground">&quot;{projectTitle}&quot;</p>
             {description && <p className="text-sm mt-2">{description}</p>}
+        </CardContent>
+    </Card>
+);
+
+const InfoCard = ({ icon: Icon, title, children }: { icon: LucideIcon; title: string; children: React.ReactNode }) => (
+    <Card className="shadow-lg">
+        <CardHeader className="flex flex-row items-center gap-4">
+            <Icon className="h-8 w-8 text-primary" />
+            <CardTitle className="text-2xl font-headline text-primary">{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+            {children}
         </CardContent>
     </Card>
 );
@@ -51,10 +65,58 @@ export const events: OptoEvent[] = [
             <section className="text-center">
                 <h2 className="text-2xl font-bold font-headline text-primary mb-2">About Optopreneur 2025</h2>
                 <p className="max-w-3xl mx-auto text-muted-foreground">
-                    Optopreneur 2025, organized by OPTOBHARAT and led by Founder Nizam Uddin SK, was a nationwide contest celebrating innovation and entrepreneurship among India’s brightest Optometry students. The event provided a platform for students to present groundbreaking ideas that could shape the future of eye care.
+                    Optopreneur 2025, organized by OPTOBHARAT and led by Janarthan V (Director of Southern zone, India), was a premier nationwide contest designed to foster innovation and entrepreneurial spirit among Optometry students in India. The event provided a platform for students to showcase groundbreaking research, innovative concepts, and entrepreneurial proposals relevant to the field of optometry via a poster presentation format.
                 </p>
             </section>
-            
+
+             <InfoCard icon={Lightbulb} title="Need Inspiration? Ideas are Limitless!">
+                <p className="text-muted-foreground mb-6">The possibilities within optometric entrepreneurship are vast. To spark your thinking, consider these examples, but remember, your own unique vision is what we truly seek:</p>
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 className="font-semibold text-lg flex items-center mb-2"><BrainCircuit className="mr-2 h-5 w-5 text-primary"/>Example Tech Innovations:</h4>
+                        <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                            <li>AI tools for preliminary screening assistance.</li>
+                            <li>Low-cost, portable diagnostic device prototypes.</li>
+                            <li>Mobile apps enhancing patient engagement.</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold text-lg flex items-center mb-2"><UserCheck className="mr-2 h-5 w-5 text-primary"/>Example New Service Models:</h4>
+                        <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                            <li>Business plans for specialized niche practices.</li>
+                            <li>Subscription models for comprehensive eye care.</li>
+                            <li>Tele-optometry concepts for underserved areas.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <p className="text-sm font-semibold text-center mt-6 text-primary/80">
+                    Important: These are just illustrative examples. We strongly encourage you to submit your own original concepts. Think outside the box!
+                </p>
+            </InfoCard>
+
+             <InfoCard icon={Calendar} title="Key Information">
+                <div className="space-y-4">
+                    <div>
+                        <h4 className="font-semibold text-lg">Abstract Submission Period:</h4>
+                        <p className="text-muted-foreground">🗓️ May 5 – May 25</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-lg flex items-center"><Wallet className="mr-2 h-5 w-5 text-primary"/>Registration Fees:</h4>
+                         <ul className="list-disc list-inside text-muted-foreground">
+                            <li>Optobharat Members: 50₹</li>
+                            <li>Non-Members: 100₹</li>
+                        </ul>
+                    </div>
+                     <div className="text-center pt-4">
+                        <Button asChild>
+                            <a href="https://optopreneur.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                <LinkIcon className="mr-2 h-4 w-4" /> Visit Event Website
+                            </a>
+                        </Button>
+                     </div>
+                </div>
+            </InfoCard>
+
             <section>
                  <h2 className="text-2xl font-bold font-headline text-center mb-6">🏆 Official Winners Announcement 🏆</h2>
                 <div className="grid md:grid-cols-3 gap-6 lg:gap-8 my-8">
@@ -88,6 +150,13 @@ export const events: OptoEvent[] = [
                 <p className="text-base text-muted-foreground">
                     👏 A big thank you to all participants for sharing your ideas and contributing to the growth of eye care innovation.
                 </p>
+                <div className="pt-4">
+                     <Button asChild variant="outline">
+                        <a href="mailto:inquiry.optobharat@gmail.com">
+                            <Mail className="mr-2 h-4 w-4" /> Inquiries
+                        </a>
+                    </Button>
+                </div>
             </section>
         </div>
     ),
