@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -402,11 +401,7 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Khushi', state: 'Uttar Pradesh' },
   { name: 'mariya', state: 'Delhi' },
   { name: 'Shaheen parveen', state: 'Delhi' },
-  { name: 'Sunny Hant', state: 'India' },
-  { name: 'Anik Dingal', state: 'West Bengal' },
-  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
-  { name: 'Naveen M', state: 'India' },
-  { name: 'Ankit Sharma', state: 'Rajasthan' },
+  { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
   { name: 'Priya Verma', state: 'Delhi' },
   { name: 'Rohan Mehta', state: 'Gujarat' },
   { name: 'Sneha Patil', state: 'Maharashtra' },
@@ -419,7 +414,23 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Manoj Das', state: 'Odisha' },
   { name: 'Rani Devi', state: 'Jharkhand' },
   { name: 'Sandeep Chowdhury', state: 'West Bengal' },
-  { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
+  { name: 'Anik Dingal', state: 'West Bengal' },
+  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
+  { name: 'Sunny Hant', state: 'India' },
+  { name: 'Naveen M', state: 'India' },
+  { name: 'Aarav Sharma', state: 'Delhi' },
+  { name: 'Isha Singh', state: 'Maharashtra' },
+  { name: 'Rohan Patel', state: 'Gujarat' },
+  { name: 'Priya Sharma', state: 'Rajasthan' },
+  { name: 'Amit Kumar', state: 'Bihar' },
+  { name: 'Sneha Reddy', state: 'Telangana' },
+  { name: 'Vijay Nair', state: 'Kerala' },
+  { name: 'Kavya Singh', state: 'Uttar Pradesh' },
+  { name: 'Rahul Das', state: 'West Bengal' },
+  { name: 'Anita Devi', state: 'Haryana' },
+  { name: 'Suresh Kumar', state: 'Punjab' },
+  { name: 'Deepika Rao', state: 'Karnataka' },
+  { name: 'Arjun Mehta', state: 'Madhya Pradesh' },
 ];
 
 const contestWinners: Record<string, string> = {
