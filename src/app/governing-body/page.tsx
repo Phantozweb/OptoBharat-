@@ -121,9 +121,11 @@ const studentAmbassadors: StudentAmbassador[] = [
 
 const LeadershipMemberCard = ({ member }: { member: Member }) => (
     <Card className="text-center flex flex-col items-center p-6 bg-primary/5 hover:shadow-lg transition-shadow">
-        <Avatar className="h-24 w-24 border-4 border-primary mb-4">
-            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover" />
-            <AvatarFallback className="text-3xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
+        <Avatar className="h-24 w-24 border-4 border-primary mb-4 shadow-md">
+            <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover" />
+            <AvatarFallback className="text-3xl bg-muted text-primary">
+                {!member.imageUrl ? <User className="h-12 w-12" /> : member.avatarFallback}
+            </AvatarFallback>
         </Avatar>
         <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
         <CardDescription className="text-primary font-semibold text-sm mt-1">{member.role}</CardDescription>
@@ -133,8 +135,10 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => (
 const MemberListItem = ({ member }: { member: Member }) => (
     <div className="flex items-center space-x-4 p-3 rounded-md transition-colors hover:bg-muted/50">
         <Avatar className="h-14 w-14 border-2 border-primary">
-            <AvatarImage src={member.imageUrl || `https://placehold.co/128x128.png`} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
-            <AvatarFallback className="text-xl bg-muted text-muted-foreground">{member.avatarFallback}</AvatarFallback>
+             <AvatarImage src={member.imageUrl} alt={member.name} data-ai-hint={member.dataAiHint || "person portrait"} className="object-cover"/>
+            <AvatarFallback className="text-xl bg-muted text-primary">
+                 {!member.imageUrl ? <User className="h-8 w-8" /> : member.avatarFallback}
+            </AvatarFallback>
         </Avatar>
         <div>
             <p className="font-bold text-lg text-foreground">{member.name}</p>
@@ -202,8 +206,10 @@ export default function GoverningBodyPage() {
                             {index === 0 ? <TableCell className="font-semibold align-top" rowSpan={stateHeads.length}>State Heads</TableCell> : null}
                             <TableCell className="flex items-center gap-2">
                                 <Avatar className="h-10 w-10 border-2 border-primary">
-                                    <AvatarImage src={head.imageUrl || `https://placehold.co/64x64.png`} alt={head.name} data-ai-hint="person portrait" className="object-cover" />
-                                    <AvatarFallback className="text-sm bg-muted text-muted-foreground">{head.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                                    <AvatarImage src={head.imageUrl} alt={head.name} data-ai-hint="person portrait" className="object-cover" />
+                                    <AvatarFallback className="text-sm bg-muted text-primary">
+                                        {!head.imageUrl ? <User className="w-5 h-5"/> : head.name.split(' ').map(n => n[0]).join('')}
+                                    </AvatarFallback>
                                 </Avatar>
                                 {head.name}
                             </TableCell>
@@ -214,8 +220,8 @@ export default function GoverningBodyPage() {
                         <TableCell className="font-semibold"><div className="flex items-center gap-2"><Shield className="h-4 w-4"/> Moderator</div></TableCell>
                         <TableCell className="flex items-center gap-2">
                              <Avatar className="h-10 w-10 border-2 border-primary">
-                                <AvatarImage src={moderator.imageUrl || `https://placehold.co/64x64.png`} alt={moderator.name} data-ai-hint="person portrait" className="object-cover" />
-                                <AvatarFallback className="text-sm bg-muted text-muted-foreground">{moderator.avatarFallback}</AvatarFallback>
+                                <AvatarImage src={moderator.imageUrl} alt={moderator.name} data-ai-hint="person portrait" className="object-cover" />
+                                <AvatarFallback className="text-sm bg-muted text-primary">{moderator.avatarFallback}</AvatarFallback>
                             </Avatar>
                             {moderator.name}
                         </TableCell>
