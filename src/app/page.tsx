@@ -1,11 +1,23 @@
 
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { CheckCircle, Users, Award, FlaskConical, Trophy } from 'lucide-react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { CheckCircle, Users, Award, FlaskConical, Trophy, TrendingUp } from 'lucide-react';
 
 // Metadata for the homepage is handled in the root layout.tsx
+
+const growthData = [
+    { date: 'Mar 17, 2025', members: 1 },
+    { date: 'Apr 1, 2025', members: 50 },
+    { date: 'May 1, 2025', members: 150 },
+    { date: 'Jun 1, 2025', members: 250 },
+    { date: 'Jul 1, 2025', members: 320 },
+    { date: 'Aug 8, 2025', members: 384 },
+];
 
 export default function OptobharatHomePage() {
   return (
@@ -48,6 +60,43 @@ export default function OptobharatHomePage() {
               At OPTOBHARAT, we believe in learning, leading, and revolutionizing vision care. Through expert-led discussions, skill-building workshops, and networking opportunities, our mission is to equip optometry students with the knowledge and support they need to excel in their careers.
             </p>
             <p className="font-semibold text-foreground">Join us and be part of a movement that’s shaping the future of optometry in India and across the globe!</p>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Community Growth Section */}
+      <section id="growth">
+        <Card className="shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-3xl font-headline text-center flex items-center justify-center">
+                <TrendingUp className="mr-3 h-8 w-8 text-primary" /> Community Growth
+            </CardTitle>
+            <CardDescription className="text-center">From our first member to a thriving national community.</CardDescription>
+          </CardHeader>
+          <CardContent className="h-[300px] w-full px-2">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart
+                data={growthData}
+                margin={{
+                  top: 10,
+                  right: 30,
+                  left: 0,
+                  bottom: 0,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip 
+                    contentStyle={{ 
+                        backgroundColor: 'hsl(var(--background))',
+                        borderColor: 'hsl(var(--border))'
+                    }}
+                />
+                <Area type="monotone" dataKey="members" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.2} />
+              </AreaChart>
+            </ResponsiveContainer>
+             <p className="text-center text-xs text-muted-foreground pt-4">Community growth from March 17, 2025 to August 8, 2025.</p>
           </CardContent>
         </Card>
       </section>

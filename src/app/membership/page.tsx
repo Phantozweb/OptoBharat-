@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -404,11 +405,11 @@ const originalMembers: { name: string; state: string }[] = [
   { name: 'Khushi', state: 'Uttar Pradesh' },
   { name: 'mariya', state: 'Delhi' },
   { name: 'Shaheen parveen', state: 'Delhi' },
-  { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
-  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
-  { name: 'Anik Dingal', state: 'West Bengal' },
   { name: 'Sunny Hant', state: 'India' },
+  { name: 'Anik Dingal', state: 'West Bengal' },
+  { name: 'Mamta Bishnoi', state: 'Rajasthan' },
   { name: 'Naveen M', state: 'India' },
+  { name: 'Tinotenda Nzvuwu', state: 'Punjab' },
 ];
 
 const contestWinners: Record<string, string> = {
