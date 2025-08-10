@@ -1,5 +1,5 @@
 
-import { Trophy, type LucideIcon, BrainCircuit, Microscope, Lightbulb, UserCheck, Calendar, Wallet, Link as LinkIcon, Mail, Info, User, Star } from 'lucide-react';
+import { Trophy, type LucideIcon, BrainCircuit, Microscope, Lightbulb, UserCheck, Calendar, Mail, Info, User, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -129,13 +129,6 @@ export const events: OptoEvent[] = [
                             <li>Non-Members: ₹100</li>
                         </ul>
                     </div>
-                     <div className="text-center pt-4">
-                        <Button asChild>
-                            <a href="https://optopreneur.netlify.app/" target="_blank" rel="noopener noreferrer">
-                                <LinkIcon className="mr-2 h-4 w-4" /> Visit Event Website (Archived)
-                            </a>
-                        </Button>
-                     </div>
                 </div>
             </InfoCard>
             
