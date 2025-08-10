@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, Gavel, FileText, ChevronDown, BookOpen } from 'lucide-react';
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, Gavel, FileText, ChevronDown, BookOpen, ShieldCheck } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
@@ -22,6 +22,7 @@ const mainNavLinks = [
 const moreNavLinks = [
   { href: '/about', label: 'About', icon: Info },
   { href: '/resources', label: 'Resources', icon: BookOpen },
+  { href: '/community-guidelines', label: 'Community Guidelines', icon: ShieldCheck },
   { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
