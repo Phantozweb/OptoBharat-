@@ -133,7 +133,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
     } else if (member.name === 'JANARTHAN VEERAMANI') {
         objectPosition = '50% 35%';
     } else if (member.name === 'NIZAM UDDIN SK') {
-        objectPosition = '50% 70%';
+        objectPosition = '50% 80%';
         transform = 'scale(1.15)';
     }
 
@@ -160,7 +160,7 @@ const LeadershipMemberCard = ({ member }: { member: Member }) => {
 const MemberListItem = ({ member }: { member: Member }) => {
     let objectPosition = 'center';
     if (member.name === 'ANSHI JHA') {
-        objectPosition = '50% 20%';
+        objectPosition = '50% 35%';
     } else if (member.name === 'PRITAM KARMAKAR') {
         objectPosition = '50% 35%';
     }
@@ -176,7 +176,7 @@ const MemberListItem = ({ member }: { member: Member }) => {
                     style={{ objectPosition }}
                  />
                 <AvatarFallback className="text-xl bg-muted text-primary shadow-inner">
-                    <User className="h-8 w-8" />
+                   <User className="h-8 w-8" />
                 </AvatarFallback>
             </Avatar>
             <div>
