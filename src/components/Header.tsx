@@ -6,41 +6,37 @@ import { useState } from 'react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, HomeIcon, Users, UserPlus, MessageSquare, Info, Mail, ShieldCheck, BookOpen, ChevronDown, Handshake, Gem, Users2, CalendarDays, Book, BookMarked, ClipboardPenLine, Orbit } from 'lucide-react';
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, Info, Mail, BookOpen, ChevronDown, Handshake, CalendarDays, Book, BookMarked } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 
-const mainNavLinks = [
-  { href: '/', label: 'Home', icon: HomeIcon },
-  { href: '/about', label: 'About', icon: Info },
+const aboutSubLinks = [
+  { href: '/about', label: 'About Us', icon: Info },
   { href: '/governing-body', label: 'Governing Body', icon: Users },
-  { href: '/membership', label: 'Membership', icon: UserPlus },
-  { href: '/forum', label: 'Forum', icon: MessageSquare },
-];
-
-const resourcesSubLinks = [
-    { href: '/blogs', label: 'Blogs & Learning', icon: Book },
-    { href: '/events', label: 'Events & Webinars', icon: CalendarDays },
-    { href: '/courses', label: 'Courses & Certifications', icon: BookMarked },
+  { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
 const communitySubLinks = [
-    { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
+    { href: '/membership', label: 'Membership', icon: UserPlus },
+    { href: '/forum', label: 'Forum', icon: MessageSquare },
     { href: '/alliances', label: 'Alliances', icon: Handshake },
-    { href: '/contact', label: 'Contact Us', icon: Mail },
+];
+
+const learningSubLinks = [
+    { href: '/blogs', label: 'Blogs & Learning', icon: Book },
+    { href: '/events', label: 'Events & Webinars', icon: CalendarDays },
+    { href: '/courses', label: 'Courses & Certifications', icon: BookMarked },
+    { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
 ];
 
 
 const allMobileNavLinks = [
-    ...mainNavLinks,
-    { href: '/blogs', label: 'Blogs & Learning', icon: Book },
-    { href: '/events', label: 'Events & Webinars', icon: CalendarDays },
-    { href: '/courses', label: 'Courses & Certifications', icon: BookMarked },
-    { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
-    { href: '/alliances', label: 'Alliances', icon: Handshake },
-    { href: '/contact', label: 'Contact Us', icon: Mail },
+    { href: '/', label: 'Home', icon: HomeIcon },
+    ...aboutSubLinks,
+    ...communitySubLinks,
+    ...learningSubLinks
 ];
 
 export function Header() {
@@ -63,55 +59,41 @@ export function Header() {
     );
   };
 
+  const NavDropdown = ({ title, links }: { title: string, links: {href: string, label: string, icon: React.ElementType}[] }) => {
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
+                    {title}
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                {links.map((link) => (
+                    <DropdownMenuItem key={link.label} asChild>
+                        <Link href={link.href} className="flex items-center gap-2">
+                            {link.icon && <link.icon className="h-4 w-4" />}
+                            {link.label}
+                        </Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
+    );
+  };
+
+
   return (
     <header className="w-full border-b border-border/40 bg-background/95 sticky top-0 z-40">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {mainNavLinks.map((link) => (
-            <NavLink key={link.label} href={link.href} label={link.label} />
-          ))}
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Resources
-                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                {resourcesSubLinks.map((link) => (
-                    <DropdownMenuItem key={link.label} asChild>
-                        <Link href={link.href} className="flex items-center gap-2">
-                            {link.icon && <link.icon className="h-4 w-4" />}
-                            {link.label}
-                        </Link>
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Community
-                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                {communitySubLinks.map((link) => (
-                    <DropdownMenuItem key={link.label} asChild>
-                        <Link href={link.href} className="flex items-center gap-2">
-                            {link.icon && <link.icon className="h-4 w-4" />}
-                            {link.label}
-                        </Link>
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
+        <nav className="hidden md:flex items-center space-x-2">
+          <NavLink href="/" label="Home" />
+          <NavDropdown title="About" links={aboutSubLinks} />
+          <NavDropdown title="Community Hub" links={communitySubLinks} />
+          <NavDropdown title="Learning Hub" links={learningSubLinks} />
         </nav>
 
         {/* Mobile Navigation */}
@@ -128,10 +110,10 @@ export function Header() {
                 <nav className="flex flex-col space-y-2 p-6 pt-0">
                   {allMobileNavLinks.map((link) => (
                       <Button 
-                        key={link.href + link.label} // Use a more unique key for items with same href
+                        key={link.href + link.label}
                         variant="ghost" 
                         asChild 
-                        className="text-foreground hover:text-primary transition-colors w-full justify-start text-base"
+                        className={cn("text-foreground hover:text-primary transition-colors w-full justify-start text-base", { "bg-muted text-primary": pathname === link.href})}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         <Link href={link.href}>
