@@ -14,46 +14,33 @@ import { usePathname } from 'next/navigation';
 
 const mainNavLinks = [
   { href: '/', label: 'Home', icon: HomeIcon },
+  { href: '/about', label: 'About', icon: Info },
   { href: '/governing-body', label: 'Governing Body', icon: Users },
   { href: '/membership', label: 'Membership', icon: UserPlus },
   { href: '/forum', label: 'Forum', icon: MessageSquare },
 ];
 
-const contentSubLinks = [
-    { href: '/blogs', label: 'Blogs', icon: Book },
-    { href: '/events', label: 'Events', icon: CalendarDays },
+const resourcesSubLinks = [
+    { href: '/blogs', label: 'Blogs & Learning', icon: Book },
+    { href: '/events', label: 'Events & Webinars', icon: CalendarDays },
+    { href: '/courses', label: 'Courses & Certifications', icon: BookMarked },
 ];
 
-const coursesSubLinks = [
-    { href: '/courses#academic-education', label: 'Academic for Optometry Education', icon: BookMarked },
-    { href: '/courses#quiz-competition', label: 'Quiz Competition', icon: ClipboardPenLine },
-    { href: '/courses#upcoming-courses', label: 'Upcoming Course', icon: Orbit },
+const communitySubLinks = [
+    { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
+    { href: '/alliances', label: 'Alliances', icon: Handshake },
+    { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
-const alliancesSubLinks = [
-    { href: '/alliances#partnership', label: 'Partnership', icon: Handshake },
-    { href: '/alliances#collaboration', label: 'Collaboration', icon: Users2 },
-    { href: '/alliances#sponsorship', label: 'Sponsorship', icon: Gem },
-];
-
-const practiceGuideSubLinks = [
-    { href: '/practice-guide#community-guidelines', label: 'Community Guidelines', icon: ShieldCheck },
-    { href: '/practice-guide#resources', label: 'Resources', icon: BookOpen },
-];
-
-
-const moreNavLinks = [
-  { href: '/about', label: 'About', icon: Info },
-  { href: '/contact', label: 'Contact Us', icon: Mail },
-];
 
 const allMobileNavLinks = [
     ...mainNavLinks,
-    ...contentSubLinks,
-    { href: '/courses', label: 'Courses', icon: BookMarked },
-    { href: '/alliances', label: 'Alliances', icon: Handshake },
+    { href: '/blogs', label: 'Blogs & Learning', icon: Book },
+    { href: '/events', label: 'Events & Webinars', icon: CalendarDays },
+    { href: '/courses', label: 'Courses & Certifications', icon: BookMarked },
     { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
-    ...moreNavLinks
+    { href: '/alliances', label: 'Alliances', icon: Handshake },
+    { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
 export function Header() {
@@ -90,12 +77,12 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Content & Info
+                    Resources
                     <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                {contentSubLinks.map((link) => (
+                {resourcesSubLinks.map((link) => (
                     <DropdownMenuItem key={link.label} asChild>
                         <Link href={link.href} className="flex items-center gap-2">
                             {link.icon && <link.icon className="h-4 w-4" />}
@@ -105,35 +92,16 @@ export function Header() {
                 ))}
             </DropdownMenuContent>
           </DropdownMenu>
-
-           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Courses
-                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                {coursesSubLinks.map((link) => (
-                    <DropdownMenuItem key={link.label} asChild>
-                        <Link href={link.href} className="flex items-center gap-2">
-                            {link.icon && <link.icon className="h-4 w-4" />}
-                            {link.label}
-                        </Link>
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Alliances
+                    Community
                     <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                {alliancesSubLinks.map((link) => (
+                {communitySubLinks.map((link) => (
                     <DropdownMenuItem key={link.label} asChild>
                         <Link href={link.href} className="flex items-center gap-2">
                             {link.icon && <link.icon className="h-4 w-4" />}
@@ -144,44 +112,6 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Practice Guide
-                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                {practiceGuideSubLinks.map((link) => (
-                    <DropdownMenuItem key={link.label} asChild>
-                        <Link href={link.href} className="flex items-center gap-2">
-                            {link.icon && <link.icon className="h-4 w-4" />}
-                            {link.label}
-                        </Link>
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                More
-                <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {moreNavLinks.map((link) => (
-                <DropdownMenuItem key={link.href} asChild>
-                   <Link href={link.href} className="flex items-center gap-2">
-                    {link.icon && <link.icon className="h-4 w-4" />}
-                    {link.label}
-                   </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
         </nav>
 
         {/* Mobile Navigation */}
