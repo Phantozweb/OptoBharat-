@@ -44,6 +44,7 @@ const govCommunications = [
     {
       title: 'Tripura Ophthalmic Science Council – Roles and Responsibilities of Optometrists',
       description: 'Outlines practice roles and responsibilities of Optometrists by Tripura State Allied and Healthcare Council',
+      href: 'https://acrobat.adobe.com/id/urn:aaid:sc:AP:ab9b13f9-59a2-4c73-808b-5445192c4ed6'
     },
     {
       title: 'DGHS, MoHFW, New Delhi – RTI Reply on Optometry Practice',
@@ -214,6 +215,68 @@ export default function PracticeGuidePage() {
                  ))}
               </CardContent>
             </Card>
+
+            <Card className="shadow-lg">
+                <CardHeader>
+                    <CardTitle className="text-2xl font-headline text-primary">Duties & Responsibilities of OPTOMETRIST</CardTitle>
+                    <CardDescription>As per Tripura State Allied & Healthcare Council, 22nd March, 2023.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 text-muted-foreground">
+                    <p>The profession of Optometry is a part of Modern Medical Science. It is an independent Healthcare Profession like Medicine, Surgery, Dentistry, Homeopathy, Ayurved etc. Optometrists are primary Eye Care Professional deals with Eye & Vision.</p>
+                    <p><strong className="text-foreground">Optometry</strong> means a healthcare profession that is autonomous and concerned especially with examining the eye defects and faults of Refraction, with prescribing correctional lenses, eye exercises and vision rehabilitation care for visually impaired, with diagnosing diseases of the Eye and with treating such diseases or referring them to other healthcare/medical professional for better treatment. Optometry play a leading role in Eye-care provision at the primary level, and also help at Secondary and Tertiary levels, working with Ophthalmologists and other Healthcare Providers towards the unified goal of combating Blindness.</p>
+                    
+                    <h3 className="font-semibold text-lg text-foreground pt-4">Point to Point Duties & Responsibilities of OPTOMETRISTS are as follows:</h3>
+                    <ol className="list-decimal list-inside space-y-2">
+                        <li>To test visual acuity. (Distant vision, Near vision, Colour vision)</li>
+                        <li>To test field of vision (peripheral field of vision & central field of vision)</li>
+                        <li>Comprehensive Eye examination (i.e. Cataract, Glaucoma, Corneal Ulcer /Opacity, Retinopathy, ARMD, Trachoma, Uveities, Squint/Strabismus, Amblyopia/Lazy Eye, etc.).</li>
+                        <li>Prescribe Eye glasses to correct Refractive error. (Myopia, Hypermetropia, Presbiopia and Astigmatism)</li>
+                        <li>Prescribe Contact Lenses to correct Refractive error and other eye condition.</li>
+                        <li>Prescribe Prism to correct Squint/ Strabismus.</li>
+                        <li>Prescribe Low-visual aid to the partially sighted person.</li>
+                        <li>Binocular Vision Therapy.</li>
+                        <li>Geriatric Vision Therapy & Paediatric Vision Therapy.</li>
+                        <li>Sports Vision Therapy & Occupational Vision Therapy.</li>
+                        <li>Vision Screening for School going children for early detection of Refractive Error, Squint, Amblyopia and other paediatric eye condition.</li>
+                        <li>
+                            Treatment and Medical intervention at Primary level.
+                            <ul className="list-[lower-alpha] list-inside pl-6 mt-2 space-y-1">
+                                <li>Conjunctivitis</li>
+                                <li>Trachoma</li>
+                                <li>Eye allergies</li>
+                                <li>Dry Eye</li>
+                                <li>Eye lid problem (Stye, Chalazion, Blepharities)</li>
+                                <li>Lachrymal system disorder</li>
+                                <li>Superficial corneal foreign body</li>
+                                <li>Vit.-A deficiency</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Uses of Medication.
+                             <ul className="list-[lower-alpha] list-inside pl-6 mt-2 space-y-1">
+                                <li>Basic antibiotic eye drops</li>
+                                <li>Myotics</li>
+                                <li>Mydriatics & Cycloplegic</li>
+                                <li>Vitamins & Minerals</li>
+                                <li>Topical anaesthetics</li>
+                                <li>Pain killer, anti-histamine, antiallergic.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Minor surgical procedure.
+                             <ul className="list-[lower-alpha] list-inside pl-6 mt-2 space-y-1">
+                                <li>Superficial foreign body removal</li>
+                                <li>Epilation for Trichiasis</li>
+                            </ul>
+                        </li>
+                        <li>Enucleation of Eye-ball for Corneal Transplantation.</li>
+                        <li>Pre and Post Operative follow-up for Eye surgeries.</li>
+                        <li>Eye Health Education at primary level for peripheral staff.</li>
+                        <li>Referral of patients to other Healthcare Professional.</li>
+                    </ol>
+                </CardContent>
+            </Card>
+
             <Card className="shadow-lg">
               <CardHeader className="flex flex-row items-center space-x-3">
                 <BookText className="h-8 w-8 text-primary" />
@@ -246,3 +309,5 @@ export default function PracticeGuidePage() {
     </div>
   );
 }
+
+    
