@@ -24,10 +24,10 @@ const contentSubLinks = [
     { href: '/resources', label: 'Resources', icon: BookOpen },
 ];
 
-const supportSubLinks = [
-    { href: '/about/partnership', label: 'Partnership', icon: Handshake },
-    { href: '/about/collaboration', label: 'Collaboration', icon: Users2 },
-    { href: '/about/sponsors', label: 'Sponsorship', icon: Gem },
+const alliancesSubLinks = [
+    { href: '/alliances#partnership', label: 'Partnership', icon: Handshake },
+    { href: '/alliances#collaboration', label: 'Collaboration', icon: Users2 },
+    { href: '/alliances#sponsorship', label: 'Sponsorship', icon: Gem },
 ];
 
 const moreNavLinks = [
@@ -39,7 +39,7 @@ const moreNavLinks = [
 const allMobileNavLinks = [
     ...mainNavLinks,
     ...contentSubLinks,
-    ...supportSubLinks,
+    { href: '/alliances', label: 'Alliances', icon: Handshake },
     ...moreNavLinks
 ];
 
@@ -96,12 +96,12 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
-                    Support
+                    Alliances
                     <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                {supportSubLinks.map((link) => (
+                {alliancesSubLinks.map((link) => (
                     <DropdownMenuItem key={link.label} asChild>
                         <Link href={link.href} className="flex items-center gap-2">
                             {link.icon && <link.icon className="h-4 w-4" />}
