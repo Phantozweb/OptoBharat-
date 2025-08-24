@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -5,7 +6,7 @@ import { useState } from 'react';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, HomeIcon, Users, UserPlus, MessageSquare, NewspaperIcon, Info, Mail, ShieldCheck, BookOpen, ChevronDown, Handshake, Gem, Users2, CalendarDays, Book } from 'lucide-react';
+import { Menu, HomeIcon, Users, UserPlus, MessageSquare, Info, Mail, ShieldCheck, BookOpen, ChevronDown, Handshake, Gem, Users2, CalendarDays, Book, BookMarked, ClipboardPenLine, Orbit } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
@@ -21,6 +22,12 @@ const mainNavLinks = [
 const contentSubLinks = [
     { href: '/blogs', label: 'Blogs', icon: Book },
     { href: '/events', label: 'Events', icon: CalendarDays },
+];
+
+const coursesSubLinks = [
+    { href: '/courses#academic-education', label: 'Academic for Optometry Education', icon: BookMarked },
+    { href: '/courses#quiz-competition', label: 'Quiz Competition', icon: ClipboardPenLine },
+    { href: '/courses#upcoming-courses', label: 'Upcoming Course', icon: Orbit },
 ];
 
 const alliancesSubLinks = [
@@ -43,6 +50,7 @@ const moreNavLinks = [
 const allMobileNavLinks = [
     ...mainNavLinks,
     ...contentSubLinks,
+    { href: '/courses', label: 'Courses', icon: BookMarked },
     { href: '/alliances', label: 'Alliances', icon: Handshake },
     { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
     ...moreNavLinks
@@ -88,6 +96,25 @@ export function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 {contentSubLinks.map((link) => (
+                    <DropdownMenuItem key={link.label} asChild>
+                        <Link href={link.href} className="flex items-center gap-2">
+                            {link.icon && <link.icon className="h-4 w-4" />}
+                            {link.label}
+                        </Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+           <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
+                    Courses
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                {coursesSubLinks.map((link) => (
                     <DropdownMenuItem key={link.label} asChild>
                         <Link href={link.href} className="flex items-center gap-2">
                             {link.icon && <link.icon className="h-4 w-4" />}
