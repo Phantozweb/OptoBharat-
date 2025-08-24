@@ -21,7 +21,6 @@ const mainNavLinks = [
 const contentSubLinks = [
     { href: '/blogs', label: 'Blogs', icon: Book },
     { href: '/events', label: 'Events', icon: CalendarDays },
-    { href: '/resources', label: 'Resources', icon: BookOpen },
 ];
 
 const alliancesSubLinks = [
@@ -30,9 +29,14 @@ const alliancesSubLinks = [
     { href: '/alliances#sponsorship', label: 'Sponsorship', icon: Gem },
 ];
 
+const practiceGuideSubLinks = [
+    { href: '/practice-guide#community-guidelines', label: 'Community Guidelines', icon: ShieldCheck },
+    { href: '/practice-guide#resources', label: 'Resources', icon: BookOpen },
+];
+
+
 const moreNavLinks = [
   { href: '/about', label: 'About', icon: Info },
-  { href: '/community-guidelines', label: 'Community Guidelines', icon: ShieldCheck },
   { href: '/contact', label: 'Contact Us', icon: Mail },
 ];
 
@@ -40,6 +44,7 @@ const allMobileNavLinks = [
     ...mainNavLinks,
     ...contentSubLinks,
     { href: '/alliances', label: 'Alliances', icon: Handshake },
+    { href: '/practice-guide', label: 'Practice Guide', icon: BookOpen },
     ...moreNavLinks
 ];
 
@@ -111,6 +116,26 @@ export function Header() {
                 ))}
             </DropdownMenuContent>
           </DropdownMenu>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary">
+                    Practice Guide
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                {practiceGuideSubLinks.map((link) => (
+                    <DropdownMenuItem key={link.label} asChild>
+                        <Link href={link.href} className="flex items-center gap-2">
+                            {link.icon && <link.icon className="h-4 w-4" />}
+                            {link.label}
+                        </Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
